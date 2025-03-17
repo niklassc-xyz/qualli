@@ -51,18 +51,18 @@ export default class SimBubble extends SpriteObject {
 		const ctx = canvas.getContext("2d");
 		ctx.translate(8, 8); // TODO do padding properly
 
-		ctx.strokeStyle = "rgba(220, 220, 250, 0.6)";
+		ctx.strokeStyle = "rgba(220, 220, 250, 0.3)";
 		ctx.lineWidth = 4;
 		f.drawCircle(ctx, this.r, this.r, this.r, true);
 
 
-		ctx.fillStyle = "rgba(220, 220, 250, 0.1)";
+		ctx.fillStyle = "rgba(220, 220, 250, 0.05)";
 		f.drawCircle(ctx, this.r, this.r, this.r, false);
 
 
 		let lineNum = 5;
 		for (let i = 1; i < lineNum; i++) {
-			let alpha = 0.05 + 0.6 * (1 - i/lineNum)
+			let alpha = 0.025 + 0.3 * (1 - i/lineNum)
 
 			ctx.strokeStyle = `rgba(${this.basecolor[0]}, ${this.basecolor[1]}, ${this.basecolor[2]}, ${alpha})`;
 			let lineWidth = 1;
