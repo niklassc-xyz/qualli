@@ -5,6 +5,7 @@ import * as f from "../functions.js";
 import LinkedList from "../engine/LinkedList/LinkedList.js";
 import Jelly from "./Jelly.js";
 import Color from "../appEtc/color/Color.js";
+import Sounds from "../appEtc/Sounds.js";
 
 
 // TODO move to bases
@@ -145,8 +146,10 @@ export default class Bubble extends Base {
 		// Capture
 		this.units = n - this.units;
 		this.team = team;
-		let audio = new Audio("datafiles/sounds/bing4.ogg");
-		audio.play();
+		// let audio = new Audio("datafiles/sounds/bing4.ogg");
+		// audio.play();
+
+		Sounds.play("bing");
 	}
 
 	// TODO make more efficient → test if it was faster before this commit
