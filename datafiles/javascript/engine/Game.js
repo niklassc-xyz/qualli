@@ -10,11 +10,6 @@ import ProgressManager from "../appEtc/ProgressManager.js";
 
 export default class Game {
 	constructor() {
-		// this.viewWidth;
-		// this.viewHeight;
-		// this.paddingVert;
-		// this.paddingHorz;
-
 		// TODO remove
 		globals.spr_Raumschiff[1] = document.getElementById("qualleRed");
 		globals.spr_Raumschiff[2] = document.getElementById("qualleBlue");
@@ -53,9 +48,12 @@ export default class Game {
 		this.canvas.style.width = window.innerWidth;
 		this.canvas.style.height = window.innerHeight;
 
-		this.canvas.width = window.innerWidth * window.devicePixelRatio;
-		this.canvas.height = window.innerHeight * window.devicePixelRatio;
-
+		this.canvas.width = window.innerWidth;
+		this.canvas.height = window.innerHeight;
+		if (Settings.scaling) {
+			this.canvas.width *= window.devicePixelRatio;
+			this.canvas.height *= window.devicePixelRatio;
+		}
 
 		// Calculate room view
 		// → TODO use view dimensions instead of room
@@ -66,36 +64,22 @@ export default class Game {
 		this.paddingVert = 0; // on each side
 		this.paddingHorz = 0; // on each side
 		if (windowRatio > roomRatio) {
-			console.log("Window ratio wider than room ratio");
-			console.log(windowRatio, roomRatio);
-
 			this.viewHeight = this.roomHeight;
 			this.viewWidth = this.roomHeight * (window.innerWidth / window.innerHeight);
 			this.paddingHorz = (this.viewWidth - this.roomWidth) / 2;
 		} else {
-			console.log("Window ratio taller than room ratio");
-			console.log(windowRatio, roomRatio);
-
 			this.viewWidth = this.roomWidth;
 			this.viewHeight = this.roomWidth * (window.innerHeight / window.innerWidth);
 			this.paddingVert = (this.viewHeight - this.roomHeight) / 2;
 		}
 
-
-		console.log("canvas.w .h", this.canvas.width, this.canvas.height);
-		console.log("canvas.style.w .h", this.canvas.style.width, this.canvas.style.height);
-		console.log("Padding", this.paddingHorz, this.paddingVert);
-		console.log("view", this.viewWidth, this.viewHeight);
-		console.log("devicePixelRatio", window.devicePixelRatio);
-		console.log("window.inner..", window.innerWidth, window.innerHeight);
-
 		let xScalar = window.innerWidth / this.viewWidth;
 		let yScalar = window.innerHeight / this.viewHeight;
 
-		// xScalar /= window.devicePixelRatio;
-		// yScalar /= window.devicePixelRatio;
-		xScalar *= window.devicePixelRatio;
-		yScalar *= window.devicePixelRatio;
+		if (Settings.scaling) {
+			xScalar *= window.devicePixelRatio;
+			yScalar *= window.devicePixelRatio;
+		}
 
 		console.log("scalars", xScalar, yScalar);
 
