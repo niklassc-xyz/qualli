@@ -13,8 +13,11 @@ for its licensing information.
 
 ### Web
 
-<!-- TODO modules -->
-Open `index.html` in a browser.
+Use any compatible web server, for example
+
+    python -m http.server
+
+Open `localhost:8000` in a browser.
 
 ### Electron
 
