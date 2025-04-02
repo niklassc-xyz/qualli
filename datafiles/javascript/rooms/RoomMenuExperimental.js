@@ -20,6 +20,7 @@ import room38 from "./room38.js";
 import room39 from "./room39.js";
 import room40 from "./room40.js";
 import room41 from "./room41.js";
+import room42 from "./room42.js";
 
 export default class RoomMenuExperimental extends Room {
 	constructor(g) {
@@ -53,6 +54,7 @@ export default class RoomMenuExperimental extends Room {
 			room39,
 			room40,
 			room41,
+			room42,
 		];
 
 		let itemsInRow = 4;
