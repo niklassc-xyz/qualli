@@ -1,4 +1,4 @@
-import IObjlistentry from "../../appEtc/IObjlistentry.js";
+import IObjlistentry from "../../engine/objects/IObjlistentry.js";
 import * as f from "../../functions.js";
 
 // TOOD rename

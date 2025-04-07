@@ -1,5 +1,5 @@
 import SimBubble from "./SimBubble.js";
-import IObjlistentry from "../../appEtc/IObjlistentry.js";
+import IObjlistentry from "../../engine/objects/IObjlistentry.js";
 import Color from "../../appEtc/color/Color.js";
 
 export default class SimBubbleEmitter extends IObjlistentry {

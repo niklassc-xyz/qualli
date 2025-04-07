@@ -1,7 +1,7 @@
 import SpriteObject from "../engine/objects/SpriteObject.js";
 import * as globals from "../globals.js";
 import * as f from "../functions.js";
-import IObjlistentry from "../appEtc/IObjlistentry.js";
+import IObjlistentry from "../engine/objects/IObjlistentry.js";
 import Colors from "../appEtc/color/Colors.js";
 import Settings from "../engine/Settings.js";
 

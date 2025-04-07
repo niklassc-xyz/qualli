@@ -1,4 +1,4 @@
-import IObjlistentry from "./IObjlistentry.js";
+import IObjlistentry from "../engine/objects/IObjlistentry.js";
 import * as f from "../functions.js";
 import Colors from "./color/Colors.js";
 import Jelly from "../objects/Jelly.js";
