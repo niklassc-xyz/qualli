@@ -1,7 +1,7 @@
-import IObjlistentry from "../appEtc/IObjlistentry.js";
+import GameEntity from "../engine/objects/GameEntity.js";
 import * as f from "../functions.js";
 
-export default class Sunshine extends IObjlistentry {
+export default class Sunshine extends GameEntity {
 	constructor(g, x, y) {
 		super(g);
 

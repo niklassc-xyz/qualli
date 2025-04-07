@@ -1,9 +1,8 @@
-import Object from "../engine/objects/Object.js";
-import * as globals from "../globals.js";
+import PhysicalEntity from "../engine/objects/PhysicalEntity.js";
 
 
 // TODO extend effects
-export default class FloatSign extends Object {
+export default class FloatSign extends PhysicalEntity {
 	constructor(g, text, x, y, color, fontSize=20, ttl=200) {
 		super(g, x, y, 0, 0);
 		this.text = text;

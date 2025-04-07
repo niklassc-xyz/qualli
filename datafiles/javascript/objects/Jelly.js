@@ -1,11 +1,11 @@
-import SpriteObject from "../engine/objects/SpriteObject.js";
+import SpriteEntity from "../engine/objects/SpriteEntity.js";
 import * as globals from "../globals.js";
 import * as f from "../functions.js";
-import IObjlistentry from "../appEtc/IObjlistentry.js";
+import GameEntity from "../engine/objects/GameEntity.js";
 import Colors from "../appEtc/color/Colors.js";
 import Settings from "../engine/Settings.js";
 
-export default class Jelly extends SpriteObject {
+export default class Jelly extends SpriteEntity {
 	// static audio = new Audio("../../sounds/2025_01_11_12_29_30.flac");
 	// static audio = new Audio("2025_01_11_12_29_30.flac");
 
@@ -56,7 +56,7 @@ export default class Jelly extends SpriteObject {
 		// TODO rename? → express intent, what it does (accelerator or something)
 		// increases speed and corrects direction until it is done and then deletes itself
 		// this reduces operations after getting to the targetSpeed and right direction
-		class StartHelper extends IObjlistentry {
+		class StartHelper extends GameEntity {
 			constructor(g, parent, targetSpeed) {
 				super(g);
 				this.parent = parent;

@@ -1,6 +1,6 @@
 // TODO move to effects
 
-export default class Effect extends Object {
+export default class Effect extends Entity {
 	constructor(g, x, y, ttl) {
 		super(g, x, y, 0, 0);
 		this.totalTtl = ttl;

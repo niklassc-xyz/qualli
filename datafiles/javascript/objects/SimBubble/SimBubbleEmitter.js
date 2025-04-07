@@ -1,8 +1,8 @@
 import SimBubble from "./SimBubble.js";
-import IObjlistentry from "../../appEtc/IObjlistentry.js";
+import GameEntity from "../../engine/objects/GameEntity.js";
 import Color from "../../appEtc/color/Color.js";
 
-export default class SimBubbleEmitter extends IObjlistentry {
+export default class SimBubbleEmitter extends GameEntity {
 	// TODO use color class → implement rgba rgb colors
 	// constructor(basecolor = [220, 220, 250], p = 0.1) {
 	constructor(g, basecolor = [120, 210, 255], p = 0.1) {

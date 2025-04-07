@@ -1,7 +1,7 @@
-import SpriteObject from "../../engine/objects/SpriteObject.js";
+import SpriteEntity from "../../engine/objects/SpriteEntity.js";
 import Colors from "../../appEtc/color/Colors.js";
 
-export default class Base extends SpriteObject {
+export default class Base extends SpriteEntity {
 	constructor(g, x, y, width, height, sprite, team = 0) {
 		super(g, x, y, width, height, sprite);
 

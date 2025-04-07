@@ -129,13 +129,13 @@ export default class Game {
 		this.input.draw(this);
 	}
 
-	// TODO move to static method in Object?
-		// TODO cls has to be of type Object as it needs to have x,y,ox,oy,width,height
+	// TODO move to static method in PhysicalEntity?
+		// TODO cls has to be of type PhysicalEntity as it needs to have x,y,ox,oy,width,height
 	// Checks if the point (x,y) collides with an object of class cls
 	// @param {number} - X-coordinate
 	// @param {number} - Y-coordinate
-	// @param {Object} - Class
-	// @return {(Object|undefined)} of type cls or undefined
+	// @param {PhysicalEntity} - Class
+	// @return {(PhysicalEntity|undefined)} of type cls or undefined
 	collision_point(x, y, cls) { // return obj oder undefined
 		/* Prüft, ob Punkt mit einem Objekt der Klasse cls kollidiert.
 			* Nur unpräzise Prüfung (point_in_rectangle).

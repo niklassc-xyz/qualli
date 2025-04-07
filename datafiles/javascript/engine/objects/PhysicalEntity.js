@@ -1,8 +1,8 @@
-import IObjlistentry from "../../appEtc/IObjlistentry.js";
+import GameEntity from "../../engine/objects/GameEntity.js";
 import * as f from "../../functions.js";
 
 // TOOD rename
-export default class Object extends IObjlistentry {
+export default class PhysicalEntity extends GameEntity {
 	// TODO default values
 	constructor(g, x, y, width, height) {
 		super(g);

@@ -1,8 +1,8 @@
 import * as f from "../functions.js";
-import SpriteObject from "../engine/objects/SpriteObject.js";
+import SpriteEntity from "../engine/objects/SpriteEntity.js";
 
-// TODO extend from Object instead of SpriteObject
-export default class Button extends SpriteObject {
+// TODO extend from Entity instead of SpriteEntity
+export default class Button extends SpriteEntity {
 	constructor(g, text, x, y, width, height, onClick, disabled) {
 		super(g, x, y, width, height, g.sprLock);
 		this.text = text;

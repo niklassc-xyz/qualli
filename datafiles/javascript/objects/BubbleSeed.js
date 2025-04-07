@@ -1,8 +1,8 @@
-import Object from "../engine/objects/Object.js";
+import PhysicalEntity from "../engine/objects/PhysicalEntity.js";
 import * as f from "../functions.js";
 
 // Creates a bubbles
-export default class BubbleSeed extends Object {
+export default class BubbleSeed extends PhysicalEntity {
 	constructor(g, delay, futureBubble) {
 		super(g, futureBubble.x, futureBubble.y, futureBubble.width, futureBubble.height);
 

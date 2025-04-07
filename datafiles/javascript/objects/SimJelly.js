@@ -1,9 +1,9 @@
-import SpriteObject from "../engine/objects/SpriteObject.js";
+import SpriteEntity from "../engine/objects/SpriteEntity.js";
 import * as globals from "../globals.js";
 
 // TODO remove?
 
-export default class SimJelly extends SpriteObject {
+export default class SimJelly extends SpriteEntity {
 	// TODO Is this ever cleared? On room change?
 	static all = [];
 
@@ -32,7 +32,7 @@ export default class SimJelly extends SpriteObject {
 		// TODO rename? → express intent, what it does (accelerator or something)
 		// increases speed and corrects direction until it is done and then deletes itself
 		// this reduces operations after getting to the targetSpeed and right direction
-		class StartHelper extends IObjlistentry {
+		class StartHelper extends GameEntity {
 			constructor(g, parent, targetSpeed) {
 				super(g);
 				this.parent = parent;
