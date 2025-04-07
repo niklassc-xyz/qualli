@@ -1,7 +1,7 @@
 import Room from "./Room.js";
 import Button from "../objects/Button.js";
 import * as f from "../functions.js";
-import Settings from "../engine/Settings.js";
+import Settings from "../parapluie/Settings.js";
 import SimBubbleEmitter from "../objects/SimBubble/SimBubbleEmitter.js";
 import MenuOverview from "../rooms/MenuOverview.js";
 import Sunshine from "../objects/Sunshine.js";

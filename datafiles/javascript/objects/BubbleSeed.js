@@ -1,4 +1,4 @@
-import PhysicalEntity from "../engine/objects/PhysicalEntity.js";
+import PhysicalEntity from "../parapluie/objects/PhysicalEntity.js";
 import * as f from "../functions.js";
 
 // Creates a bubbles

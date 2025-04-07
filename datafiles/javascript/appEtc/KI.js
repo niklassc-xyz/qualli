@@ -1,4 +1,4 @@
-import GameEntity from "../engine/objects/GameEntity.js";
+import GameEntity from "../parapluie/objects/GameEntity.js";
 import * as f from "../functions.js";
 import Colors from "./color/Colors.js";
 import Jelly from "../objects/Jelly.js";

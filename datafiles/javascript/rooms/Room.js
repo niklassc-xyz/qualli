@@ -1,4 +1,4 @@
-import Settings from "../engine/Settings.js";
+import Settings from "../parapluie/Settings.js";
 import Startpage from "./Startpage.js";
 
 // Abstract Class

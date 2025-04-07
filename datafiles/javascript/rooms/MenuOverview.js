@@ -5,7 +5,7 @@ import RoomMenuMain from "./RoomMenuMain.js";
 import RoomMenuAdvanced from "./RoomMenuAdvanced.js";
 import RoomMenuExperimental from "./RoomMenuExperimental.js";
 import RoomMenuArchive from "./RoomMenuArchive.js";
-import Settings from "../engine/Settings.js";
+import Settings from "../parapluie/Settings.js";
 import Startpage from "./Startpage.js";
 
 // TODO make this a general OptionsRoom and subclass it

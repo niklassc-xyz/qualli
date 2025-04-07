@@ -1,8 +1,5 @@
 import * as globals from "./globals.js";
-import Settings from "./engine/Settings.js";
-import Jelly from "./objects/Jelly.js";
-// import Bubble from "./objects/Bubble.js";
-import Base from "./objects/bases/Base.js";
+import Settings from "./parapluie/Settings.js";
 
 // TODO put functions in approrpirate places
 

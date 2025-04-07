@@ -2,7 +2,7 @@ import Base from "./bases/Base.js";
 import Colors from "../appEtc/color/Colors.js";
 import * as globals from "../globals.js";
 import * as f from "../functions.js";
-import LinkedList from "../engine/LinkedList/LinkedList.js";
+import LinkedList from "../parapluie/LinkedList/LinkedList.js";
 import Jelly from "./Jelly.js";
 import Color from "../appEtc/color/Color.js";
 import Sounds from "../appEtc/Sounds.js";

@@ -1,4 +1,4 @@
-import Settings from "../engine/Settings.js";
+import Settings from "../parapluie/Settings.js";
 
 // TODO move to engine?
 export default class Sounds {

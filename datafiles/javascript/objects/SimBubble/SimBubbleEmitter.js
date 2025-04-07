@@ -1,5 +1,5 @@
 import SimBubble from "./SimBubble.js";
-import GameEntity from "../../engine/objects/GameEntity.js";
+import GameEntity from "../../parapluie/objects/GameEntity.js";
 import Color from "../../appEtc/color/Color.js";
 
 export default class SimBubbleEmitter extends GameEntity {

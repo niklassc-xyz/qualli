@@ -1,7 +1,7 @@
-import SpriteEntity from "../../engine/objects/SpriteEntity.js";
+import SpriteEntity from "../../parapluie/objects/SpriteEntity.js";
 import LevelRoom from "../../rooms/LevelRoom.js";
 import * as f from "../../functions.js";
-import LinkedList from "../../engine/LinkedList/LinkedList.js";
+import LinkedList from "../../parapluie/LinkedList/LinkedList.js";
 
 export default class SimBubble extends SpriteEntity {
 	// TODO Is this ever cleared? On room change?

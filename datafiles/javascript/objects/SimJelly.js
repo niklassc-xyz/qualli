@@ -1,4 +1,4 @@
-import SpriteEntity from "../engine/objects/SpriteEntity.js";
+import SpriteEntity from "../parapluie/objects/SpriteEntity.js";
 import * as globals from "../globals.js";
 
 // TODO remove?
