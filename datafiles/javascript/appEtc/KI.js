@@ -1,9 +1,9 @@
-import IObjlistentry from "../engine/objects/IObjlistentry.js";
+import GameEntity from "../engine/objects/GameEntity.js";
 import * as f from "../functions.js";
 import Colors from "./color/Colors.js";
 import Jelly from "../objects/Jelly.js";
 
-export default class KI extends IObjlistentry {
+export default class KI extends GameEntity {
 	constructor(g, team) {
 		super(g);
 		this.team = team;
