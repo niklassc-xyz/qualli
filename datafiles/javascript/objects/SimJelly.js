@@ -1,9 +1,9 @@
-import SpriteObject from "../engine/objects/SpriteObject.js";
+import SpriteEntity from "../engine/objects/SpriteEntity.js";
 import * as globals from "../globals.js";
 
 // TODO remove?
 
-export default class SimJelly extends SpriteObject {
+export default class SimJelly extends SpriteEntity {
 	// TODO Is this ever cleared? On room change?
 	static all = [];
 

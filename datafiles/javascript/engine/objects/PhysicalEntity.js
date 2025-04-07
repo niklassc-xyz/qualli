@@ -2,7 +2,7 @@ import GameEntity from "../../engine/objects/GameEntity.js";
 import * as f from "../../functions.js";
 
 // TOOD rename
-export default class Object extends GameEntity {
+export default class PhysicalEntity extends GameEntity {
 	// TODO default values
 	constructor(g, x, y, width, height) {
 		super(g);

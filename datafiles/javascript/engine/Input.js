@@ -1,6 +1,7 @@
 import * as f from "../functions.js";
 import Button from "../objects/Button.js";
 import Base from "../objects/bases/Base.js";
+import PhysicalEntity from "./objects/PhysicalEntity.js";
 
 // TODO make static?
 
@@ -32,7 +33,7 @@ export default class Input {
 		// TODO change Object when renamed
 		/**
 		  * List of clickable objects
-		  * @type {Array.<Object>}
+		  * @type {Array.<PhysicalEntity>}
 		*/
 		let clickable = [];
 	}
@@ -40,7 +41,7 @@ export default class Input {
 	/**
 	 * Register obj as clickable
 	 *
-	 * @param {Object} obj - Object that should be registered
+	 * @param {PhysicalEntity} obj - Object that should be registered
 	 */
 	registerClickable(obj) {
 		clickable.push(obj);

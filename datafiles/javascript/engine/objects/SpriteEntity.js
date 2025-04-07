@@ -1,7 +1,7 @@
-import Object from "./Object.js";
+import PhysicalEntity from "./PhysicalEntity.js";
 import * as f from "../../functions.js";
 
-export default class SpriteObject extends Object {
+export default class SpriteEntity extends PhysicalEntity {
 	constructor(g, x, y, width, height, sprite) {
 		super(g, x, y, width, height);
 
