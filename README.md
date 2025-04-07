@@ -1,10 +1,10 @@
 # Qualli
 
-<center>
+<p align="center">
 <img src="datafiles/logo.svg" width="25%">
 <br>
 A JavaScript Game
-</center>
+</p>
 
 ## License
 
