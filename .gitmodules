@@ -1,0 +1,3 @@
+[submodule "datafiles/javascript/parapluie"]
+	path = datafiles/javascript/parapluie
+	url = git@github.com:niklassc7/parapluie.git
