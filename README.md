@@ -1,6 +1,10 @@
 # Qualli
-A JavaScript game
 
+<center>
+<img src="datafiles/logo.svg" width="25%">
+<br>
+A JavaScript Game
+</center>
 
 ## License
 
@@ -34,6 +38,7 @@ Refer to [qualli-capacitor](https://github.com/niklassc7/qualli-capacitor).
 ![Screenshot1](screenshots/2.png)
 ![Screenshot1](screenshots/3.png)
 
-## Engine
+## Goals
 
-See ENGINE.md
+* No dependencies except [engine](https://github.com/niklassc7/parapluie)
+* No build steps
