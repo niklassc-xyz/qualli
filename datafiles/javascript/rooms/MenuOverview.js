@@ -1,4 +1,4 @@
-import Room from "./Room.js";
+import Room from "./../parapluie/Room.js";
 import SimBubbleEmitter from "../objects/SimBubble/SimBubbleEmitter.js";
 import Button from "../objects/Button.js";
 import RoomMenuMain from "./RoomMenuMain.js";
