@@ -17,20 +17,25 @@ export function degToRad(deg) {
 	return deg * (Math.PI / 180);
 }
 
-export function point_in_rectangle(px, py, x1, y1, x2, y2){
-	if(px < x1 || py < y1 || px > x2 || py > y2) return false;
+export function pointInRectangle(px, py, x1, y1, x2, y2) {
+	if (px < x1 || py < y1 || px > x2 || py > y2)
+		return false;
 	return true;
 }
-export function rectangle_in_rectangle(a_x1, a_y1, a_x2, a_y2, b_x1, b_y1, b_x2, b_y2) {
-	if(a_x1 <= b_x1){
-		if(a_x2 < b_x1) return false;
-	}else{
-		if(b_x2 < a_x1) return false;
+export function rectangleInRectangle(a_x1, a_y1, a_x2, a_y2, b_x1, b_y1, b_x2, b_y2) {
+	if (a_x1 <= b_x1) {
+		if(a_x2 < b_x1)
+			return false;
+	} else {
+		if (b_x2 < a_x1)
+			return false;
 	}
-	if(a_y1 <= b_y1){
-		if(a_y2 >= b_y1) return true;
-	}else{
-		if(b_y2 >= a_y1) return true;
+	if (a_y1 <= b_y1) {
+		if (a_y2 >= b_y1)
+			return true;
+	} else {
+		if(b_y2 >= a_y1)
+			return true;
 	}
 	return false;
 }
