@@ -67,29 +67,18 @@ export function circleInCircle(x1, y1, r1, x2, y2, r2) {
 	return dx <= rt && dy <= rt;
 }
 
-export function pointDirection(x1, y1, x2, y2){ // Nicht getestet! FEHLERHAFT TODO
+// Returns direction from (x1|x2) to (x2|y2)
+export function pointDirection(x1, y1, x2, y2) { // TODO test
 	let dx = x2 - x1;
 	let dy = y2 - y1;
 
 	return radToDeg(Math.atan2(dy, dx));
-
 }
 
 // Mathematical modulo
 export function mMod(a, b) {
 	return ((a % b + b) % b);
 }
-
-// TODO camelCase
-/**
- * Draws a line from point (x1,y1) to (x2,y2) on g.ctx
- */
-// export function draw_line(x1, y1, x2, y2) {
-// 	g.ctx.beginPath();
-// 	g.ctx.moveTo(x1, y1);
-// 	g.ctx.lineTo(x2, y2);
-// 	g.ctx.stroke();
-// }
 
 export function drawLine(ctx, x1, y1, x2, y2) {
 	ctx.beginPath();
