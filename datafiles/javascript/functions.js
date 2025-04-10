@@ -88,6 +88,7 @@ export function drawLine(ctx, x1, y1, x2, y2) {
 }
 
 // TODO ctx as default value?
+// TODO fillCircle and strokeCircle
 export function drawCircle(ctx, x, y, r, outline) {
 	ctx.beginPath();
 	ctx.arc(x, y, r, 0, 2 * Math.PI, false);
@@ -96,13 +97,6 @@ export function drawCircle(ctx, x, y, r, outline) {
 	else
 		ctx.fill();
 }
-
-// TODO fillCircle and strokeCircle
-// TODO camelCase
-// Put in static method of a graphics class
-// export function draw_circle(x, y, r, outline) {
-// 	drawCircle(globals.ctx, x, y, r, outline);
-// }
 
 // TODO camelCase
 // TODO ctx should be handled the same in any draw-function
@@ -115,9 +109,9 @@ export function draw_roundrect(ctx, x, y, width, height, radius, fill, stroke) {
 	}
 	if (typeof radius === 'number') {
 		radius = {tl: radius, tr: radius, br: radius, bl: radius};
-	}else{
+	} else {
 		var defaultRadius = {tl: 0, tr: 0, br: 0, bl: 0};
-		for (var side in defaultRadius){
+		for (var side in defaultRadius) {
 			radius[side] = radius[side] || defaultRadius[side];
 		}
 	}
@@ -132,23 +126,10 @@ export function draw_roundrect(ctx, x, y, width, height, radius, fill, stroke) {
 	ctx.lineTo(x, y + radius.tl);
 	ctx.quadraticCurveTo(x, y, x + radius.tl, y);
 	ctx.closePath();
-	if (fill){
+	if (fill) {
 		ctx.fill();
 	}
-	if (stroke){
+	if (stroke) {
 		ctx.stroke();
 	}
 }
-
-// // Checks if team has already lost
-// // TODO move to room?
-// export function checkIfLost(g, team) {
-// 	for(var i = 0; i < g.room.objects.length; i++) {
-// 		if(g.room.objects[i] instanceof Jelly || g.room.objects[i] instanceof Base) {
-// 			if(g.room.objects[i].team === team) {
-// 				return false;
-// 			}
-// 		}
-// 	}
-// 	return true;
-// }
