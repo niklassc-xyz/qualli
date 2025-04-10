@@ -1,12 +1,13 @@
 import * as f from "../../functions.js";
-import * as globals from "../../globals.js";
 import Jelly from "../Jelly.js";
 import Base from "./Base.js";
 import Colors from "../../appEtc/color/Colors.js";
+import ResourceManager from "../../parapluie/ResourceManager.js";
 
 export default class ProtectBase extends Base {
 	constructor(g, x, y, width, height, subjects, team = 0) {
-		super(g, x, y, width, height, globals.sprMedalSilver, team);
+		const sprite = ResourceManager.getSpriteFromPath("datafiles/sprites/medals/silver.png");
+		super(g, x, y, width, height, sprite, team);
 
 		this.units = 100;
 		this.received = [];
