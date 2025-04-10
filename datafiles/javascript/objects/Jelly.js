@@ -1,5 +1,4 @@
 import SpriteEntity from "../parapluie/objects/SpriteEntity.js";
-import * as globals from "../globals.js";
 import * as f from "../functions.js";
 import GameEntity from "../parapluie/objects/GameEntity.js";
 import Colors from "../appEtc/color/Colors.js";
