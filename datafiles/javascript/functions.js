@@ -10,10 +10,10 @@ export function chooseRandom(arr) {
 
 }
 
-export function radtodeg(rad) {
+export function radToDeg(rad) {
 	return rad * (180 / Math.PI);
 }
-export function degtorad(deg) {
+export function degToRad(deg) {
 	return deg * (Math.PI / 180);
 }
 
@@ -66,7 +66,7 @@ export function pointDirection(x1, y1, x2, y2){ // Nicht getestet! FEHLERHAFT TO
 	let dx = x2 - x1;
 	let dy = y2 - y1;
 
-	return radtodeg(Math.atan2(dy, dx));
+	return radToDeg(Math.atan2(dy, dx));
 
 }
 
