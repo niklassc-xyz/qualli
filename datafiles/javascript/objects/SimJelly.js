@@ -1,3 +1,8 @@
+// TODO remove → is obsolete and depends on obsolete things
+
+
+
+
 import SpriteEntity from "../parapluie/objects/SpriteEntity.js";
 import * as globals from "../globals.js";
 
