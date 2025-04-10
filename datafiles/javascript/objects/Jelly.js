@@ -118,7 +118,7 @@ export default class Jelly extends SpriteEntity {
 		super.step();
 
 		// Check if jelly collided with target
-		if (f.rectangle_in_rectangle(
+		if (f.rectangleInRectangle(
 			this.x - (this.width/2),
 			this.y - (this.height/2),
 			this.x + (this.width/2),
@@ -127,7 +127,7 @@ export default class Jelly extends SpriteEntity {
 			this.ziel.y - (this.ziel.height/2),
 			this.ziel.x + (this.ziel.width/2),
 			this.ziel.y + (this.ziel.height/2)
-		)){
+		)) {
 			this.destroy();
 
 			this.ziel.receiveJellies(this.size, this.team, this.source);
