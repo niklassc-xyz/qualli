@@ -1,7 +1,5 @@
 // TODO remove all globals
 
-export var fullscreen = false;
-
 // Load Images from HTML-Ressources
 export var spr_Linsenreflex = document.getElementById("img_Linsenreflex");
 export var spr_bg_0 = document.getElementById("bg0");

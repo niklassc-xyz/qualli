@@ -20,7 +20,8 @@ export default class Startpage extends Room {
 		var buttonMargin = 128;
 
 		this.addObject(new Button(this.g, "Start", g.roomWidth / 2 - buttonMargin - (3/2) * buttonWidth, g.roomHeight / 2 - buttonHeight / 2, buttonWidth, buttonHeight, () => { g.gotoRoom(MenuOverview) }  )).borderColour = "yellow";
-		this.addObject(new Button(this.g, "Vollbild", g.roomWidth / 2 - buttonWidth / 2, g.roomHeight / 2 - buttonHeight / 2, buttonWidth, buttonHeight, f.toggleFullscreen ));
+		// TODO implement instructions
+		this.addObject(new Button(this.g, "Guide", g.roomWidth / 2 - buttonWidth / 2, g.roomHeight / 2 - buttonHeight / 2, buttonWidth, buttonHeight, () => alert("TODO") ));
 		this.addObject(new Button(this.g, "Settings", g.roomWidth / 2 + buttonMargin + buttonWidth / 2, g.roomHeight / 2 - buttonHeight / 2, buttonWidth, buttonHeight, Settings.show));
 
 		this.addObject(new Sunshine(this.g, g.roomWidth / 2, -400));

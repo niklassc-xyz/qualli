@@ -1,17 +1,3 @@
-import * as globals from "./globals.js";
-import Settings from "./parapluie/Settings.js";
-
-// TODO put functions in approrpirate places
-
-// export function onResize() {
-// 	// if it was not in fullScreen and it gets smaller than roomSize put in fullScreen
-// 	resizeCanvas();
-// 	// if(Settings.fullscreen)
-// 	// 	resizeCanvas();
-// 	// else if(window.innerWidth < roomWidth || window.innerHeight < roomHeight)
-// 	// 	activateFullscreen();
-// }
-
 /**
  * Returns a random element
  *
@@ -22,41 +8,6 @@ export function chooseRandom(arr) {
 	let ri = Math.floor(arr.length * Math.random());
 	return arr[ri];
 
-}
-
-// TODO remove?
-export function activateFullscreen() {
-	document.getElementById("myCanvas").classList.add("fullscreen");
-	document.getElementById("myCanvas").requestFullscreen();
-	Settings.fullscreen = true;
-	resizeCanvas();
-}
-
-// TODO remove?
-export function deactivateFullscreen() {
-	document.getElementById("myCanvas").classList.remove("fullscreen");
-	Settings.fullscreen = false;
-
-	globals.canvas.width = globals.roomWidth;
-	globals.canvas.height = globals.roomHeight;
-	// TODO fix
-	xScalar = 1;
-	yScalar = 1;
-
-	for(let i = 0; i < globals.room.objects.length; i++)
-		globals.room.objects[i].resize();
-}
-
-
-// TODO remove?
-export function toggleFullscreen() {
-	if(globals.fullscreen)
-		if(window.innerWidth < globals.roomWidth || window.innerHeight < globals.roomHeight)
-			alert("Window too small for window mode");
-	else
-		deactivateFullscreen();
-	else
-		activateFullscreen();
 }
 
 export function radtodeg(rad) {
