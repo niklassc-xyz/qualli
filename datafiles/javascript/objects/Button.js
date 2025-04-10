@@ -11,7 +11,7 @@ export default class Button extends SpriteEntity {
 		this.onClick = onClick;
 		this.borderColour = "white";
 		this.fontSize = 56;
-		this.font =  Math.round(this.fontSize) + "px fnt_Comforta_Regular";
+		this.setFontSize(this.fontSize);
 		this.disabled = (disabled === undefined) ? false : disabled;
 		this.animationSpeed = 0.1 + Math.random() * 0.2
 
@@ -20,11 +20,6 @@ export default class Button extends SpriteEntity {
 
 	setFontSize(size) {
 		this.fontSize = size;
-		this.resize();
-	}
-
-	resize() {
-		super.resize();
 		this.font = Math.round(this.fontSize) + "px fnt_Comforta_Regular";
 	}
 

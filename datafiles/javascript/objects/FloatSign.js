@@ -20,12 +20,7 @@ export default class FloatSign extends PhysicalEntity {
 
 	setFontSize(size) {
 		this.fontSize = size;
-		this.resize();
-	}
-
-	resize() {
-		super.resize();
-		this.font =	Math.round(this.fontSize) + "px fnt_Comforta_Bold";
+		this.font = Math.round(this.fontSize) + "px fnt_Comforta_Bold";
 	}
 
 	step() {
@@ -39,8 +34,6 @@ export default class FloatSign extends PhysicalEntity {
 	}
 
 	draw() {
-		this.resize();
-
 		this.g.ctx.font = this.font;
 
 		// Text
