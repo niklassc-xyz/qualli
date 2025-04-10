@@ -1,10 +1,12 @@
 import * as f from "../functions.js";
 import SpriteEntity from "../parapluie/objects/SpriteEntity.js";
+import ResourceManager from "../parapluie/ResourceManager.js";
 
 // TODO extend from Entity instead of SpriteEntity
 export default class Button extends SpriteEntity {
 	constructor(g, text, x, y, width, height, onClick, disabled) {
-		super(g, x, y, width, height, g.sprLock);
+		const sprite = ResourceManager.getSpriteFromPath("datafiles/sprites/lock.png");
+		super(g, x, y, width, height, sprite);
 		this.text = text;
 		this.onClick = onClick;
 		this.borderColour = "white";

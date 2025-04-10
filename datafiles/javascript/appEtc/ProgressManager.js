@@ -1,4 +1,3 @@
-import * as globals from "../globals.js";
 import LevelStats from "./LevelStats.js";
 
 // This class manages storing statistics about games and which levels are unlocked

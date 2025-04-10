@@ -1,11 +1,11 @@
 import Base from "./bases/Base.js";
 import Colors from "../appEtc/color/Colors.js";
-import * as globals from "../globals.js";
 import * as f from "../functions.js";
 import LinkedList from "../parapluie/LinkedList/LinkedList.js";
 import Jelly from "./Jelly.js";
 import Color from "../appEtc/color/Color.js";
 import Sounds from "../appEtc/Sounds.js";
+import ResourceManager from "../parapluie/ResourceManager.js";
 
 
 // TODO move to bases
@@ -14,19 +14,12 @@ export default class Bubble extends Base {
 		let width = 80 * (1 + (size / 3));
 		let height = 80 * (1 + (size / 3));
 
-		super(g, x, y, width, height, globals.spr_Planet); // TODO should specify width here AND sprite
+		const sprite = ResourceManager.getSpriteFromPath("datafiles/sprites/bubble4.png");
+		super(g, x, y, width, height, sprite); // TODO should specify width here AND sprite
 
 		this.size = size; // TODO width and height in constructor
 		this.units = units;
 		this.team = team;
-
-
-		// this.width = 80 * (1 + (this.size / 3));
-		// this.height = 80 * (1 + (this.size / 3));
-		// this.ox = this.width / 2;
-		// this.oy = this.height / 2;
-
-		// this.sprite = g.spr_Planet;
 
 		/**
 		  * @type {LinkedList}

@@ -1,5 +1,4 @@
 import SpriteEntity from "../parapluie/objects/SpriteEntity.js";
-import * as globals from "../globals.js";
 import * as f from "../functions.js";
 import GameEntity from "../parapluie/objects/GameEntity.js";
 import Colors from "../appEtc/color/Colors.js";
@@ -7,9 +6,6 @@ import Settings from "../parapluie/Settings.js";
 import resourceManager from "../parapluie/ResourceManager.js";
 
 export default class Jelly extends SpriteEntity {
-	// static audio = new Audio("../../sounds/2025_01_11_12_29_30.flac");
-	// static audio = new Audio("2025_01_11_12_29_30.flac");
-
 	/**
 	 * [TODO:description]
 	 *
