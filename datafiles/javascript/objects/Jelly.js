@@ -4,6 +4,7 @@ import * as f from "../functions.js";
 import GameEntity from "../parapluie/objects/GameEntity.js";
 import Colors from "../appEtc/color/Colors.js";
 import Settings from "../parapluie/Settings.js";
+import resourceManager from "../parapluie/ResourceManager.js";
 
 export default class Jelly extends SpriteEntity {
 	// static audio = new Audio("../../sounds/2025_01_11_12_29_30.flac");
@@ -20,20 +21,31 @@ export default class Jelly extends SpriteEntity {
 	 */
 	// TODO swap target and ziel
 	constructor(g, x, y, team, ziel, source, size=1) {
-		// super(x, y, 32, 21, g.spr_Raumschiff[team]);
-		super(g, x, y, 1, 1, globals.spr_Raumschiff[team]);
+		let sprite;
+		switch (team) {
+			case 1:
+				sprite = resourceManager.getSpriteFromPath("datafiles/sprites/qualleRed.png");
+				break;
+			case 2:
+				sprite = resourceManager.getSpriteFromPath("datafiles/sprites/qualleBlue.png");
+				break;
+			case 3:
+				sprite = resourceManager.getSpriteFromPath("datafiles/sprites/qualleGreen.png");
+				break;
+			case 4:
+				sprite = resourceManager.getSpriteFromPath("datafiles/sprites/qualleYellow.png");
+				break;
+			default:
+				throw new Error(`Tried creating Jelly with unsupported team (${team})`);
+		}
 
-		// let audio = new Audio("datafiles/sounds/2025_01_11_12_29_30.flac");
-		// audio.play();
+		super(g, x, y, 1, 1, sprite);
 
-		// g.room.addObject(this); // Move to Superclass
 		this.source = source;
 
 		this.team = team;
 		this.ziel = ziel; // TODO rename
 		this.size = size; // TODO separate damage and size → default damage can be size
-		// this.width *= size;
-		// this.height *= size;
 
 		this.widthShould = 32 * this.size;
 		this.heightShould = 21 * this.size;
