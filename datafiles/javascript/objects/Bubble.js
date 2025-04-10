@@ -14,7 +14,7 @@ export default class Bubble extends Base {
 		let width = 80 * (1 + (size / 3));
 		let height = 80 * (1 + (size / 3));
 
-		const sprite = ResourceManager.getSpriteFromPath("datafiles/sprites/Planet.png");
+		const sprite = ResourceManager.getSpriteFromPath("datafiles/sprites/bubble4.png");
 		super(g, x, y, width, height, sprite); // TODO should specify width here AND sprite
 
 		this.size = size; // TODO width and height in constructor
