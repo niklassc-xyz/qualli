@@ -9,9 +9,11 @@
 		<link rel = "Stylesheet"  type = "text/css" href = "style.css"/>
 
 		<script type="module">
+			// TODO move this to a init.js
 			import Settings from "./datafiles/javascript/parapluie/Settings.js";
 			import ProgressManager from "./datafiles/javascript/appEtc/ProgressManager.js";
 
+			import startpage from "./datafiles/javascript/rooms/Startpage.js";
 			import Game from "./datafiles/javascript/parapluie/Game.js";
 
 			// TODO remove workaround
@@ -19,7 +21,7 @@
 			window.ProgressManager = ProgressManager;
 
 			window.onload = () => {
-				var game = new Game();
+				var game = new Game(startpage);
 				window.game = game;
 				}
 		</script>
