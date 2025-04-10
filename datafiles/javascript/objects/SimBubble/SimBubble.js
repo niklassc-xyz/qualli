@@ -1,7 +1,6 @@
 import SpriteEntity from "../../parapluie/objects/SpriteEntity.js";
 import LevelRoom from "../../rooms/LevelRoom.js";
 import * as f from "../../functions.js";
-import LinkedList from "../../parapluie/LinkedList/LinkedList.js";
 
 export default class SimBubble extends SpriteEntity {
 	// TODO Is this ever cleared? On room change?
@@ -16,10 +15,6 @@ export default class SimBubble extends SpriteEntity {
 		this.ox = r + padding; // TODO separate sprite and hitbox
 		this.oy = r + padding;
 
-
-		// ctx.fillStyle = "yellow";
-		// ctx.fillRect(0, 0, r, r);
-
 		this.r = r;
 		this.basecolor = basecolor;
 		this.generateSprite(sprite);
@@ -29,19 +24,11 @@ export default class SimBubble extends SpriteEntity {
 		this.ascendAcel = 0.0002 * r;
 
 
-
-
 		let speed = 1 + Math.random();
 		let directionDiff = 30; // Degrees in which direction is random
 		let direction = 270 - directionDiff + 2*(directionDiff*Math.random());
 
-		this.createQueue = new LinkedList();
-
-
-		// console.log(direction);
-
 		this.setDirectionSpeed(direction, speed);
-		// console.log(this.speed, this.direction);
 	}
 
 	generateSprite(canvas) {
@@ -102,13 +89,6 @@ export default class SimBubble extends SpriteEntity {
 
 		if (this.y < -this.height + this.oy)
 			this.destroy();
-
-		// Create jellies
-		if (!this.createQueue.isEmpty()) {
-			let parameter = this.createQueue.removeFirst();
-			let newJelly = new SimJelly(this.g, parameter[0], parameter[1], parameter[2], parameter[3]);
-			newJelly.setSpeeds(newJelly.hspeed + this.hspeed, newJelly.vspeed + this.vspeed);
-		}
 
 		// Collision with cursor
 		// TODO move to input?
@@ -172,21 +152,6 @@ export default class SimBubble extends SpriteEntity {
 				}
 			}
 
-		}
-	}
-
-	// TODO remove
-	// Attack bubble other
-	attack(other, amount) {
-		for (let i = 0; i < amount; i++) {
-			// let newJelly = new Jelly(this.x, this.y, this.team, other)
-			// let team = 1; // TODO
-			// let team = Math.floor(Colors.team.length * Math.random());
-			// team = 1;
-			// TODO team object
-			let team = 1 + Math.floor(4 * Math.random());
-			console.log("Create with team", team);
-			this.createQueue.addLast([this.x, this.y, team, other])
 		}
 	}
 }

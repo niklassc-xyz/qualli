@@ -1,5 +1,4 @@
 import * as f from "../../functions.js";
-import * as g from "../../globals.js";
 import AiModule from "./AiModule.js";
 import KI from "../KI.js";
 

@@ -1,5 +1,4 @@
 import Button from "./Button.js";
-import * as globals from "../globals.js";
 import ResourceManager from "../parapluie/ResourceManager.js";
 
 export default class LevelButton extends Button {
