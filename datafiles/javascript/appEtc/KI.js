@@ -41,8 +41,8 @@ export default class KI extends GameEntity {
 		let symbolx = (32 + (this.team - 2) * 48);
 		let symboly = 32;
 		let r = 16;
-		f.drawCircle(this.g.painter.ctx, symbolx, symboly, r, false);
-		f.drawCircle(this.g.painter.ctx, symbolx, symboly, r, true);
+		this.g.painter.fillCircle(symbolx, symboly, r);
+		this.g.painter.strokeCircle(symbolx, symboly, r);
 
 		this.g.painter.ctx.fillStyle = "rgba(50, 50, 50, 0.9)";
 		this.g.painter.ctx.fillText(this.constructor.name, symbolx, symboly);

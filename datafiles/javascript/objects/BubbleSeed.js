@@ -1,5 +1,4 @@
 import PhysicalEntity from "../parapluie/objects/PhysicalEntity.js";
-import * as f from "../functions.js";
 
 // Creates a bubbles
 export default class BubbleSeed extends PhysicalEntity {
@@ -49,13 +48,13 @@ export default class BubbleSeed extends PhysicalEntity {
 
 		// Background
 		this.g.painter.ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
-		f.drawCircle(this.g.painter.ctx, this.x, this.y, 0.9*this.width/2, false);
+		this.g.painter.fillCircle(this.x, this.y, 0.9*this.width/2);
 
 		// Draw background of progress bar
 		let circleRadius = 1.1 * this.width / 2;
 		this.g.painter.ctx.lineWidth = 3;
 		this.g.painter.ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-		f.drawCircle(this.g.painter.ctx, this.x, this.y, circleRadius, true);
+		this.g.painter.strokeCircle(this.x, this.y, circleRadius);
 		
 
 		// Draw progress bar of time left

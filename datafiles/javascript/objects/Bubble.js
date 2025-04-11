@@ -1,6 +1,5 @@
 import Base from "./bases/Base.js";
 import Colors from "../appEtc/color/Colors.js";
-import * as f from "../functions.js";
 import LinkedList from "../parapluie/LinkedList/LinkedList.js";
 import Jelly from "./Jelly.js";
 import Color from "../appEtc/color/Color.js";
@@ -64,9 +63,9 @@ export default class Bubble extends Base {
 			} else {
 			}
 				this.g.painter.ctx.lineWidth = Math.round(2 * 2); // TODO
-				f.drawCircle(this.g.painter.ctx, this.x, this.y, this.width / 2, false);
+				this.g.painter.fillCircle(this.x, this.y, this.width / 2);
 
-			f.drawCircle(this.g.painter.ctx, this.x, this.y, this.width / 2, true);
+			this.g.painter.strokeCircle(this.x, this.y, this.width / 2);
 		// }
 
 

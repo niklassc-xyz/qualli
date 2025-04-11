@@ -81,16 +81,6 @@ export function mMod(a, b) {
 }
 
 
-// TODO ctx as default value?
-// TODO fillCircle and strokeCircle
-export function drawCircle(ctx, x, y, r, outline) {
-	ctx.beginPath();
-	ctx.arc(x, y, r, 0, 2 * Math.PI, false);
-	if(outline)
-		ctx.stroke();
-	else
-		ctx.fill();
-}
 
 // TODO camelCase
 // TODO ctx should be handled the same in any draw-function

@@ -164,8 +164,8 @@ export default class Jelly extends SpriteEntity {
 			this.g.painter.ctx.fillStyle = `rgba(${c.r}, ${c.g}, ${c.b}, 0.025`;
 			let maxr = Math.max(this.width, this.height);
 
-			f.drawCircle(this.g.painter.ctx, this.x, this.y, maxr * 2.7, false);
-			f.drawCircle(this.g.painter.ctx, this.x, this.y, maxr * 2.0, false);
+			this.g.painter.fillCircle(this.x, this.y, maxr * 2.7);
+			this.g.painter.fillCircle(this.x, this.y, maxr * 2.0);
 		}
 
 		super.draw();

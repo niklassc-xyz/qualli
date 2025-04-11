@@ -1,4 +1,3 @@
-import * as f from "../../functions.js";
 import Jelly from "../Jelly.js";
 import Base from "./Base.js";
 import Colors from "../../appEtc/color/Colors.js";
@@ -34,8 +33,6 @@ export default class ProtectBase extends Base {
 			this.units = Number.MAX_VALUE;
 
 			this.team = team;
-			// this.team = 
-			// Math.max(
 		}
 	}
 
@@ -47,7 +44,7 @@ export default class ProtectBase extends Base {
 
 	draw() {
 		this.g.painter.ctx.fillStyle = Colors.team[this.team].cRgba();
-		f.drawCircle(this.g.painter.ctx, this.x, this.y, this.width, false);
+		this.g.painter.fillCircle(this.x, this.y, this.width);
 
 		super.draw();
 
