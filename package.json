@@ -2,7 +2,7 @@
 	"name": "qualli",
 	"version": "1.0.0",
 	"description": "A JavaScript Game",
-	"main": "main.js",
+	"main": "mainElectron.js",
 	"scripts": {
 		"start": "electron .",
 		"test": "echo \"Error: no test specified\" && exit 1"
