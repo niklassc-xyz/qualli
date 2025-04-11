@@ -1,5 +1,4 @@
 import GameEntity from "../parapluie/objects/GameEntity.js";
-import * as f from "../functions.js";
 
 export default class Sunshine extends GameEntity {
 	constructor(g, x, y) {
@@ -35,7 +34,7 @@ export default class Sunshine extends GameEntity {
 			this.g.painter.ctx.strokeStyle = `rgba(255, 230, 150, ${a})`;
 
 			let d = this.g.roomWidth / (2*this.ne);
-			f.drawLine(this.g.painter.ctx, this.x, this.y, this.x + i*d*1.2, this.g.roomHeight-0);
+			this.g.painter.drawLine(this.x, this.y, this.x + i*d*1.2, this.g.roomHeight-0);
 		}
 	}
 }

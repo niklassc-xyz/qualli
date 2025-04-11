@@ -80,12 +80,6 @@ export function mMod(a, b) {
 	return ((a % b + b) % b);
 }
 
-export function drawLine(ctx, x1, y1, x2, y2) {
-	ctx.beginPath();
-	ctx.moveTo(x1, y1);
-	ctx.lineTo(x2, y2);
-	ctx.stroke();
-}
 
 // TODO ctx as default value?
 // TODO fillCircle and strokeCircle
