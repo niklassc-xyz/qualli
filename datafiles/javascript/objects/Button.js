@@ -38,34 +38,28 @@ export default class Button extends SpriteEntity {
 		fill = Math.abs(fill - animationN / 2)
 		// Normalize
 		fill = fill / (animationN/2)
-		//  Scale 
+		// Scale
 		fill = fill * 0.3
 
 		this.g.painter.ctx.lineWidth = lw;
 		this.g.painter.ctx.strokeStyle = "rgba(50, 50, 50, 0.3)";
-		f.draw_roundrect(
-			this.g.painter.ctx,
+		this.g.painter.strokeRoundrect(
 			this.x,
 			this.y,
-			this.width + lw,
-			this.height + lw,
-			6,
-			false,
-			true
+			this.x + this.width + lw,
+			this.y + this.height + lw,
+			6
 		);
 
 		this.g.painter.ctx.strokeStyle = this.borderColour;
 
 		this.g.painter.ctx.fillStyle = `rgba(200, 200, 255, ${fill})`;
-		f.draw_roundrect(
-			this.g.painter.ctx,
+		this.g.painter.drawRoundrect(
 			this.x,
 			this.y,
-			this.width,
-			this.height,
-			6,
-			true,
-			true
+			this.x + this.width,
+			this.y + this.height,
+			6
 		);
 
 		// let locked = false; // TODO implement lock system
