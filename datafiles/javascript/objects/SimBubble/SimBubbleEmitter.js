@@ -19,14 +19,11 @@ export default class SimBubbleEmitter extends GameEntity {
 			let sourceX = this.g.roomWidth/2;
 			let sourceWidth = this.g.roomWidth;
 			
-			// let x = Math.random() * roomWidth;
 			let x = sourceX - sourceWidth + 2*Math.random()*sourceWidth;
 
 			let r = Math.random() * 64 + 8;
 			let y = this.g.roomHeight + r;
 
-			// DEBUG
-			// y -= 2*r;
 
 			let base = new Color(this.basecolor[0], this.basecolor[1], this.basecolor[2]);
 			let black = new Color(0, 0, 50);
@@ -40,7 +37,7 @@ export default class SimBubbleEmitter extends GameEntity {
 
 			let carr = [c[ci].r, c[ci].g, c[ci].b];
 
-			this.g.room.addObject(new SimBubble(this.g, x, y, r, carr));
+			this.g.addObject(new SimBubble(this.g, x, y, r, carr));
 		}
 	}
 }

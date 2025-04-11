@@ -112,6 +112,7 @@ export default class SimBubble extends SpriteEntity {
 			}
 		}
 
+		// TODO more general collision mechanism
 		// Collide with other SimBubbles
 		for (let i = 0; i < SimBubble.all.length; i++) {
 			let other = SimBubble.all[i];
