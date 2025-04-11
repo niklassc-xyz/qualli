@@ -41,10 +41,10 @@ export default class Button extends SpriteEntity {
 		//  Scale 
 		fill = fill * 0.3
 
-		this.g.ctx.lineWidth = lw;
-		this.g.ctx.strokeStyle = "rgba(50, 50, 50, 0.3)";
+		this.g.painter.ctx.lineWidth = lw;
+		this.g.painter.ctx.strokeStyle = "rgba(50, 50, 50, 0.3)";
 		f.draw_roundrect(
-			this.g.ctx,
+			this.g.painter.ctx,
 			this.x,
 			this.y,
 			this.width + lw,
@@ -54,11 +54,11 @@ export default class Button extends SpriteEntity {
 			true
 		);
 
-		this.g.ctx.strokeStyle = this.borderColour;
+		this.g.painter.ctx.strokeStyle = this.borderColour;
 
-		this.g.ctx.fillStyle = `rgba(200, 200, 255, ${fill})`;
+		this.g.painter.ctx.fillStyle = `rgba(200, 200, 255, ${fill})`;
 		f.draw_roundrect(
-			this.g.ctx,
+			this.g.painter.ctx,
 			this.x,
 			this.y,
 			this.width,
@@ -70,19 +70,19 @@ export default class Button extends SpriteEntity {
 
 		// let locked = false; // TODO implement lock system
 		if(this.disabled) {
-			this.g.ctx.strokeStyle = "#607d8b";
-			this.g.ctx.fillStyle = "#607d8b";
-			this.g.ctx.drawImage(this.sprite, this.x - this.ox + this.width * 0.25, this.y - this.oy + this.height * 0.14, this.width * 0.5, this.height * 0.5);
+			this.g.painter.ctx.strokeStyle = "#607d8b";
+			this.g.painter.ctx.fillStyle = "#607d8b";
+			this.g.painter.ctx.drawImage(this.sprite, this.x - this.ox + this.width * 0.25, this.y - this.oy + this.height * 0.14, this.width * 0.5, this.height * 0.5);
 		} else {
-			this.g.ctx.strokeStyle = "white";
-			this.g.ctx.fillStyle = "white";
+			this.g.painter.ctx.strokeStyle = "white";
+			this.g.painter.ctx.fillStyle = "white";
 		}
 
 
-		this.g.ctx.textAlign = "center";
-		this.g.ctx.textBaseline = "middle";
-		this.g.ctx.font = this.font;
-		this.g.ctx.fillText(
+		this.g.painter.ctx.textAlign = "center";
+		this.g.painter.ctx.textBaseline = "middle";
+		this.g.painter.ctx.font = this.font;
+		this.g.painter.ctx.fillText(
 			this.text,
 			this.x + this.width / 2,
 			this.y + this.height / 2

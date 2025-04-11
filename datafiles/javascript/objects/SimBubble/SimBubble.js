@@ -60,9 +60,6 @@ export default class SimBubble extends SpriteEntity {
 
 		
 		ctx.translate(-8, -8); // TODO
-		// ctx.strokeStyle = "red";
-		// ctx.lineWidth = 1;
-		// ctx.strokeRect(0, 0, canvas.width, canvas.height);
 	}
 
 	destroy() {

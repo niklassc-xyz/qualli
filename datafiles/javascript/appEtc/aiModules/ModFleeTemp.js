@@ -39,8 +39,8 @@ export default class ModFleeTemp extends AiModule {
 	}
 
 	drawIcon(x, y, r) {
-		f.drawCircle(this.g.ctx, x, y, r, true);
-		this.g.ctx.fillStyle = "#ffdf20";
-		f.drawCircle(this.g.ctx, x, y, r, false);
+		f.drawCircle(this.g.painter.ctx, x, y, r, true);
+		this.g.painter.ctx.fillStyle = "#ffdf20";
+		f.drawCircle(this.g.painter.ctx, x, y, r, false);
 	}
 }
