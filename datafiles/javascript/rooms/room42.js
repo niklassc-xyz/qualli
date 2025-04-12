@@ -6,7 +6,7 @@ import KI3 from "../appEtc/KI3.js";
 import ProtectBase from "../objects/bases/ProtectBase.js";
 
 export default class room42 extends LevelRoom {
-	constructor(g) {
+	constructor(g, returnRoom = undefined) {
 		super(g);
 
 

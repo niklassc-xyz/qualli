@@ -6,7 +6,7 @@ import MenuOverview from "../rooms/MenuOverview.js";
 import Sunshine from "../objects/Sunshine.js";
 
 export default class Startpage extends Room {
-	constructor(g) {
+	constructor(g, returnRoom = undefined) {
 		super(g);
 
 

@@ -11,7 +11,7 @@ import Startpage from "./Startpage.js";
 // TODO make this a general OptionsRoom and subclass it
 
 export default class MenuOverview extends Room{
-	constructor(g) {
+	constructor(g, returnRoom = undefined) {
 		super(g);
 
 		this.addObject(new SimBubbleEmitter(this.g));

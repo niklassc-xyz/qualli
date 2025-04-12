@@ -3,7 +3,7 @@ import Bubble from "../objects/Bubble.js";
 import KI1 from "../appEtc/KI1.js";
 
 export default class room18 extends LevelRoom {
-	constructor(g) {
+	constructor(g, returnRoom = undefined) {
 		super(g);
 
 		this.addObject(new KI1(this.g, 2));

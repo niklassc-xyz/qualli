@@ -6,7 +6,7 @@ import KI2 from "../appEtc/KI2.js";
 import ModDefend from "../appEtc/aiModules/ModDefend.js";
 
 export default class room39 extends LevelRoom {
-	constructor(g) {
+	constructor(g, returnRoom = undefined) {
 		super(g);
 
 		let ai0 = this.addObject(new KI0(this.g, 2));

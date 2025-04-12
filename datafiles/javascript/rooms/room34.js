@@ -4,7 +4,7 @@ import KI1 from "../appEtc/KI1.js";
 import ModFleeTemp from "../appEtc/aiModules/ModFleeTemp.js";
 
 export default class room34 extends LevelRoom {
-	constructor(g) {
+	constructor(g, returnRoom = undefined) {
 		super(g);
 
 		let ki0 = this.addObject(new KI1(this.g, 2));

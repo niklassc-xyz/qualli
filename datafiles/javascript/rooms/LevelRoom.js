@@ -14,8 +14,7 @@ import Startpage from "./Startpage.js";
 export default class LevelRoom extends Room {
 	static background = "datafiles/sprites/bg8FullHd.png";
 
-	constructor(g) {
-	constructor(g) {
+	constructor(g, returnRoom = undefined) {
 		super(g);
 
 		if (this.constructor == LevelRoom) {

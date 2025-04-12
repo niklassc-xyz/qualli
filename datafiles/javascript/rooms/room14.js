@@ -4,7 +4,7 @@ import KI0 from "../appEtc/KI0.js";
 import KI1 from "../appEtc/KI1.js";
 
 export default class room14 extends LevelRoom {
-	constructor(g) {
+	constructor(g, returnRoom = undefined) {
 		super(g);
 
 		this.addObject(new KI1(this.g, 2));

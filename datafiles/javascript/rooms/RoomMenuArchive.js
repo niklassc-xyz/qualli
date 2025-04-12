@@ -9,7 +9,7 @@ import room26 from "./room26.js";
 import MenuOverview from "./MenuOverview.js";
 
 export default class RoomMenuArchive extends Room {
-	constructor(g) {
+	constructor(g, returnRoom = undefined) {
 		super(g);
 
 		this.addObject(new SimBubbleEmitter(this.g, [210, 170, 100]));
