@@ -89,11 +89,11 @@ export default class LevelRoom extends Room {
 
 	surrender() {
 		if (!confirm("Do you really want to give up?")) {
-			return
+			return;
 		}
 
-		this.g.gotoRoom(Startpage)
-		Settings.unpause()
+		this.g.gotoRoom(this.returnRoom);
+		Settings.unpause();
 	}
 
 	restart(prompt=false) {
@@ -101,7 +101,7 @@ export default class LevelRoom extends Room {
 				return false;
 		}
 
-		this.g.gotoRoom(this.constructor)
+		this.g.gotoRoom(this.constructor);
 		return true;
 	}
 
@@ -111,7 +111,7 @@ export default class LevelRoom extends Room {
 			case 0:
 				if(this.status == "running" && this.checkIfLost(1)) {
 					this.status = "lost";
-					this.g.showEndgame(false)
+					this.g.showEndgame(false);
 					this.g.progressManager.updateLevelStats(this.g.room.constructor.name, false);
 				}
 				this.alarm[0] = 300;
