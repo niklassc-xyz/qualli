@@ -3,7 +3,6 @@ import Button from "../objects/Button.js";
 import Settings from "../parapluie/Settings.js";
 import Jelly from "../objects/Jelly.js";
 import Base from "../objects/bases/Base.js";
-import Startpage from "./Startpage.js";
 
 
 // TODO Import these in the individual level rooms only when needed
@@ -14,8 +13,8 @@ import Startpage from "./Startpage.js";
 export default class LevelRoom extends Room {
 	static background = "datafiles/sprites/bg8FullHd.png";
 
-	constructor(g){
-		super(g);
+	constructor(g, returnRoom = undefined) {
+		super(g, returnRoom);
 
 		if (this.constructor == LevelRoom) {
 			throw new Error("Abstract classes can't be instantiated.");
@@ -61,7 +60,7 @@ export default class LevelRoom extends Room {
 		super.step();
 	}
 
-	draw(){
+	draw() {
 		//do nothing
 	}
 
@@ -89,11 +88,11 @@ export default class LevelRoom extends Room {
 
 	surrender() {
 		if (!confirm("Do you really want to give up?")) {
-			return
+			return;
 		}
 
-		this.g.gotoRoom(Startpage)
-		Settings.unpause()
+		this.g.gotoRoom(this.returnRoom);
+		Settings.unpause();
 	}
 
 	restart(prompt=false) {
@@ -101,7 +100,7 @@ export default class LevelRoom extends Room {
 				return false;
 		}
 
-		this.g.gotoRoom(this.constructor)
+		this.g.gotoRoom(this.constructor);
 		return true;
 	}
 
@@ -111,7 +110,7 @@ export default class LevelRoom extends Room {
 			case 0:
 				if(this.status == "running" && this.checkIfLost(1)) {
 					this.status = "lost";
-					this.g.showEndgame(false)
+					this.g.showEndgame(false);
 					this.g.progressManager.updateLevelStats(this.g.room.constructor.name, false);
 				}
 				this.alarm[0] = 300;

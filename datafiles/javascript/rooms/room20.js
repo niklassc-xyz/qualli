@@ -4,8 +4,8 @@ import KI0 from "../appEtc/KI0.js";
 import Jelly from "../objects/Jelly.js";
 
 export default class room20 extends LevelRoom {
-	constructor(g) {
-		super(g);
+	constructor(g, returnRoom = undefined) {
+		super(g, returnRoom);
 
 		this.addObject(new KI0(this.g, 2));
 

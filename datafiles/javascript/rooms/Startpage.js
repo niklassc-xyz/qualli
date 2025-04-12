@@ -6,8 +6,8 @@ import MenuOverview from "../rooms/MenuOverview.js";
 import Sunshine from "../objects/Sunshine.js";
 
 export default class Startpage extends Room {
-	constructor(g) {
-		super(g);
+	constructor(g, returnRoom = undefined) {
+		super(g, returnRoom);
 
 
 		this.addObject(new SimBubbleEmitter(this.g));
@@ -78,7 +78,7 @@ export default class Startpage extends Room {
 			this.g.painter.ctx.lineWidth = 5;
 			this.g.painter.ctx.strokeStyle = 'white';
 			this.g.painter.ctx.fillStyle = "white";
-			for(var i = 0; i < 5; i++){
+			for(var i = 0; i < 5; i++) {
 				this.g.painter.ctx.beginPath();
 				this.g.painter.ctx.arc(this.g.roomWidth / 2, this.g.roomHeight - 64, i * ((this.g.painter.ctx.lineWidth-1)*2), (this.n_step* (i*0.01+0.1)) + 1.25 * Math.PI, (this.n_step*(i*0.01+0.1)) + 1.75 * Math.PI, false);
 				this.g.painter.ctx.stroke();

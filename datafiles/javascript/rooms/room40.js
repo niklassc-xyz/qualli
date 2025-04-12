@@ -7,8 +7,8 @@ import KI3 from "../appEtc/KI3.js";
 // Puzzle
 
 export default class room40 extends LevelRoom {
-	constructor(g) {
-		super(g);
+	constructor(g, returnRoom = undefined) {
+		super(g, returnRoom);
 
 		this.addObject(new KI2(this.g, 2));
 		let ai1 = this.addObject(new KI3(this.g, 3));

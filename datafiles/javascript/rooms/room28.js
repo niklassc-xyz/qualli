@@ -3,8 +3,8 @@ import BubbleTemp from "../objects/BubbleTemp.js";
 import KI0 from "../appEtc/KI0.js";
 
 export default class room28 extends LevelRoom {
-	constructor(g) {
-		super(g);
+	constructor(g, returnRoom = undefined) {
+		super(g, returnRoom);
 
 		this.addObject(new KI0(this.g, 2));
 		this.addObject(new KI0(this.g, 3));

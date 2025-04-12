@@ -36,7 +36,7 @@ export default class BubbleSeed extends PhysicalEntity {
 
 		this.g.painter.ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
 		let shiftedStepCount = this.g.stepCount + this.created; // Shift counter by creation time because otherwise all seed instances show exactly the same
-		for(var i = 0; i < lineCount; i++){
+		for(var i = 0; i < lineCount; i++) {
 			this.g.painter.ctx.beginPath();
 			this.g.painter.ctx.arc(this.x, this.y, i * ((this.g.painter.ctx.lineWidth-1)*2), (shiftedStepCount* (i*0.01+0.1)) + 1.25 * Math.PI, (shiftedStepCount*(i*0.01+0.1)) + 1.75 * Math.PI, false);
 			this.g.painter.ctx.stroke();

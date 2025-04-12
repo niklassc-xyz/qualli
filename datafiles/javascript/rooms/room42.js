@@ -6,8 +6,8 @@ import KI3 from "../appEtc/KI3.js";
 import ProtectBase from "../objects/bases/ProtectBase.js";
 
 export default class room42 extends LevelRoom {
-	constructor(g) {
-		super(g);
+	constructor(g, returnRoom = undefined) {
+		super(g, returnRoom);
 
 
 		let ai0 = this.addObject(new KI3(this.g, 2));

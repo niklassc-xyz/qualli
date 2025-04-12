@@ -7,8 +7,8 @@ import UnlockBase from "../objects/bases/UnlockBase.js";
 import ProtectBase from "../objects/bases/ProtectBase.js";
 
 export default class room41 extends LevelRoom {
-	constructor(g) {
-		super(g);
+	constructor(g, returnRoom = undefined) {
+		super(g, returnRoom);
 
 
 		let ai0 = this.addObject(new KI3(this.g, 2));

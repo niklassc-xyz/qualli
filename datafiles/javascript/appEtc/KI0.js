@@ -26,7 +26,7 @@ export default class KI0 extends KI {
 					return;
 
 				var einnehmlist = this.getEinnehmlist();
-				if(einnehmlist.length === 0){ // Wenn kein Planet eingenommen werden kann, schicke von zufälligem eigenen Planten Schiffe zum Stärksten
+				if(einnehmlist.length === 0) { // Wenn kein Planet eingenommen werden kann, schicke von zufälligem eigenen Planten Schiffe zum Stärksten
 					// console.log("Kein Einnehmbarer Planet");
 					var bubbles = this.getBubbles();
 					var planet_start = bubbles[Math.round(Math.random() * (bubbles.length-1))];

@@ -10,9 +10,9 @@ import Startpage from "./Startpage.js";
 
 // TODO make this a general OptionsRoom and subclass it
 
-export default class MenuOverview extends Room{
-	constructor(g) {
-		super(g);
+export default class MenuOverview extends Room {
+	constructor(g, returnRoom = undefined) {
+		super(g, returnRoom);
 
 		this.addObject(new SimBubbleEmitter(this.g));
 

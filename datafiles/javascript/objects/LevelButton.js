@@ -3,7 +3,7 @@ import ResourceManager from "../parapluie/ResourceManager.js";
 
 export default class LevelButton extends Button {
 	constructor(g, text, x, y, width, height, level) {
-		let onClick = () => g.gotoRoom(level);
+		let onClick = () => g.gotoRoom(level, g.room.constructor);
 		super(g, text, x, y, width, height, onClick, false);
 
 		this.level = level;
