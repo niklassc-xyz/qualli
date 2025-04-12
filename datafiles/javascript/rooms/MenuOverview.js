@@ -10,7 +10,7 @@ import Startpage from "./Startpage.js";
 
 // TODO make this a general OptionsRoom and subclass it
 
-export default class MenuOverview extends Room{
+export default class MenuOverview extends Room {
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
 
