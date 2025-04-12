@@ -7,7 +7,7 @@ import ProtectBase from "../objects/bases/ProtectBase.js";
 
 export default class room42 extends LevelRoom {
 	constructor(g, returnRoom = undefined) {
-		super(g);
+		super(g, returnRoom);
 
 
 		let ai0 = this.addObject(new KI3(this.g, 2));

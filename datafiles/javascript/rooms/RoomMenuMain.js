@@ -22,7 +22,7 @@ import room23 from "./room23.js";
 
 export default class RoomMenuMain extends Room {
 	constructor(g, returnRoom = undefined) {
-		super(g);
+		super(g, returnRoom);
 
 		this.addObject(new SimBubbleEmitter(this.g, [120, 255, 120]));
 

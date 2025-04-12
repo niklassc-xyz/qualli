@@ -5,7 +5,7 @@ import ModFleeTemp from "../appEtc/aiModules/ModFleeTemp.js";
 
 export default class room33 extends LevelRoom {
 	constructor(g, returnRoom = undefined) {
-		super(g);
+		super(g, returnRoom);
 
 		let ki0 = this.addObject(new KI0(this.g, 2));
 		this.addObject(new KI0(this.g, 3));

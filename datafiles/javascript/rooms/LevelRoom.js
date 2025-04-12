@@ -15,7 +15,7 @@ export default class LevelRoom extends Room {
 	static background = "datafiles/sprites/bg8FullHd.png";
 
 	constructor(g, returnRoom = undefined) {
-		super(g);
+		super(g, returnRoom);
 
 		if (this.constructor == LevelRoom) {
 			throw new Error("Abstract classes can't be instantiated.");

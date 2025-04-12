@@ -12,7 +12,7 @@ import Startpage from "./Startpage.js";
 
 export default class MenuOverview extends Room{
 	constructor(g, returnRoom = undefined) {
-		super(g);
+		super(g, returnRoom);
 
 		this.addObject(new SimBubbleEmitter(this.g));
 

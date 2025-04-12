@@ -7,7 +7,7 @@ import Sunshine from "../objects/Sunshine.js";
 
 export default class Startpage extends Room {
 	constructor(g, returnRoom = undefined) {
-		super(g);
+		super(g, returnRoom);
 
 
 		this.addObject(new SimBubbleEmitter(this.g));

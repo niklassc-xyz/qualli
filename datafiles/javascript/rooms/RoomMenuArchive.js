@@ -10,7 +10,7 @@ import MenuOverview from "./MenuOverview.js";
 
 export default class RoomMenuArchive extends Room {
 	constructor(g, returnRoom = undefined) {
-		super(g);
+		super(g, returnRoom);
 
 		this.addObject(new SimBubbleEmitter(this.g, [210, 170, 100]));
 
