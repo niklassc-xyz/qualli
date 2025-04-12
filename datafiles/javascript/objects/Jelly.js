@@ -146,7 +146,7 @@ export default class Jelly extends SpriteEntity {
 		// 	this.ziel.x + this.ziel.ox,
 		// 	this.ziel.y + this.ziel.oy,
 		// 	this.ziel.width / 2
-		// )){
+		// )) {
 		// 	this.destroy();
 
 		// 	this.ziel.receiveJellies(this.size, this.team);

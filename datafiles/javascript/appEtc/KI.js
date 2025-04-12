@@ -140,7 +140,7 @@ export default class KI extends GameEntity {
 	}
 
 	// TODO rename
-	angriff(planet_start, planet_ziel){
+	angriff(planet_start, planet_ziel) {
 		this.angriffN(planet_start, planet_ziel, Math.floor(planet_start.units / 2));
 	}
 
@@ -171,7 +171,7 @@ export default class KI extends GameEntity {
 			this.destroy(); // TODO remove from room.ais
 
 			// Prüfen, ob noch eine KI da ist, sonst gewonnen.
-			if(this.g.room.status == "running" && this.pruefe_ob_gewonnen()){
+			if(this.g.room.status == "running" && this.pruefe_ob_gewonnen()) {
 				this.g.showEndgame(true)
 				this.g.room.status = "won";
 

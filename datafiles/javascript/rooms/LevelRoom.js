@@ -60,7 +60,7 @@ export default class LevelRoom extends Room {
 		super.step();
 	}
 
-	draw(){
+	draw() {
 		//do nothing
 	}
 
