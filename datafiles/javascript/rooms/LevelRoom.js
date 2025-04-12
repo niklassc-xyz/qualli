@@ -3,7 +3,6 @@ import Button from "../objects/Button.js";
 import Settings from "../parapluie/Settings.js";
 import Jelly from "../objects/Jelly.js";
 import Base from "../objects/bases/Base.js";
-import Startpage from "./Startpage.js";
 
 
 // TODO Import these in the individual level rooms only when needed
