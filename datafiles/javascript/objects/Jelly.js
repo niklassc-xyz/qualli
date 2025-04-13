@@ -4,6 +4,7 @@ import GameEntity from "../parapluie/objects/GameEntity.js";
 import Colors from "../appEtc/color/Colors.js";
 import Settings from "../parapluie/Settings.js";
 import resourceManager from "../parapluie/ResourceManager.js";
+import math from "../parapluie/functions/math.js";
 
 export default class Jelly extends SpriteEntity {
 	/**
@@ -85,13 +86,13 @@ export default class Jelly extends SpriteEntity {
 				if(this.parentJelly.speed < this.targetSpeed)
 					this.parentJelly.setSpeed(this.parentJelly.speed + acceleration);
 
-				let zDir = f.pointDirection(this.parentJelly.x, this.parentJelly.y, this.parentJelly.targetX, this.parentJelly.targetY);
+				let zDir = math.pointDirection(this.parentJelly.x, this.parentJelly.y, this.parentJelly.targetX, this.parentJelly.targetY);
 
 				// TODO increase when large amounts are spawned
 				let turnSpeed = 2 + 4*Math.random();
 
-				let positiveTurnDistance = f.mMod(zDir - this.parentJelly.direction, 360); // clockwise
-				let negativeTurnDistance = f.mMod(this.parentJelly.direction - zDir, 360); // anticlockwise
+				let positiveTurnDistance = math.mMod(zDir - this.parentJelly.direction, 360); // clockwise
+				let negativeTurnDistance = math.mMod(this.parentJelly.direction - zDir, 360); // anticlockwise
 
 				if(positiveTurnDistance <= turnSpeed || negativeTurnDistance <= turnSpeed)
 					this.parentJelly.setDirection(zDir);

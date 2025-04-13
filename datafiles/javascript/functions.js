@@ -1,10 +1,3 @@
-export function radToDeg(rad) {
-	return rad * (180 / Math.PI);
-}
-export function degToRad(deg) {
-	return deg * (Math.PI / 180);
-}
-
 export function pointInRectangle(px, py, x1, y1, x2, y2) {
 	if (px < x1 || py < y1 || px > x2 || py > y2)
 		return false;
@@ -55,15 +48,3 @@ export function circleInCircle(x1, y1, r1, x2, y2, r2) {
 	return dx <= rt && dy <= rt;
 }
 
-// Returns direction from (x1|x2) to (x2|y2)
-export function pointDirection(x1, y1, x2, y2) { // TODO test
-	let dx = x2 - x1;
-	let dy = y2 - y1;
-
-	return radToDeg(Math.atan2(dy, dx));
-}
-
-// Mathematical modulo
-export function mMod(a, b) {
-	return ((a % b + b) % b);
-}
