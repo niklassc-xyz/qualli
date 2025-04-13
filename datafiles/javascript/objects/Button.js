@@ -1,6 +1,6 @@
-import * as f from "../functions.js";
 import SpriteEntity from "../parapluie/objects/SpriteEntity.js";
 import ResourceManager from "../parapluie/ResourceManager.js";
+import * as collision  from "../parapluie/functions/collision.js";
 
 // TODO extend from Entity instead of SpriteEntity
 export default class Button extends SpriteEntity {
@@ -26,7 +26,7 @@ export default class Button extends SpriteEntity {
 	draw() {
 		let lw = 2;
 
-		if (f.pointInRectangle(this.g.input.x, this.g.input.y, this.x, this.y, this.x+this.width, this.y+this.height)) {
+		if (collision.pointInRectangle(this.g.input.x, this.g.input.y, this.x, this.y, this.x+this.width, this.y+this.height)) {
 			lw = 8;
 		}
 

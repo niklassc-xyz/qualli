@@ -1,4 +1,4 @@
-import * as f from "../../functions.js";
+import * as math from "../../parapluie/functions/math.js";
 import AiModule from "./AiModule.js";
 import KI from "../KI.js";
 
@@ -25,7 +25,7 @@ export default class ModDefend extends AiModule {
 
 			// Send support from random other own bubble
 			if (bubble.getArrivingEnemy() >= bubble.units + bubble.arriving[bubble.team]) {
-				let randBubble = f.chooseRandom(bubbles);
+				let randBubble = math.chooseRandom(bubbles);
 
 				if (randBubble === bubble)
 					continue;
