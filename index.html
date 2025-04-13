@@ -34,7 +34,7 @@
 				<h2 id="egWon"></h2>
 				<div id="egTime"></div>
 				<br>
-				<div>
+				<div class="gridThreeCol">
 					<input id="egRestart" type="button" value="Restart ♻" onClick="game.room.restart(); game.hideEndgame();" />
 					<input id="egResume" type="button" value="Resume ▶" onClick="game.hideEndgame();" />
 					<input id="egExit" type="button" value="Exit 🚪" onClick="game.room.return(); game.hideEndgame()" />
@@ -45,13 +45,9 @@
 		<div id="pausedOverlay" class="overlay hidden">
 			<div id="pausedContent" class="overlayContent">
 				<h1>Paused</h1>
-				<div>
+				<div class="gridTwoCol">
 					<input id="pResume" type="button" value="Resume ▶" onClick="Settings.unpause()" />
 					<input id="pSettings" type="button" value="Settings ⚙" onClick="Settings.show()" />
-				</div>
-				<br>
-				<br>
-				<div>
 					<input id="pRestart" type="button" value="Restart ♻" onClick="if(game.room.restart(true) != false) { Settings.unpause() }" />
 					<input id="pExit" type="button" value="Exit 🏳" onClick="game.room.surrender()" />
 				</div>
@@ -61,30 +57,34 @@
 		<div id="settingsOverlay" class="overlay hidden">
 			<div id="settingsContent" class="overlayContent">
 				<h1>Settings</h1>
-				<br>
-				<label for="sMute">Mute</label>
-				<input id="sMute" type="checkbox" onchange="Settings.toggleMute()" />
-				<br>
+				<!-- <br> -->
 
-				<label for="sScaling">Scaling</label>
-				<!-- TODO intialize checkboxes in program -->
-				<input id="sScaling" type="checkbox" checked onchange="Settings.toggleScaling()" />
-				<br>
+				<div class="gridThreeCol" style="max-height: 50%;">
+					<div>
+						<label for="sMute">Mute</label>
+						<input id="sMute" type="checkbox" onchange="Settings.toggleMute()" />
+					</div>
+					<div>
+						<label for="sScaling">Scaling</label>
+						<!-- TODO intialize checkboxes in program -->
+						<input id="sScaling" type="checkbox" checked onchange="Settings.toggleScaling()" />
+					</div>
+					<div>
+						<label for="sJellyGlow">Jelly Glow</label>
+						<!-- TODO intialize checkboxes in program -->
+						<input id="sJellyGlow" type="checkbox" checked onchange="Settings.toggleJellyGlow()" />
+					</div>
+					<div>
+						<label for="sExperimental">Experimental</label>
+						<input id="sExperimental" type="checkbox" checked onchange="Settings.toggleExperimental()" />
+					</div>
+					<div>
+						<label for="sDebug">Debug</label>
+						<input id="sDebug" type="checkbox" onchange="Settings.toggleDebug()" />
+					</div>
+				</div>
 
-				<label for="sJellyGlow">Jelly Glow</label>
-				<!-- TODO intialize checkboxes in program -->
-				<input id="sJellyGlow" type="checkbox" checked onchange="Settings.toggleJellyGlow()" />
-				<br>
-
-				<label for="sExperimental">Experimental</label>
-				<input id="sExperimental" type="checkbox" checked onchange="Settings.toggleExperimental()" />
-				<br>
-
-				<label for="sDebug">Debug</label>
-				<input id="sDebug" type="checkbox" onchange="Settings.toggleDebug()" />
-				<br>
-
-				<div>
+				<div style="font-size: 0.9em; padding-top: 1em;">
 					<input id="sReset" type="button" value="Reset Progress ♻" onClick="game.progressManager.reset()" />
 					<input id="sClose" type="button" value="Close Settings ❌" onClick="Settings.hide()" />
 				</div>
