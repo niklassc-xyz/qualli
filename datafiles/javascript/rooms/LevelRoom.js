@@ -1,5 +1,5 @@
 import Room from "./../parapluie/Room.js";
-import Button from "../objects/Button.js";
+import Button from "../parapluie/objects/util/Button.js";
 import Settings from "../parapluie/Settings.js";
 import Jelly from "../objects/Jelly.js";
 import Base from "../objects/bases/Base.js";

@@ -1,5 +1,5 @@
 import Room from "./../parapluie/Room.js";
-import Button from "../objects/Button.js";
+import Button from "../parapluie/objects/util/Button.js";
 import Settings from "../parapluie/Settings.js";
 import SimBubbleEmitter from "../objects/SimBubble/SimBubbleEmitter.js";
 import MenuOverview from "../rooms/MenuOverview.js";
