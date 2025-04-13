@@ -3,8 +3,8 @@ import GameEntity from "../parapluie/objects/GameEntity.js";
 import Colors from "../appEtc/color/Colors.js";
 import Settings from "../parapluie/Settings.js";
 import resourceManager from "../parapluie/ResourceManager.js";
-import math from "../parapluie/functions/math.js";
-import collision from "../parapluie/functions/collision.js";
+import * as math from "../parapluie/functions/math.js";
+import * as collision from "../parapluie/functions/collision.js";
 
 export default class Jelly extends SpriteEntity {
 	/**

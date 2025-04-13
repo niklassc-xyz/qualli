@@ -1,6 +1,6 @@
 import SpriteEntity from "../parapluie/objects/SpriteEntity.js";
 import ResourceManager from "../parapluie/ResourceManager.js";
-import collision  from "../parapluie/functions/collision.js";
+import * as collision  from "../parapluie/functions/collision.js";
 
 // TODO extend from Entity instead of SpriteEntity
 export default class Button extends SpriteEntity {
