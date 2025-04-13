@@ -1,10 +1,10 @@
 import SpriteEntity from "../parapluie/objects/SpriteEntity.js";
-import * as f from "../functions.js";
 import GameEntity from "../parapluie/objects/GameEntity.js";
 import Colors from "../appEtc/color/Colors.js";
 import Settings from "../parapluie/Settings.js";
 import resourceManager from "../parapluie/ResourceManager.js";
 import math from "../parapluie/functions/math.js";
+import collision from "../parapluie/functions/collision.js";
 
 export default class Jelly extends SpriteEntity {
 	/**
@@ -119,7 +119,7 @@ export default class Jelly extends SpriteEntity {
 		super.step();
 
 		// Check if jelly collided with target
-		if (f.rectangleInRectangle(
+		if (collision.rectangleInRectangle(
 			this.x - (this.width/2),
 			this.y - (this.height/2),
 			this.x + (this.width/2),

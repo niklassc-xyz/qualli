@@ -1,6 +1,5 @@
 import SpriteEntity from "../../parapluie/objects/SpriteEntity.js";
 import LevelRoom from "../../rooms/LevelRoom.js";
-import * as f from "../../functions.js";
 import * as graphics from "../../parapluie/functions/graphics.js";
 import * as collision from "../../parapluie/functions/collision.js";
 
@@ -132,7 +131,7 @@ export default class SimBubble extends SpriteEntity {
 			let bx2 = other.x + other.width/2;
 			let by2 = other.y + other.height/2
 
-			if (f.rectangleInRectangle(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2)) {
+			if (collision.rectangleInRectangle(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2)) {
 				let aHoriz = 0.05;
 				if (this.x < other.x) {
 					this.setHspeed(this.hspeed - aHoriz);
