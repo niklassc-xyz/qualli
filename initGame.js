@@ -7,6 +7,8 @@ import Game from "./datafiles/javascript/parapluie/Game.js";
 class Qualli extends Game {
 	constructor(initalRoom, fps=60) {
 		super(initalRoom, fps);
+
+		this.progressManager = new ProgressManager(this.storage);
 	}
 }
 
