@@ -2,6 +2,7 @@ import SpriteEntity from "../../parapluie/objects/SpriteEntity.js";
 import LevelRoom from "../../rooms/LevelRoom.js";
 import * as f from "../../functions.js";
 import * as graphics from "../../parapluie/functions/graphics.js";
+import * as collision from "../../parapluie/functions/collision.js";
 
 export default class SimBubble extends SpriteEntity {
 	// TODO Is this ever cleared? On room change?
@@ -95,7 +96,7 @@ export default class SimBubble extends SpriteEntity {
 		let ax2 = this.x + this.width/2;
 		let ay2 = this.y + this.height/2
 
-		if (f.pointInRectangle(this.g.input.x, this.g.input.y, ax1, ay1, ax2, ay2)) {
+		if (collision.pointInRectangle(this.g.input.x, this.g.input.y, ax1, ay1, ax2, ay2)) {
 			let a = 0.5;
 			if (this.x < this.g.input.x) {
 				this.setHspeed(this.hspeed - a);
