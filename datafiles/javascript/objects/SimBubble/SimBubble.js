@@ -95,9 +95,9 @@ export default class SimBubble extends SpriteEntity {
 		let ax2 = this.x + this.width/2;
 		let ay2 = this.y + this.height/2
 
-		if (collision.pointInRectangle(this.g.input.x, this.g.input.y, ax1, ay1, ax2, ay2)) {
+		if (collision.pointInRectangle(this.g.input.getX(), this.g.input.getY(), ax1, ay1, ax2, ay2)) {
 			let a = 0.5;
-			if (this.x < this.g.input.x) {
+			if (this.x < this.g.input.getX()) {
 				this.setHspeed(this.hspeed - a);
 			} else {
 				this.setHspeed(this.hspeed + a);
