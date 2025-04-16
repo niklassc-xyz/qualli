@@ -17,7 +17,6 @@ export default class BubbleSeed extends PhysicalEntity {
 		this.timeAlive++;
 
 		if (this.timeAlive >= this.delay) {
-			this.g.room.addObject(this.futureBubble);
 			this.g.room.addBase(this.futureBubble);
 			this.destroy();
 		}
