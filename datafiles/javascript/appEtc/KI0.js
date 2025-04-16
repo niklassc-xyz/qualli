@@ -10,9 +10,9 @@ export default class KI0 extends KI {
 		var strongestPlanet = this.getStrongestPlanet(); // TODO rename
 		if(strongestPlanet === undefined)
 			return [];
-		for(var i = 0; i < this.g.room.bubbles.length; i++) {
-			if(this.g.room.bubbles[i].team !== this.team && Math.floor(strongestPlanet.units / 2) > this.g.room.bubbles[i].units) {
-				einnehmlist[einnehmlist.length] = this.g.room.bubbles[i];
+		for(var i = 0; i < this.g.room.bases.length; i++) {
+			if(this.g.room.bases[i].team !== this.team && Math.floor(strongestPlanet.units / 2) > this.g.room.bases[i].units) {
+				einnehmlist[einnehmlist.length] = this.g.room.bases[i];
 			}
 		}
 		return einnehmlist;

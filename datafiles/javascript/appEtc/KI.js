@@ -74,51 +74,53 @@ export default class KI extends GameEntity {
 	 * @returns {Array.<Bubble>} Array of own bubbles
 	 */
 	getBubbles() {
-		var bubbles = [];
-		for(var i = 0; i < this.g.room.bubbles.length; i++) {
-			if(this.g.room.bubbles[i].team === this.team) {
-				bubbles[bubbles.length] = this.g.room.bubbles[i];
+		var bases = [];
+		// TODO get bases through getter → bases should be private
+		for(var i = 0; i < this.g.room.bases.length; i++) {
+			// TODO distinguish between bases based on whether they are target- and source-selectable
+			if(this.g.room.bases[i].team === this.team) {
+				bases[bases.length] = this.g.room.bases[i];
 			}
 		}
-		return bubbles;
+		return bases;
 	}
 
-	// Returns a random own bubble that is not `excludeBubble`
-	getRandomBubbleOtherThan(excludeBubble) {
-		let bubbles = this.getBubbles();
+	// Returns a random own base that is not `excludeBubble`
+	getRandomBubbleOtherThan(excludeBase) {
+		let bases = this.getBubbles();
 
-		if (bubbles.length < 2) {
+		if (bases.length < 2) {
 			return undefined;
 		}
 
 		while (true) {
-			let ri = Math.floor(Math.random() * bubbles.length);
-			let randomBubble = bubbles[ri];
+			let ri = Math.floor(Math.random() * bases.length);
+			let randomBase = bases[ri];
 
-			if (randomBubble !== excludeBubble) {
-				return randomBubble;
+			if (randomBase !== excludeBase) {
+				return randomBase;
 			}
 		}
 	}
 
 	getStrongestPlanet() {
-		var bubbles = this.getBubbles();
-		if(bubbles.length === 0) return;
+		var bases = this.getBubbles();
+		if(bases.length === 0) return;
 		var strongest_index = 0;
-			// Suche stärksten Planeten aus eigener bubbles aus.
-			for(var i = 0; i < bubbles.length; i++) {
-				if(bubbles[i].units > bubbles[strongest_index].units) {
+			// Suche stärksten Planeten aus eigener bases aus.
+			for(var i = 0; i < bases.length; i++) {
+				if(bases[i].units > bases[strongest_index].units) {
 					strongest_index = i;
 				}
 			}
-		return bubbles[strongest_index];
+		return bases[strongest_index];
 	}
 
 	getEnemyBubblesWeakerThan(n) {
 		var enemyList = [];
-		for(var i = 0; i < this.g.room.bubbles.length; i++) {
-			if(this.g.room.bubbles[i].team !== this.team && n > this.g.room.bubbles[i].units) {
-				enemyList[enemyList.length] = this.g.room.bubbles[i];
+		for(var i = 0; i < this.g.room.bases.length; i++) {
+			if(this.g.room.bases[i].team !== this.team && n > this.g.room.bases[i].units) {
+				enemyList[enemyList.length] = this.g.room.bases[i];
 			}
 		}
 		return enemyList;

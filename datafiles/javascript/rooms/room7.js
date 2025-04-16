@@ -14,10 +14,10 @@ export default class room7 extends LevelRoom {
 		let hMargin = 200;
 		let vMargin = 150;
 
-		this.addBubble(new Bubble(this.g, hMargin, vMargin, 2, 1, 30));
-		this.addBubble(new Bubble(this.g, hMargin, g.roomHeight - vMargin, 1, 1, 20));
-		this.addBubble(new Bubble(this.g, g.roomWidth - hMargin, g.roomHeight - vMargin, 3, 1, 30));
-		this.addBubble(new Bubble(this.g, g.roomWidth - hMargin, vMargin, 4, 1, 30));
-		this.addBubble(new Bubble(this.g, g.roomWidth / 2, g.roomHeight / 2, 0, 3, 20));
+		this.addBase(new Bubble(this.g, hMargin, vMargin, 2, 1, 30));
+		this.addBase(new Bubble(this.g, hMargin, g.roomHeight - vMargin, 1, 1, 20));
+		this.addBase(new Bubble(this.g, g.roomWidth - hMargin, g.roomHeight - vMargin, 3, 1, 30));
+		this.addBase(new Bubble(this.g, g.roomWidth - hMargin, vMargin, 4, 1, 30));
+		this.addBase(new Bubble(this.g, g.roomWidth / 2, g.roomHeight / 2, 0, 3, 20));
 	}
 }

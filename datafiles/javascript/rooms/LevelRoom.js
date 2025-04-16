@@ -21,10 +21,10 @@ export default class LevelRoom extends Room {
 		}
 
 		/**
-		 * List of active bubbles in the level
-		 * @type {Bubble}
+		 * List of active bases in the level
+		 * @type {Base}
 		 */
-		this.bubbles = [];
+		this.bases = [];
 		this.ais = [];
 
 		this.status = "running"; // running, lost, won
@@ -64,25 +64,24 @@ export default class LevelRoom extends Room {
 		//do nothing
 	}
 
-	// Adds bubble to room
-	// TODO rename → should handle all bases
-	addBubble(bubble) {
-		this.bubbles.push(bubble);
-		this.addObject(bubble);
+	// Adds base to room
+	addBase(base) {
+		this.bases.push(base);
+		this.addObject(base);
 
-		return bubble;
+		return base;
 	}
 
-	removeBubble(bubble) {
+	removeBase(base) {
 		// TODO datastructure
-		for (var i = 0; i < this.g.room.bubbles.length; i++) {
-			if (this.g.room.bubbles[i] === bubble) {
-				this.g.room.bubbles.splice(i, 1);
+		for (var i = 0; i < this.g.room.bases.length; i++) {
+			if (this.g.room.bases[i] === base) {
+				this.g.room.bases.splice(i, 1);
 				return true;
 			}
 		}
 
-		console.error("Attempted to deleted bubble that is not in g.room.bubbles", bubble);
+		console.error("Attempted to deleted base that is not in LevelRoom.bases", base);
 		return false;
 	}
 

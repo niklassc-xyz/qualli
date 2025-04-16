@@ -31,21 +31,21 @@ export default class room40 extends LevelRoom {
 				}
 
 				let newTeam = 0;
-				this.addBubble(new Bubble(this.g, startMargin + j * planetDistance, 160 + i * planetDistance, newTeam, 1, amount));
+				this.addBase(new Bubble(this.g, startMargin + j * planetDistance, 160 + i * planetDistance, newTeam, 1, amount));
 			}
 		}
 
-		this.bubbles[1].team = 2;
+		this.bases[1].team = 2;
 
-		this.bubbles[2].team = 3;
-		this.bubbles[2].units = 5000;
+		this.bases[2].team = 3;
+		this.bases[2].units = 5000;
 		
-		this.bubbles[3].team = 1;
-		this.bubbles[3].units = 300;
+		this.bases[3].team = 1;
+		this.bases[3].units = 300;
 		
 		// Large bubbles on the right
 		let newUnits = 50;
-		this.addBubble(new Bubble(this.g, startMargin + 4 * planetDistance, 160 + 0 * planetDistance, 2, 7, newUnits));
-		this.addBubble(new Bubble(this.g, startMargin + 4 * planetDistance, 160 + 2 * planetDistance, 3, 7, newUnits));
+		this.addBase(new Bubble(this.g, startMargin + 4 * planetDistance, 160 + 0 * planetDistance, 2, 7, newUnits));
+		this.addBase(new Bubble(this.g, startMargin + 4 * planetDistance, 160 + 2 * planetDistance, 3, 7, newUnits));
 	}
 }

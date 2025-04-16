@@ -20,7 +20,7 @@ export default class room20 extends LevelRoom {
 			for(let j = 0; j < itemsInRow; j++) {
 				let newTeam = (j < itemsInRow / 2) ? 1 : 2;
 				let newSize = (i == 1) ? 2 : 1;
-				this.addBubble(new Bubble(this.g, startMargin + j * planetDistance, 160 + i * planetDistance, newTeam, newSize, 100));
+				this.addBase(new Bubble(this.g, startMargin + j * planetDistance, 160 + i * planetDistance, newTeam, newSize, 100));
 			}
 		}
 
@@ -42,7 +42,7 @@ export default class room20 extends LevelRoom {
 		if(tmp_team != 0) {
 			let tmp_x = this.support_src_x
 			let tmp_y = -100
-			let tmp_ziel = this.g.room.bubbles[Math.floor(Math.random() * this.g.room.bubbles.length)]
+			let tmp_ziel = this.g.room.bases[Math.floor(Math.random() * this.g.room.bases.length)]
 			this.g.room.addObject(new Jelly(this.g, tmp_x, tmp_y, tmp_team, tmp_ziel));
 		}
 	}
@@ -52,10 +52,10 @@ export default class room20 extends LevelRoom {
 		let sum_team_1 = 0
 		let sum_team_2 = 0
 		
-		for(let i = 0; i < this.g.room.bubbles.length; i++) {
-			if(this.g.room.bubbles[i].team == 1)
+		for(let i = 0; i < this.g.room.bases.length; i++) {
+			if(this.g.room.bases[i].team == 1)
 				sum_team_1++
-			else if(this.g.room.bubbles[i].team == 2)
+			else if(this.g.room.bases[i].team == 2)
 				sum_team_2++
 		}
 

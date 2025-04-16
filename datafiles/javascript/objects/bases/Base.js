@@ -10,6 +10,9 @@ export default class Base extends SpriteEntity {
 
 		this.team = team;
 
+		// Whether this base can be selected as a source / target
+		this.selectionSource = true;
+		this.selectionTarget = true;
 
 
 		this.arriving = [];
@@ -17,6 +20,13 @@ export default class Base extends SpriteEntity {
 		for (let i = 0; i < Colors.team.length; i++) {
 			this.arriving[i] = 0;
 		}
+	}
+
+	destroy() {
+		super.destroy();
+
+		this.g.input.unregisterClickable(this);
+		this.g.room.removeBase(this);
 	}
 
 	/**
@@ -29,13 +39,19 @@ export default class Base extends SpriteEntity {
 		
 	}
 
-
 	/**
 	 * Returns the total value of units whose target is this base
 	 *
 	 * @returns {number} Sum of value of the units whose target is this base
 	 */
 	getArrivingEnemy() {
-		return 0;
+		let sum = 0;
+		for (let i = 0; i < this.arriving.length; i++) {
+			if (i === this.team)
+				continue;
+			sum += this.arriving[i];
+		}
+
+		return sum;
 	}
 }

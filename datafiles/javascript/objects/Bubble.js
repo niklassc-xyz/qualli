@@ -24,7 +24,10 @@ export default class Bubble extends Base {
 		  * @type {LinkedList}
 		  */
 		this.createQueue = new LinkedList();
-		this.animationSpeed = 0.1 + Math.random() * 0.2
+		this.animationSpeed = 0.1 + Math.random() * 0.2;
+
+
+		this.g.input.registerClickable(this, () => { alert("up"); }, () => { alert("down"); });
 	}
 
 	step() {
@@ -94,12 +97,6 @@ export default class Bubble extends Base {
 		}
 	}
 
-	destroy() {
-		super.destroy();
-
-		this.g.room.removeBubble(this);
-	}
-
 	// Attack bubble other
 	// TODO obsolete?
 	attack(other) {
@@ -154,17 +151,5 @@ export default class Bubble extends Base {
 		} else {
 			this.#getAttacked(n, team);
 		}
-	}
-
-	// Gets total number of enemy jellies
-	getArrivingEnemy() {
-		let sum = 0;
-		for (let i = 0; i < this.arriving.length; i++) {
-			if (i === this.team)
-				continue;
-			sum += this.arriving[i];
-		}
-
-		return sum;
 	}
 }
