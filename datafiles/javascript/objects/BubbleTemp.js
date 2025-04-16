@@ -4,7 +4,7 @@ import Colors from "../appEtc/color/Colors.js";
 import FloatSign from "./FloatSign.js";
 
 export default class BubbleTemp extends Bubble {
-	constructor(g, x, y, team, size, units, ttl) {
+	constructor(g, x, y, team, size, units, ttl = undefined) {
 		super(g, x, y, team, size, units);
 
 		// TODO dont randomize by default
