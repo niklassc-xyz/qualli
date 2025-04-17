@@ -15,7 +15,7 @@ export default class ModDefend extends AiModule {
 	 * @param {KI} ai - AI instance that is modulated
 	 */
 	modStep(ai) {
-		let bubbles = ai.getBubbles();
+		let bubbles = ai.getOwnBases();
 
 		// Check all own bubbles if they need to be defended
 		for (let i = 0; i < bubbles.length; i++) {
