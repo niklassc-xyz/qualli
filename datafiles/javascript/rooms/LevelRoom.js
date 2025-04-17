@@ -3,6 +3,7 @@ import Button from "../parapluie/objects/util/Button.js";
 import Settings from "../parapluie/Settings.js";
 import Jelly from "../objects/Jelly.js";
 import Base from "../objects/bases/Base.js";
+import BaseManager from "../objects/bases/BaseManager.js";
 
 
 // TODO Import these in the individual level rooms only when needed
@@ -20,12 +21,9 @@ export default class LevelRoom extends Room {
 			throw new Error("Abstract classes can't be instantiated.");
 		}
 
-		/**
-		 * List of active bubbles in the level
-		 * @type {Bubble}
-		 */
-		this.bubbles = [];
+		this.baseManager = this.addObject(new BaseManager(g));
 		this.ais = [];
+
 
 		this.status = "running"; // running, lost, won
 		this.alarm = [];
@@ -46,7 +44,7 @@ export default class LevelRoom extends Room {
 	}
 
 	step() {
-		// alarm system
+		// TODO alarm system
 		for(let i = 0; i < this.alarm.length; i++) {
 			if(this.alarm[i] === undefined)
 				continue;
@@ -58,32 +56,6 @@ export default class LevelRoom extends Room {
 		}
 
 		super.step();
-	}
-
-	draw() {
-		//do nothing
-	}
-
-	// Adds bubble to room
-	// TODO rename → should handle all bases
-	addBubble(bubble) {
-		this.bubbles.push(bubble);
-		this.addObject(bubble);
-
-		return bubble;
-	}
-
-	removeBubble(bubble) {
-		// TODO datastructure
-		for (var i = 0; i < this.g.room.bubbles.length; i++) {
-			if (this.g.room.bubbles[i] === bubble) {
-				this.g.room.bubbles.splice(i, 1);
-				return true;
-			}
-		}
-
-		console.error("Attempted to deleted bubble that is not in g.room.bubbles", bubble);
-		return false;
 	}
 
 	surrender() {
@@ -133,5 +105,14 @@ export default class LevelRoom extends Room {
 			}
 		}
 		return true;
+	}
+
+	addBase(base) {
+		this.baseManager.registerBase(base);
+		return this.addObject(base);
+	}
+
+	unregisterBase(base) {
+		return this.baseManager.unregisterBase(base);
 	}
 }

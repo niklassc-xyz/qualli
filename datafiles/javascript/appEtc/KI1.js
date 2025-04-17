@@ -12,29 +12,28 @@ export default class KI1 extends KI {
 				if (this.deleteIfDefeatedAndCheckIfWon())
 					return;
 
-				// Get bubbles and calculate available jellies
-				let strongest = this.getStrongestPlanet();
+				// Get bases and calculate available jellies
+				let strongest = this.getOwnStrongestBase();
 				if(strongest === undefined)
 					return;
-				let bubbles = this.getBubbles();
-				let fromBubblesExceptStrongest = 0;
-				for (let i = 0; i < bubbles.length; i++)
-					if(bubbles[i] !== strongest)
-						fromBubblesExceptStrongest += bubbles[i].units * 0.5;
+				let bases = this.getOwnBases();
+				let attackCapacityExceptStrongest = 0;
+				for (let i = 0; i < bases.length; i++)
+					if(bases[i] !== strongest)
+						attackCapacityExceptStrongest += bases[i].units * 0.5;
 
-				// console.log(available);
-				// Get list of enemy bubbles that are weaker than then available jellies
-				let attackList = this.getEnemyBubblesWeakerThan((fromBubblesExceptStrongest + strongest.units) * 0.7);
+				// Get list of enemy bases that are weaker than then available jellies
+				let postentialTargets = this.getEnemyBasesWeakerThan((attackCapacityExceptStrongest + strongest.units) * 0.7);
 
-				if (attackList.length === 0) {
+				if (postentialTargets.length === 0) {
 					this.alarm[0] = 100 + Math.round(Math.random() * 100);
 					return;
 				}
 
 				// pool jellies on strongest planet, then attack
-				for(let i = 0; i < bubbles.length; i++)
-					if(bubbles[i] !== strongest)
-						this.angriff(bubbles[i], strongest);
+				for(let i = 0; i < bases.length; i++)
+					if(bases[i] !== strongest)
+						this.angriff(bases[i], strongest);
 
 				// Set timer to attack, because they have to arrive at the strongest bubble
 				this.alarm[1] = 250;
@@ -49,7 +48,7 @@ export default class KI1 extends KI {
 				// this.angriff(this.a, this.b);
 
 				// Search best bubble to attack and then attack
-				let attackListN = this.getEnemyBubblesWeakerThan(this.a.units * 0.73);
+				let attackListN = this.getEnemyBasesWeakerThan(this.a.units * 0.73);
 				if(attackListN.length === 0) {
 					this.alarm[0] = 50 + Math.round(Math.random() * 50);
 					return;

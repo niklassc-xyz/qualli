@@ -21,6 +21,7 @@ import room39 from "./room39.js";
 import room40 from "./room40.js";
 import room41 from "./room41.js";
 import room42 from "./room42.js";
+import roomTest from "./roomTest.js";
 
 export default class RoomMenuExperimental extends Room {
 	constructor(g, returnRoom = undefined) {
@@ -37,6 +38,7 @@ export default class RoomMenuExperimental extends Room {
 		let buttonMargin = 16;
 
 		let rooms = [
+			roomTest,
 			room24,
 			room25,
 			room27,

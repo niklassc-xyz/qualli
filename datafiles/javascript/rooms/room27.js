@@ -18,7 +18,7 @@ export default class room27 extends LevelRoom {
 		let marginVert = 30;
 		let marginHorz = 30;
 
-		this.addBubble(new Bubble(this.g, marginVert + 0 * planetDistance, 160 + 0 * planetDistance, 1, 1, 5000));
-		this.addBubble(new Bubble(this.g, marginVert + 4 * planetDistance, 160 + 1 * planetDistance, 2, 10, 5000));
+		this.addBase(new Bubble(this.g, marginVert + 0 * planetDistance, 160 + 0 * planetDistance, 1, 1, 5000));
+		this.addBase(new Bubble(this.g, marginVert + 4 * planetDistance, 160 + 1 * planetDistance, 2, 10, 5000));
 	}
 }

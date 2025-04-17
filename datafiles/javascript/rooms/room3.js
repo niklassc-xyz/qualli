@@ -19,7 +19,7 @@ export default class room3 extends LevelRoom {
 
 		for(let i = 0; i < 3; i++) {
 			for(let j = 0; j < itemsInRow; j++) {
-				this.addBubble(new Bubble(this.g, startMargin + j * planetDistance, 160 + i * planetDistance, (i*3+j) % 5, 1));
+				this.addBase(new Bubble(this.g, startMargin + j * planetDistance, 160 + i * planetDistance, (i*3+j) % 5, 1));
 			}
 		}
 	}

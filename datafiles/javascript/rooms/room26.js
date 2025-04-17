@@ -17,6 +17,7 @@ export default class room26 extends LevelRoom {
 		let startMargin = (g.roomWidth - rowWidth) / 2;
 
 		let amount = 10
+		let bases = [];
 		for(let i = 0; i < 3; i++)
 			for(let j = 0; j < itemsInRow; j++) {
 				if (j > 2) {
@@ -24,15 +25,15 @@ export default class room26 extends LevelRoom {
 				}
 
 				let newTeam = j + 1
-				this.addBubble(new Bubble(this.g, startMargin + j * planetDistance, 160 + i * planetDistance, newTeam, 1, amount));
+				bases.push(this.addBase(new Bubble(this.g, startMargin + j * planetDistance, 160 + i * planetDistance, newTeam, 1, amount)));
 			}
 		
-		this.bubbles[3].team = 1;
-		this.bubbles[3].units = 300;
+		bases[3].team = 1;
+		bases[3].units = 300;
 		
 		let newUnits = 9.5 * amount;
-		this.addBubble(new Bubble(this.g, startMargin + 4 * planetDistance, 160 + 0 * planetDistance, 2, 7, newUnits));
+		this.addBase(new Bubble(this.g, startMargin + 4 * planetDistance, 160 + 0 * planetDistance, 2, 7, newUnits));
 
-		this.addBubble(new Bubble(this.g, startMargin + 4 * planetDistance, 160 + 2 * planetDistance, 3, 7, newUnits));
+		this.addBase(new Bubble(this.g, startMargin + 4 * planetDistance, 160 + 2 * planetDistance, 3, 7, newUnits));
 	}
 }

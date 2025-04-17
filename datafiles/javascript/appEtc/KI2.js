@@ -13,16 +13,16 @@ export default class KI2 extends KI {
 				if (this.deleteIfDefeatedAndCheckIfWon())
 					return;
 
-				// Get bubbles and calculate available jellies
-				let bubbles = this.getBubbles();
-				if(bubbles.length === 0)
+				// Get bases and calculate available jellies
+				let bases = this.getOwnBases();
+				if(bases.length === 0)
 					return;
 				let avail = 0;
-				for (let i = 0; i < bubbles.length; i++)
-					avail += bubbles[i].units * 0.75;
+				for (let i = 0; i < bases.length; i++)
+					avail += bases[i].units * 0.75;
 
-				// Get list of enemy bubbles that are weaker than then available jellies
-				let attackList = this.getEnemyBubblesWeakerThan(avail);
+				// Get list of enemy bases that are weaker than then available jellies
+				let attackList = this.getEnemyBasesWeakerThan(avail);
 
 				if (attackList.length === 0) {
 					this.alarm[0] = 100 + Math.round(Math.random() * 100);
@@ -41,9 +41,9 @@ export default class KI2 extends KI {
 				}
 
 				// attack
-				for (let i = 0; i < bubbles.length; i++) {
-					this.angriff(bubbles[i], bestTarget);
-					this.angriff(bubbles[i], bestTarget);
+				for (let i = 0; i < bases.length; i++) {
+					this.angriff(bases[i], bestTarget);
+					this.angriff(bases[i], bestTarget);
 				}
 
 				this.alarm[0] = 50 + Math.round(Math.random() * 100);

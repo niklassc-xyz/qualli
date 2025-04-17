@@ -20,30 +20,30 @@ export default class room20 extends LevelRoom {
 			for(let j = 0; j < itemsInRow; j++) {
 				let newTeam = (j < itemsInRow / 2) ? 1 : 2;
 				let newSize = (i == 1) ? 2 : 1;
-				this.addBubble(new Bubble(this.g, startMargin + j * planetDistance, 160 + i * planetDistance, newTeam, newSize, 100));
+				this.addBase(new Bubble(this.g, startMargin + j * planetDistance, 160 + i * planetDistance, newTeam, newSize, 100));
 			}
 		}
 
 		// TODO camelCase
-		this.support_src_x = g.roomWidth / 2
+		this.supportSrcX = g.roomWidth / 2
 	}
 
 	step() {
 		super.step();
 
+		// Create jellies to support losing team
 		// Random walk
-		this.support_src_x += 10 - Math.random() * 20
-		if(this.support_src_x < 0)
-			this.support_src_x = this.g.roomWidth - 1
-		else if(this.support_src_x >= this.g.roomWidth)
-			this.support_src_x = 0
+		this.supportSrcX += 10 - Math.random() * 20
+		if(this.supportSrcX < 0)
+			this.supportSrcX = this.g.roomWidth - 1
+		else if(this.supportSrcX >= this.g.roomWidth)
+			this.supportSrcX = 0
 
-		let tmp_team = this.getLosingTeamByPlanet()
-		if(tmp_team != 0) {
-			let tmp_x = this.support_src_x
-			let tmp_y = -100
-			let tmp_ziel = this.g.room.bubbles[Math.floor(Math.random() * this.g.room.bubbles.length)]
-			this.g.room.addObject(new Jelly(this.g, tmp_x, tmp_y, tmp_team, tmp_ziel));
+		let losingTeam = this.getLosingTeamByPlanet()
+		if (losingTeam != 0) {
+			const bases = this.g.room.baseManager.getBases();
+			let supportBubbleTarget = bases[Math.floor(Math.random() * bases.length)]
+			this.g.room.addObject(new Jelly(this.g, this.supportSrcX, -100, losingTeam, supportBubbleTarget));
 		}
 	}
 
@@ -52,10 +52,11 @@ export default class room20 extends LevelRoom {
 		let sum_team_1 = 0
 		let sum_team_2 = 0
 		
-		for(let i = 0; i < this.g.room.bubbles.length; i++) {
-			if(this.g.room.bubbles[i].team == 1)
+		const bases = this.g.room.baseManager.getBases();
+		for(let i = 0; i < bases.length; i++) {
+			if(bases[i].team == 1)
 				sum_team_1++
-			else if(this.g.room.bubbles[i].team == 2)
+			else if(bases[i].team == 2)
 				sum_team_2++
 		}
 

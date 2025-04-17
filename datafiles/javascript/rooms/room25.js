@@ -23,11 +23,11 @@ export default class room25 extends LevelRoom {
 				}
 
 				let newTeam = 2
-				this.addBubble(new Bubble(this.g, startMargin + j * planetDistance, 160 + i * planetDistance, newTeam, 1, amount));
+				this.addBase(new Bubble(this.g, startMargin + j * planetDistance, 160 + i * planetDistance, newTeam, 1, amount));
 			}
 		}
 
 		let newUnits = 9.5 * amount;
-		this.addBubble(new Bubble(this.g, startMargin + 4 * planetDistance, 160 + 1 * planetDistance, 1, 7, newUnits));
+		this.addBase(new Bubble(this.g, startMargin + 4 * planetDistance, 160 + 1 * planetDistance, 1, 7, newUnits));
 	}
 }

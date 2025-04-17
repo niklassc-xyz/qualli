@@ -69,56 +69,63 @@ export default class KI extends GameEntity {
 	}
 
 	/**
-	 * Returns own bubbles
+	 * Returns own bases
 	 *
-	 * @returns {Array.<Bubble>} Array of own bubbles
+	 * @returns {Array.<Base>} Array of own bases
 	 */
-	getBubbles() {
-		var bubbles = [];
-		for(var i = 0; i < this.g.room.bubbles.length; i++) {
-			if(this.g.room.bubbles[i].team === this.team) {
-				bubbles[bubbles.length] = this.g.room.bubbles[i];
-			}
-		}
-		return bubbles;
+	getOwnBases() {
+		return this.g.room.baseManager.getBasesByTeam(this.team);
 	}
 
-	// Returns a random own bubble that is not `excludeBubble`
-	getRandomBubbleOtherThan(excludeBubble) {
-		let bubbles = this.getBubbles();
+	getForeignBases() {
+		let allBases = this.g.room.baseManager.getBases();
+		let bases = [];
+		for (let i = 0; i < allBases.length; i++) {
+			if (allBases[i].team !== this.team) {
+				bases.push(allBases[i]);
+			}
+		}
 
-		if (bubbles.length < 2) {
+		return bases;
+	}
+
+	// Returns a random own base that is not `excludeBase`
+	getRandomBaseOtherThan(excludeBase) {
+		let bases = this.getOwnBases();
+
+		if (bases.length < 2) {
 			return undefined;
 		}
 
 		while (true) {
-			let ri = Math.floor(Math.random() * bubbles.length);
-			let randomBubble = bubbles[ri];
+			let ri = Math.floor(Math.random() * bases.length);
+			let randomBase = bases[ri];
 
-			if (randomBubble !== excludeBubble) {
-				return randomBubble;
+			if (randomBase !== excludeBase) {
+				return randomBase;
 			}
 		}
 	}
 
-	getStrongestPlanet() {
-		var bubbles = this.getBubbles();
-		if(bubbles.length === 0) return;
+	getOwnStrongestBase() {
+		var bases = this.getOwnBases();
+		if(bases.length === 0) return;
 		var strongest_index = 0;
-			// Suche stärksten Planeten aus eigener bubbles aus.
-			for(var i = 0; i < bubbles.length; i++) {
-				if(bubbles[i].units > bubbles[strongest_index].units) {
+			// Suche stärksten Planeten aus eigener bases aus.
+			for(var i = 0; i < bases.length; i++) {
+				if(bases[i].units > bases[strongest_index].units) {
 					strongest_index = i;
 				}
 			}
-		return bubbles[strongest_index];
+		return bases[strongest_index];
 	}
 
-	getEnemyBubblesWeakerThan(n) {
+	getEnemyBasesWeakerThan(n) {
 		var enemyList = [];
-		for(var i = 0; i < this.g.room.bubbles.length; i++) {
-			if(this.g.room.bubbles[i].team !== this.team && n > this.g.room.bubbles[i].units) {
-				enemyList[enemyList.length] = this.g.room.bubbles[i];
+		const bases = this.g.room.baseManager.getBases();
+		for(var i = 0; i < bases.length; i++) {
+			if(bases[i].team !== this.team && n > bases[i].units) {
+				enemyList[enemyList.length] = bases[i];
 			}
 		}
 		return enemyList;
@@ -126,16 +133,16 @@ export default class KI extends GameEntity {
 
 
 	// TODO rename
-	angriffN(bubbleStart, bubbleTarget, n) {
+	angriffN(baseStart, baseTarget, n) {
 		// TODO move to bubble class
 		for(var i = 0; i < n; i++) {
-			let nx = bubbleStart.x;
-			let ny = bubbleStart.y;
+			let nx = baseStart.x;
+			let ny = baseStart.y;
 
-			bubbleStart.createQueue.addLast([nx, ny, this.team, bubbleTarget]);
+			baseStart.createQueue.addLast([nx, ny, this.team, baseTarget]);
 
 		}
-		bubbleStart.units -= n;
+		baseStart.units -= n;
 	}
 
 	// TODO rename
@@ -156,7 +163,7 @@ export default class KI extends GameEntity {
 
 	deleteIfDefeatedAndCheckIfWon() {
 		// Wenn kein Planet und keine Raumschiffe mehr vorhanden sind, KI löschen, dann prüfen ob Spieler gewonnen.
-		if(this.getBubbles().length === 0) {
+		if(this.getOwnBases().length === 0) {
 			/* Wenn kein Planet mehr da ist, aber noch Raumschiffe soll weder
 			* die KI gelöscht werden, noch der restliche Angriffsplan
 			* ausgeführt werden.
@@ -166,7 +173,7 @@ export default class KI extends GameEntity {
 				return;
 			}
 
-			// Delete AI if it owns neither bubbles nor jellies
+			// Delete AI if it owns neither bases nor jellies
 			this.destroy(); // TODO remove from room.ais
 
 			// Prüfen, ob noch eine KI da ist, sonst gewonnen.
