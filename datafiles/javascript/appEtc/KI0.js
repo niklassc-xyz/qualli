@@ -8,7 +8,7 @@ export default class KI0 extends KI {
 	// TODO rename
 	getEinnehmlist() {
 		var feasibleTargets = [];
-		var strongestPlanet = this.getStrongestPlanet(); // TODO rename
+		var strongestPlanet = this.getOwnStrongestBase();
 		if(strongestPlanet === undefined)
 			return [];
 
@@ -28,22 +28,22 @@ export default class KI0 extends KI {
 				if(this.deleteIfDefeatedAndCheckIfWon())
 					return;
 
-				var einnehmlist = this.getEinnehmlist();
-				if(einnehmlist.length === 0) { // Wenn kein Planet eingenommen werden kann, schicke von zufälligem eigenen Planten Schiffe zum Stärksten
+				var feasibleTargets = this.getEinnehmlist();
+				if(feasibleTargets.length === 0) { // Wenn kein Planet eingenommen werden kann, schicke von zufälligem eigenen Planten Schiffe zum Stärksten
 					// console.log("Kein Einnehmbarer Planet");
 					var bases = this.getOwnBases();
-					var planet_start = bases[Math.round(Math.random() * (bases.length-1))];
-					var planet_ziel = this.getStrongestPlanet();
+					var baseStart = bases[Math.round(Math.random() * (bases.length-1))];
+					var baseTarget = this.getOwnStrongestBase();
 				} else { // Wenn Planet eingenommen werden kann, nimm ein.
 					// Wähle zufälligen Startplaneten aus dem Array der eigenen Planeten aus
-					var planet_start = this.getStrongestPlanet();
+					var baseStart = this.getOwnStrongestBase();
 					// Wähle zufälligen Planeten als Ziel
-					var planet_ziel = einnehmlist[Math.round(Math.random() * (einnehmlist.length-1))];
+					var baseTarget = feasibleTargets[Math.round(Math.random() * (feasibleTargets.length-1))];
 				}
 
 				// Create jellies
-				if(planet_start !== planet_ziel)
-					this.angriff(planet_start, planet_ziel);
+				if(baseStart !== baseTarget)
+					this.angriff(baseStart, baseTarget);
 
 				this.alarm[0] = 200 + Math.round(Math.random() * 100);
 				break;

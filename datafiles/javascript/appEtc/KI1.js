@@ -13,7 +13,7 @@ export default class KI1 extends KI {
 					return;
 
 				// Get bases and calculate available jellies
-				let strongest = this.getStrongestPlanet();
+				let strongest = this.getOwnStrongestBase();
 				if(strongest === undefined)
 					return;
 				let bases = this.getOwnBases();

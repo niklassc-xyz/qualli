@@ -107,7 +107,7 @@ export default class KI extends GameEntity {
 		}
 	}
 
-	getStrongestPlanet() {
+	getOwnStrongestBase() {
 		var bases = this.getOwnBases();
 		if(bases.length === 0) return;
 		var strongest_index = 0;
