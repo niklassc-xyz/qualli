@@ -73,7 +73,7 @@ export default class Startpage extends Room {
 
 
 		// TODO remove
-		if (this.g.debug) {
+		if (this.g.getDebug()) {
 			this.g.painter.ctx.lineWidth = 5;
 			this.g.painter.ctx.strokeStyle = 'white';
 			this.g.painter.ctx.fillStyle = "white";
