@@ -17,13 +17,13 @@ export default class room23 extends LevelRoom {
 
 
 		let jellyAmount = 750
-
+		let bases = [];
 		for(let i = 0; i < 3; i++) {
 			for(let j = 0; j < itemsInRow; j++) {
 				let newTeam = 1
 				// TODO const
 				let newSize = (i == 1) ? 2 : 1;
-				this.addBase(new Bubble(this.g, startMargin + j * planetDistance, 200 + i * planetDistance, newTeam, newSize, jellyAmount));
+				bases.push(this.addBase(new Bubble(this.g, startMargin + j * planetDistance, 200 + i * planetDistance, newTeam, newSize, jellyAmount)));
 			}
 		}
 
@@ -31,20 +31,20 @@ export default class room23 extends LevelRoom {
 		jellyAmount = Math.ceil((jellyAmount * 14 / 4) * 1.05)
 
 		for (const i of [0, 5, 12, 17]) {
-			this.bases[i].team = 2
-			this.bases[i].units = jellyAmount
+			bases[i].team = 2
+			bases[i].units = jellyAmount
 		}
-		this.bases[0].x -= pushOut
-		this.bases[0].y -= pushOut
+		bases[0].x -= pushOut
+		bases[0].y -= pushOut
 
-		this.bases[5].x += pushOut
-		this.bases[5].y -= pushOut
+		bases[5].x += pushOut
+		bases[5].y -= pushOut
 
-		this.bases[12].x -= pushOut
-		this.bases[12].y += pushOut
+		bases[12].x -= pushOut
+		bases[12].y += pushOut
 
-		this.bases[17].x += pushOut
-		this.bases[17].y += pushOut
+		bases[17].x += pushOut
+		bases[17].y += pushOut
 
 	}
 
