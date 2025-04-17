@@ -109,7 +109,7 @@ export default class BaseManager extends DimensionEntity {
 		return false;
 	}
 
-	// Checks if selected bubbles are still owned, otherwise clears
+	// Checks if selected bases are still owned, otherwise clears
 	ensureOwner() {
 		if (this.#selected !== undefined && this.#selected.team !== 1) {
 			this.#selected = undefined;

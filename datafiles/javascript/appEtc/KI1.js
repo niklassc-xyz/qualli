@@ -12,18 +12,18 @@ export default class KI1 extends KI {
 				if (this.deleteIfDefeatedAndCheckIfWon())
 					return;
 
-				// Get bubbles and calculate available jellies
+				// Get bases and calculate available jellies
 				let strongest = this.getStrongestPlanet();
 				if(strongest === undefined)
 					return;
-				let bubbles = this.getOwnBases();
+				let bases = this.getOwnBases();
 				let fromBubblesExceptStrongest = 0;
-				for (let i = 0; i < bubbles.length; i++)
-					if(bubbles[i] !== strongest)
-						fromBubblesExceptStrongest += bubbles[i].units * 0.5;
+				for (let i = 0; i < bases.length; i++)
+					if(bases[i] !== strongest)
+						fromBubblesExceptStrongest += bases[i].units * 0.5;
 
 				// console.log(available);
-				// Get list of enemy bubbles that are weaker than then available jellies
+				// Get list of enemy bases that are weaker than then available jellies
 				let attackList = this.getEnemyBubblesWeakerThan((fromBubblesExceptStrongest + strongest.units) * 0.7);
 
 				if (attackList.length === 0) {
@@ -32,9 +32,9 @@ export default class KI1 extends KI {
 				}
 
 				// pool jellies on strongest planet, then attack
-				for(let i = 0; i < bubbles.length; i++)
-					if(bubbles[i] !== strongest)
-						this.angriff(bubbles[i], strongest);
+				for(let i = 0; i < bases.length; i++)
+					if(bases[i] !== strongest)
+						this.angriff(bases[i], strongest);
 
 				// Set timer to attack, because they have to arrive at the strongest bubble
 				this.alarm[1] = 250;

@@ -69,9 +69,9 @@ export default class KI extends GameEntity {
 	}
 
 	/**
-	 * Returns own bubbles
+	 * Returns own bases
 	 *
-	 * @returns {Array.<Bubble>} Array of own bubbles
+	 * @returns {Array.<Base>} Array of own bases
 	 */
 	getOwnBases() {
 		return this.g.room.baseManager.getBasesByTeam(this.team);
@@ -181,7 +181,7 @@ export default class KI extends GameEntity {
 				return;
 			}
 
-			// Delete AI if it owns neither bubbles nor jellies
+			// Delete AI if it owns neither bases nor jellies
 			this.destroy(); // TODO remove from room.ais
 
 			// Prüfen, ob noch eine KI da ist, sonst gewonnen.

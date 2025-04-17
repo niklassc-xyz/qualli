@@ -12,13 +12,13 @@ export default class ModFleeTemp extends AiModule {
 	modStep(ai) {
 		let bases = ai.getOwnBases();
 
-		// Check own bubbles if they're being destroyed soon
+		// Check own bases if they're being destroyed soon
 		for (let i = 0; i < bases.length; i++) {
 			let bubble = bases[i];
 			if (bubble instanceof BubbleTemp) {
 				if (bubble.ttl <= bubble.units * 1.05) {
 					let n = 1;
-					// Flee to random owned bubbles
+					// Flee to random owned base
 					for (let i = 0; i < n; i++) {
 						let target = ai.getRandomBubbleOtherThan(bubble);
 						// Use any random bubble

@@ -1,6 +1,6 @@
 import PhysicalEntity from "../parapluie/objects/PhysicalEntity.js";
 
-// Creates a bubbles
+// Creates a bubble
 export default class BubbleSeed extends PhysicalEntity {
 	constructor(g, delay, futureBubble) {
 		super(g, futureBubble.x, futureBubble.y, futureBubble.width, futureBubble.height);
