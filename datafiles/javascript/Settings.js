@@ -4,6 +4,7 @@ export default class Settings {
 		this.storage = g.storage;
 
 		// Initialize settings if not in storage yet
+		// SET DEFAULT VALUES HERE
 		this.g.storage.setIfNotSet("settingsDebug", false);
 		this.g.storage.setIfNotSet("settingsExperimental", true);
 		this.g.storage.setIfNotSet("settingsScaling", true);
@@ -20,7 +21,7 @@ export default class Settings {
 		// initialization of the Game
 		this.g.setDebug(this.getDebug());
 		this.g.setScaling(this.getDebug());
-
+		this.g.resourceManager.setMute(this.getMute());
 	}
 
 	// Show overlay
@@ -111,15 +112,5 @@ export default class Settings {
 		const val = !this.getMute();
 		this.setMute(val);
 		return val;
-	}
-
-	pause() {
-		this.g.pause();
-		document.getElementById("pausedOverlay").classList.remove("hidden");
-	}
-
-	unpause() {
-		this.g.unpause();
-		document.getElementById("pausedOverlay").classList.add("hidden");
 	}
 }
