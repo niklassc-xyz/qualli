@@ -25,26 +25,25 @@ export default class room20 extends LevelRoom {
 		}
 
 		// TODO camelCase
-		this.support_src_x = g.roomWidth / 2
+		this.supportSrcX = g.roomWidth / 2
 	}
 
 	step() {
 		super.step();
 
+		// Create jellies to support losing team
 		// Random walk
-		this.support_src_x += 10 - Math.random() * 20
-		if(this.support_src_x < 0)
-			this.support_src_x = this.g.roomWidth - 1
-		else if(this.support_src_x >= this.g.roomWidth)
-			this.support_src_x = 0
+		this.supportSrcX += 10 - Math.random() * 20
+		if(this.supportSrcX < 0)
+			this.supportSrcX = this.g.roomWidth - 1
+		else if(this.supportSrcX >= this.g.roomWidth)
+			this.supportSrcX = 0
 
-		let tmp_team = this.getLosingTeamByPlanet()
-		if(tmp_team != 0) {
-			let tmp_x = this.support_src_x
-			let tmp_y = -100
+		let losingTeam = this.getLosingTeamByPlanet()
+		if (losingTeam != 0) {
 			const bases = this.g.room.baseManager.getBases();
-			let tmp_ziel = bases[Math.floor(Math.random() * bases.length)]
-			this.g.room.addObject(new Jelly(this.g, tmp_x, tmp_y, tmp_team, tmp_ziel));
+			let supportBubbleTarget = bases[Math.floor(Math.random() * bases.length)]
+			this.g.room.addObject(new Jelly(this.g, this.supportSrcX, -100, losingTeam, supportBubbleTarget));
 		}
 	}
 
