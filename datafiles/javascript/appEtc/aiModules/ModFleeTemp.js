@@ -10,11 +10,11 @@ export default class ModFleeTemp extends AiModule {
 	}
 
 	modStep(ai) {
-		let bubbles = ai.getOwnBases();
+		let bases = ai.getOwnBases();
 
 		// Check own bubbles if they're being destroyed soon
-		for (let i = 0; i < bubbles.length; i++) {
-			let bubble = bubbles[i];
+		for (let i = 0; i < bases.length; i++) {
+			let bubble = bases[i];
 			if (bubble instanceof BubbleTemp) {
 				if (bubble.ttl <= bubble.units * 1.05) {
 					let n = 1;
