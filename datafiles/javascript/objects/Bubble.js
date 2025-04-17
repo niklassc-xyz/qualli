@@ -3,8 +3,6 @@ import Colors from "../appEtc/color/Colors.js";
 import LinkedList from "../parapluie/LinkedList/LinkedList.js";
 import Jelly from "./Jelly.js";
 import Color from "../appEtc/color/Color.js";
-import Sounds from "../appEtc/Sounds.js";
-import ResourceManager from "../parapluie/ResourceManager.js";
 
 
 // TODO move to bases
@@ -13,8 +11,8 @@ export default class Bubble extends Base {
 		let width = 80 * (1 + (size / 3));
 		let height = 80 * (1 + (size / 3));
 
-		const sprite = ResourceManager.getSpriteFromPath("datafiles/sprites/bubble4.png");
-		super(g, x, y, width, height, sprite); // TODO should specify width here AND sprite
+		const sprite = "datafiles/sprites/bubble4.png";
+		super(g, x, y, width, height, sprite);
 
 		this.size = size; // TODO width and height in constructor
 		this.units = units;
@@ -131,10 +129,9 @@ export default class Bubble extends Base {
 		// Capture
 		this.units = n - this.units;
 		this.team = team;
-		// let audio = new Audio("datafiles/sounds/bing4.ogg");
-		// audio.play();
 
-		Sounds.play("bing");
+		// TODO manage sounds in Qualli class instead of using path here
+		this.g.resourceManager.playSoundFromPath("datafiles/sounds/bing4.ogg");
 	}
 
 	// TODO make more efficient → test if it was faster before this commit
