@@ -1,12 +1,11 @@
 import Base from "./Base.js";
 import Jelly from "../Jelly.js";
-import ResourceManager from "../../parapluie/ResourceManager.js";
 
 export default class UnlockBase extends Base {
 	constructor(g, x, y, units) {
 		let w = 0.3*units + 150;
 		let h = 0.3*units + 150;
-		const sprite = ResourceManager.getSpriteFromPath("datafiles/sprites/Erde3.png");
+		const sprite = "datafiles/sprites/Erde3.png";
 
 		super(g, x, y, w, h, sprite);
 
