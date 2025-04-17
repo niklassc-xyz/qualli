@@ -20,7 +20,7 @@ export default class ModFleeTemp extends AiModule {
 					let n = 1;
 					// Flee to random owned base
 					for (let i = 0; i < n; i++) {
-						let target = ai.getRandomBubbleOtherThan(bubble);
+						let target = ai.getRandomBaseOtherThan(bubble);
 						// Use any random bubble
 						if (target === undefined) {
 							let ri = Math.floor(Math.random() * this.g.room.bases.length);
