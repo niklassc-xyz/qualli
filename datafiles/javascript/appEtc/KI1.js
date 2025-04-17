@@ -24,7 +24,7 @@ export default class KI1 extends KI {
 
 				// console.log(available);
 				// Get list of enemy bases that are weaker than then available jellies
-				let attackList = this.getEnemyBubblesWeakerThan((fromBubblesExceptStrongest + strongest.units) * 0.7);
+				let attackList = this.getEnemyBasesWeakerThan((fromBubblesExceptStrongest + strongest.units) * 0.7);
 
 				if (attackList.length === 0) {
 					this.alarm[0] = 100 + Math.round(Math.random() * 100);
@@ -49,7 +49,7 @@ export default class KI1 extends KI {
 				// this.angriff(this.a, this.b);
 
 				// Search best bubble to attack and then attack
-				let attackListN = this.getEnemyBubblesWeakerThan(this.a.units * 0.73);
+				let attackListN = this.getEnemyBasesWeakerThan(this.a.units * 0.73);
 				if(attackListN.length === 0) {
 					this.alarm[0] = 50 + Math.round(Math.random() * 50);
 					return;

@@ -22,7 +22,7 @@ export default class KI2 extends KI {
 					avail += bases[i].units * 0.75;
 
 				// Get list of enemy bases that are weaker than then available jellies
-				let attackList = this.getEnemyBubblesWeakerThan(avail);
+				let attackList = this.getEnemyBasesWeakerThan(avail);
 
 				if (attackList.length === 0) {
 					this.alarm[0] = 100 + Math.round(Math.random() * 100);

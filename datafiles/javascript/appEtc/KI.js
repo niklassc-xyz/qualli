@@ -98,8 +98,8 @@ export default class KI extends GameEntity {
 		return bases;
 	}
 
-	// Returns a random own base that is not `excludeBubble`
-	getRandomBubbleOtherThan(excludeBase) {
+	// Returns a random own base that is not `excludeBase`
+	getRandomBaseOtherThan(excludeBase) {
 		let bases = this.getOwnBases();
 
 		if (bases.length < 2) {
@@ -129,7 +129,7 @@ export default class KI extends GameEntity {
 		return bases[strongest_index];
 	}
 
-	getEnemyBubblesWeakerThan(n) {
+	getEnemyBasesWeakerThan(n) {
 		var enemyList = [];
 		for(var i = 0; i < this.g.room.bases.length; i++) {
 			if(this.g.room.bases[i].team !== this.team && n > this.g.room.bases[i].units) {
@@ -141,16 +141,16 @@ export default class KI extends GameEntity {
 
 
 	// TODO rename
-	angriffN(bubbleStart, bubbleTarget, n) {
+	angriffN(baseStart, baseTarget, n) {
 		// TODO move to bubble class
 		for(var i = 0; i < n; i++) {
-			let nx = bubbleStart.x;
-			let ny = bubbleStart.y;
+			let nx = baseStart.x;
+			let ny = baseStart.y;
 
-			bubbleStart.createQueue.addLast([nx, ny, this.team, bubbleTarget]);
+			baseStart.createQueue.addLast([nx, ny, this.team, baseTarget]);
 
 		}
-		bubbleStart.units -= n;
+		baseStart.units -= n;
 	}
 
 	// TODO rename
