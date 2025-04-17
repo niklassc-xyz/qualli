@@ -13,6 +13,18 @@ class Qualli extends Game {
 
 		this.start();
 	}
+
+	pause() {
+		document.getElementById("pausedOverlay").classList.remove("hidden");
+		super.pause();
+
+		console.log("subclass pause", this._paused);
+	}
+
+	unpause() {
+		document.getElementById("pausedOverlay").classList.add("hidden");
+		super.unpause();
+	}
 }
 
 
