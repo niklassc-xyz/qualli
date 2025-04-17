@@ -23,8 +23,9 @@ export default class ModFleeTemp extends AiModule {
 						let target = ai.getRandomBaseOtherThan(bubble);
 						// Use any random bubble
 						if (target === undefined) {
-							let ri = Math.floor(Math.random() * this.g.room.bases.length);
-							target = this.g.room.bases[ri];
+							const bases = this.g.room.baseManager.getBases();
+							let ri = Math.floor(Math.random() * bases.length);
+							target = bases[ri];
 						}
 						if (target === undefined) {
 							break;

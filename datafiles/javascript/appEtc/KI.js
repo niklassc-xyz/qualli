@@ -75,15 +75,6 @@ export default class KI extends GameEntity {
 	 */
 	getOwnBases() {
 		return this.g.room.baseManager.getBasesByTeam(this.team);
-		// var bases = [];
-		// // TODO get bases through getter → bases should be private
-		// for(var i = 0; i < this.g.room.bases.length; i++) {
-		// 	// TODO distinguish between bases based on whether they are target- and source-selectable
-		// 	if(this.g.room.bases[i].team === this.team) {
-		// 		bases[bases.length] = this.g.room.bases[i];
-		// 	}
-		// }
-		// return bases;
 	}
 
 	getForeignBases() {
@@ -131,9 +122,10 @@ export default class KI extends GameEntity {
 
 	getEnemyBasesWeakerThan(n) {
 		var enemyList = [];
-		for(var i = 0; i < this.g.room.bases.length; i++) {
-			if(this.g.room.bases[i].team !== this.team && n > this.g.room.bases[i].units) {
-				enemyList[enemyList.length] = this.g.room.bases[i];
+		const bases = this.g.room.baseManager.getBases();
+		for(var i = 0; i < bases; i++) {
+			if(bases[i].team !== this.team && n > bases[i].units) {
+				enemyList[enemyList.length] = bases[i];
 			}
 		}
 		return enemyList;

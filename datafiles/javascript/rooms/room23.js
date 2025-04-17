@@ -47,18 +47,4 @@ export default class room23 extends LevelRoom {
 		bases[17].y += pushOut
 
 	}
-
-	// step() {
-	// 	super.step()
-
-	// 	// TODO move effect? → Mixin
-	// 	if (Math.random() < 0.3 ) {
-	// 		// Move
-	// 		let source = this.g.room.bases[Math.floor(Math.random() * this.g.room.bases.length)];
-	// 		let target = this.g.room.bases[Math.floor(Math.random() * this.g.room.bases.length)];
-
-	// 		let amount = Math.round(Math.random() * 10)
-	// 		source.attackN(target, amount)
-	// 	}
-	// }
 }

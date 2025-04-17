@@ -29,8 +29,9 @@ export default class UnlockBase extends Base {
 			if (typeof target === "undefined") {
 				do {
 					// TODO endless loop possible if only one bubble
-					let ri = Math.floor(Math.random()*this.g.room.bases.length);
-					target = this.g.room.bases[ri];
+					const bases = this.g.room.baseManager.getBases();
+					let ri = Math.floor(Math.random()*bases.length);
+					target = bases[ri];
 				} while (target === this)
 
 			}
