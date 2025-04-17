@@ -1,6 +1,6 @@
 import Room from "./../parapluie/Room.js";
 import Button from "../parapluie/objects/util/Button.js";
-import Settings from "../parapluie/Settings.js";
+import Settings from "../Settings.js";
 import Jelly from "../objects/Jelly.js";
 import Base from "../objects/bases/Base.js";
 import BaseManager from "../objects/bases/BaseManager.js";
@@ -37,7 +37,7 @@ export default class LevelRoom extends Room {
 			10,
 			50,
 			50,
-			Settings.pause,
+			this.g.pause,
 			false
 		));
 		pauseButton.setFontSize(16);
@@ -64,7 +64,7 @@ export default class LevelRoom extends Room {
 		}
 
 		this.g.gotoRoom(this.returnRoom);
-		Settings.unpause();
+		this.g.unpause();
 	}
 
 	restart(prompt=false) {
