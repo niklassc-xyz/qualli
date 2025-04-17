@@ -109,7 +109,7 @@ export default class LevelRoom extends Room {
 
 	addBase(base) {
 		this.baseManager.registerBase(base);
-		this.addObject(base);
+		return this.addObject(base);
 	}
 
 	unregisterBase(base) {
