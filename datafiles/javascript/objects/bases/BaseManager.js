@@ -9,6 +9,10 @@ export default class BaseManager extends DimensionEntity {
 
 		this.g.input.registerClickable(this, this.clickDown.bind(this), this.clickUp.bind(this) );
 
+		// For circle animation
+		this.circleCounterMax = 20;
+		this.circleCounter = 0;
+
 		/**
 		 * List of active bases in the level
 		 * @type {Base}
@@ -29,11 +33,8 @@ export default class BaseManager extends DimensionEntity {
 
 	// Returns first base which collides with (x|y), undefined if no base at this point
 	getBaseByLocation(x, y) {
-		console.log(x,y);
-
 		for (let i = 0; i < this.#bases.length; i++) {
 			let iBase = this.#bases[i];
-			console.log("iBase", iBase.x, iBase.y, iBase.width, iBase.height);
 		
 			// TODO use pointInCircle or entity specific collision method (→ collision methods in entities based on shape, add hitbox)
 			if (collision.pointInRectangle(x,
@@ -60,8 +61,6 @@ export default class BaseManager extends DimensionEntity {
 	}
 
 	clickUp() {
-		console.log("bm up", this);
-
 		let hoveredBase = this.getBaseByLocation(this.g.input.getX(), this.g.input.getY());
 		if (typeof hoveredBase !== "undefined") {
 			if (typeof this.#selected !== "undefined") {
@@ -82,7 +81,6 @@ export default class BaseManager extends DimensionEntity {
 		// base selection
 		if (typeof this.#selected === "undefined") {
 			let hoveredBase = this.getBaseByLocation(this.g.input.getX(), this.g.input.getY());
-			console.log("hoveredBase", hoveredBase);
 			if (typeof hoveredBase !== "undefined") {
 				// Start drag method
 				this.#selected = hoveredBase;
