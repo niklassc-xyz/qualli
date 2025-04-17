@@ -123,7 +123,7 @@ export default class KI extends GameEntity {
 	getEnemyBasesWeakerThan(n) {
 		var enemyList = [];
 		const bases = this.g.room.baseManager.getBases();
-		for(var i = 0; i < bases; i++) {
+		for(var i = 0; i < bases.length; i++) {
 			if(bases[i].team !== this.team && n > bases[i].units) {
 				enemyList[enemyList.length] = bases[i];
 			}

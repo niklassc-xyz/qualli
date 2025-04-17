@@ -17,16 +17,15 @@ export default class KI1 extends KI {
 				if(strongest === undefined)
 					return;
 				let bases = this.getOwnBases();
-				let fromBubblesExceptStrongest = 0;
+				let attackCapacityExceptStrongest = 0;
 				for (let i = 0; i < bases.length; i++)
 					if(bases[i] !== strongest)
-						fromBubblesExceptStrongest += bases[i].units * 0.5;
+						attackCapacityExceptStrongest += bases[i].units * 0.5;
 
-				// console.log(available);
 				// Get list of enemy bases that are weaker than then available jellies
-				let attackList = this.getEnemyBasesWeakerThan((fromBubblesExceptStrongest + strongest.units) * 0.7);
+				let postentialTargets = this.getEnemyBasesWeakerThan((attackCapacityExceptStrongest + strongest.units) * 0.7);
 
-				if (attackList.length === 0) {
+				if (postentialTargets.length === 0) {
 					this.alarm[0] = 100 + Math.round(Math.random() * 100);
 					return;
 				}
