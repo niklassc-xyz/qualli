@@ -1,6 +1,5 @@
 import Room from "./../parapluie/Room.js";
 import Button from "../parapluie/objects/util/Button.js";
-import Settings from "../parapluie/Settings.js";
 import SimBubbleEmitter from "../objects/SimBubble/SimBubbleEmitter.js";
 import MenuOverview from "../rooms/MenuOverview.js";
 import Sunshine from "../objects/Sunshine.js";
@@ -21,7 +20,7 @@ export default class Startpage extends Room {
 		this.addObject(new Button(this.g, "Start", g.roomWidth / 2 - buttonMargin - (3/2) * buttonWidth, g.roomHeight / 2 - buttonHeight / 2, buttonWidth, buttonHeight, () => { g.gotoRoom(MenuOverview) }  )).borderColour = "yellow";
 		// TODO implement instructions
 		this.addObject(new Button(this.g, "Guide", g.roomWidth / 2 - buttonWidth / 2, g.roomHeight / 2 - buttonHeight / 2, buttonWidth, buttonHeight, () => alert("TODO") ));
-		this.addObject(new Button(this.g, "Settings", g.roomWidth / 2 + buttonMargin + buttonWidth / 2, g.roomHeight / 2 - buttonHeight / 2, buttonWidth, buttonHeight, Settings.show));
+		this.addObject(new Button(this.g, "Settings", g.roomWidth / 2 + buttonMargin + buttonWidth / 2, g.roomHeight / 2 - buttonHeight / 2, buttonWidth, buttonHeight, this.g.settings.show));
 
 		this.addObject(new Sunshine(this.g, g.roomWidth / 2, -400));
 	}
@@ -74,7 +73,7 @@ export default class Startpage extends Room {
 
 
 		// TODO remove
-		if (Settings.debug) {
+		if (this.g.debug) {
 			this.g.painter.ctx.lineWidth = 5;
 			this.g.painter.ctx.strokeStyle = 'white';
 			this.g.painter.ctx.fillStyle = "white";
