@@ -27,7 +27,7 @@ export default class MenuOverview extends Room {
 			[RoomMenuAdvanced, "Advanced"],
 		]
 
-		if (this.g.settings.experimental) {
+		if (this.g.settings.getExperimental()) {
 			options.push([RoomMenuExperimental, "Experimental"])
 			options.push([RoomMenuArchive, "Archive"])
 		}
