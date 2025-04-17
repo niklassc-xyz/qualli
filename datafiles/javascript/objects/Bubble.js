@@ -25,9 +25,6 @@ export default class Bubble extends Base {
 		  */
 		this.createQueue = new LinkedList();
 		this.animationSpeed = 0.1 + Math.random() * 0.2;
-
-
-		this.g.input.registerClickable(this, () => { alert("up"); }, () => { alert("down"); });
 	}
 
 	step() {

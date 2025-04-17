@@ -25,8 +25,7 @@ export default class Base extends SpriteEntity {
 	destroy() {
 		super.destroy();
 
-		this.g.input.unregisterClickable(this);
-		this.g.room.removeBase(this);
+		this.g.room.unregisterBase(this);
 	}
 
 	/**

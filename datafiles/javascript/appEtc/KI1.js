@@ -16,7 +16,7 @@ export default class KI1 extends KI {
 				let strongest = this.getStrongestPlanet();
 				if(strongest === undefined)
 					return;
-				let bubbles = this.getBubbles();
+				let bubbles = this.getOwnBases();
 				let fromBubblesExceptStrongest = 0;
 				for (let i = 0; i < bubbles.length; i++)
 					if(bubbles[i] !== strongest)

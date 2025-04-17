@@ -14,7 +14,7 @@ export default class KI2 extends KI {
 					return;
 
 				// Get bubbles and calculate available jellies
-				let bubbles = this.getBubbles();
+				let bubbles = this.getOwnBases();
 				if(bubbles.length === 0)
 					return;
 				let avail = 0;

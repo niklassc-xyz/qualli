@@ -5,17 +5,20 @@ export default class KI0 extends KI {
 		super(g, team);
 	}
 
+	// TODO rename
 	getEinnehmlist() {
-		var einnehmlist = [];
+		var feasibleTargets = [];
 		var strongestPlanet = this.getStrongestPlanet(); // TODO rename
 		if(strongestPlanet === undefined)
 			return [];
-		for(var i = 0; i < this.g.room.bases.length; i++) {
-			if(this.g.room.bases[i].team !== this.team && Math.floor(strongestPlanet.units / 2) > this.g.room.bases[i].units) {
-				einnehmlist[einnehmlist.length] = this.g.room.bases[i];
+
+		let foreignBases = this.getForeignBases();
+		for(let i = 0; i < foreignBases.length; i++) {
+			if (Math.floor(strongestPlanet.units / 2) > foreignBases[i].units) {
+				feasibleTargets.push(foreignBases[i]);
 			}
 		}
-		return einnehmlist;
+		return feasibleTargets;
 	}
 
 	// TODO move to super
@@ -28,7 +31,7 @@ export default class KI0 extends KI {
 				var einnehmlist = this.getEinnehmlist();
 				if(einnehmlist.length === 0) { // Wenn kein Planet eingenommen werden kann, schicke von zufälligem eigenen Planten Schiffe zum Stärksten
 					// console.log("Kein Einnehmbarer Planet");
-					var bubbles = this.getBubbles();
+					var bubbles = this.getOwnBases();
 					var planet_start = bubbles[Math.round(Math.random() * (bubbles.length-1))];
 					var planet_ziel = this.getStrongestPlanet();
 				} else { // Wenn Planet eingenommen werden kann, nimm ein.

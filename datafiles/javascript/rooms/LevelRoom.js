@@ -3,6 +3,7 @@ import Button from "../parapluie/objects/util/Button.js";
 import Settings from "../parapluie/Settings.js";
 import Jelly from "../objects/Jelly.js";
 import Base from "../objects/bases/Base.js";
+import BaseManager from "../objects/bases/BaseManager.js";
 
 
 // TODO Import these in the individual level rooms only when needed
@@ -20,12 +21,9 @@ export default class LevelRoom extends Room {
 			throw new Error("Abstract classes can't be instantiated.");
 		}
 
-		/**
-		 * List of active bases in the level
-		 * @type {Base}
-		 */
-		this.bases = [];
+		this.baseManager = this.addObject(new BaseManager(g));
 		this.ais = [];
+
 
 		this.status = "running"; // running, lost, won
 		this.alarm = [];
@@ -46,7 +44,7 @@ export default class LevelRoom extends Room {
 	}
 
 	step() {
-		// alarm system
+		// TODO alarm system
 		for(let i = 0; i < this.alarm.length; i++) {
 			if(this.alarm[i] === undefined)
 				continue;
@@ -58,31 +56,6 @@ export default class LevelRoom extends Room {
 		}
 
 		super.step();
-	}
-
-	draw() {
-		//do nothing
-	}
-
-	// Adds base to room
-	addBase(base) {
-		this.bases.push(base);
-		this.addObject(base);
-
-		return base;
-	}
-
-	removeBase(base) {
-		// TODO datastructure
-		for (var i = 0; i < this.g.room.bases.length; i++) {
-			if (this.g.room.bases[i] === base) {
-				this.g.room.bases.splice(i, 1);
-				return true;
-			}
-		}
-
-		console.error("Attempted to deleted base that is not in LevelRoom.bases", base);
-		return false;
 	}
 
 	surrender() {
@@ -132,5 +105,14 @@ export default class LevelRoom extends Room {
 			}
 		}
 		return true;
+	}
+
+	addBase(base) {
+		this.baseManager.registerBase(base);
+		this.addObject(base);
+	}
+
+	unregisterBase(base) {
+		return this.baseManager.unregisterBase(base);
 	}
 }

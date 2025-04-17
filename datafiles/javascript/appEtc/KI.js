@@ -73,21 +73,34 @@ export default class KI extends GameEntity {
 	 *
 	 * @returns {Array.<Bubble>} Array of own bubbles
 	 */
-	getBubbles() {
-		var bases = [];
-		// TODO get bases through getter → bases should be private
-		for(var i = 0; i < this.g.room.bases.length; i++) {
-			// TODO distinguish between bases based on whether they are target- and source-selectable
-			if(this.g.room.bases[i].team === this.team) {
-				bases[bases.length] = this.g.room.bases[i];
+	getOwnBases() {
+		return this.g.room.baseManager.getBasesByTeam(this.team);
+		// var bases = [];
+		// // TODO get bases through getter → bases should be private
+		// for(var i = 0; i < this.g.room.bases.length; i++) {
+		// 	// TODO distinguish between bases based on whether they are target- and source-selectable
+		// 	if(this.g.room.bases[i].team === this.team) {
+		// 		bases[bases.length] = this.g.room.bases[i];
+		// 	}
+		// }
+		// return bases;
+	}
+
+	getForeignBases() {
+		let allBases = this.g.room.baseManager.getBases();
+		let bases = [];
+		for (let i = 0; i < allBases.length; i++) {
+			if (allBases[i].team !== this.team) {
+				bases.push(allBases[i]);
 			}
 		}
+
 		return bases;
 	}
 
 	// Returns a random own base that is not `excludeBubble`
 	getRandomBubbleOtherThan(excludeBase) {
-		let bases = this.getBubbles();
+		let bases = this.getOwnBases();
 
 		if (bases.length < 2) {
 			return undefined;
@@ -104,7 +117,7 @@ export default class KI extends GameEntity {
 	}
 
 	getStrongestPlanet() {
-		var bases = this.getBubbles();
+		var bases = this.getOwnBases();
 		if(bases.length === 0) return;
 		var strongest_index = 0;
 			// Suche stärksten Planeten aus eigener bases aus.
@@ -158,7 +171,7 @@ export default class KI extends GameEntity {
 
 	deleteIfDefeatedAndCheckIfWon() {
 		// Wenn kein Planet und keine Raumschiffe mehr vorhanden sind, KI löschen, dann prüfen ob Spieler gewonnen.
-		if(this.getBubbles().length === 0) {
+		if(this.getOwnBases().length === 0) {
 			/* Wenn kein Planet mehr da ist, aber noch Raumschiffe soll weder
 			* die KI gelöscht werden, noch der restliche Angriffsplan
 			* ausgeführt werden.
