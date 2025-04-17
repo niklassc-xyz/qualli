@@ -15,17 +15,17 @@ export default class ModDefend extends AiModule {
 	 * @param {KI} ai - AI instance that is modulated
 	 */
 	modStep(ai) {
-		let bubbles = ai.getOwnBases();
+		let bases = ai.getOwnBases();
 
 		// Check all own bubbles if they need to be defended
-		for (let i = 0; i < bubbles.length; i++) {
-			let bubble = bubbles[i];
+		for (let i = 0; i < bases.length; i++) {
+			let bubble = bases[i];
 
 			// TODO check endless loop → if bubbles contains only bubble
 
 			// Send support from random other own bubble
 			if (bubble.getArrivingEnemy() >= bubble.units + bubble.arriving[bubble.team]) {
-				let randBubble = math.chooseRandom(bubbles);
+				let randBubble = math.chooseRandom(bases);
 
 				if (randBubble === bubble)
 					continue;
