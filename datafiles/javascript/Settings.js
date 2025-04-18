@@ -39,6 +39,7 @@ export default class Settings {
 	}
 
 	setDebug(val) {
+		document.getElementById("sDebug").checked = val;
 		this.g.setDebug(val);
 		this.storage.set("settingsDebug", val);
 	}
@@ -46,7 +47,6 @@ export default class Settings {
 	toggleDebug() {
 		const val = !this.getDebug();
 		this.setDebug(val);
-		document.getElementById("sDebug").checked = val;
 		return val;
 	}
 
@@ -55,13 +55,13 @@ export default class Settings {
 	}
 
 	setExperimental(val) {
+		document.getElementById("sExperimental").checked = val;
 		this.storage.set("settingsExperimental", val);
 	}
 
 	toggleExperimental() {
 		const val = !this.getExperimental();
 		this.setExperimental(val);
-		document.getElementById("sExperimental").checked = val;
 		return val;
 	}
 
@@ -70,6 +70,7 @@ export default class Settings {
 	}
 
 	setScaling(val) {
+		document.getElementById("sScaling").checked = val;
 		this.g.setScaling(val);
 		this.storage.set("settingsScaling", val);
 	}
@@ -77,8 +78,7 @@ export default class Settings {
 	toggleScaling() {
 		const val = !this.getScaling();
 		this.setScaling(val);
-		document.getElementById("sScaling").checked = val;
-		f.resizeCanvas();
+		// f.resizeCanvas();
 		return val;
 	}
 
@@ -87,13 +87,13 @@ export default class Settings {
 	}
 
 	setJellyGlow(val) {
+		document.getElementById("sJellyGlow").checked = val;
 		this.storage.set("settingsJellyGlow", val);
 	}
 
 	toggleJellyGlow() {
 		const val = !this.getJellyGlow();
 		this.setJellyGlow(val);
-		document.getElementById("setJellyGlow").checked = val;
 		return val;
 	}
 
@@ -102,10 +102,9 @@ export default class Settings {
 	}
 
 	setMute(val) {
-		this.storage.set("settingsMute", val);
 		document.getElementById("sMute").checked = val;
+		this.storage.set("settingsMute", val);
 		this.g.resourceManager.setMute(val);
-		console.log(val);
 	}
 
 	toggleMute() {
