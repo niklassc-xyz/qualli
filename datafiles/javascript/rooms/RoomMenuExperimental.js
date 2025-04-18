@@ -3,25 +3,25 @@ import SimBubbleEmitter from "../objects/SimBubble/SimBubbleEmitter.js";
 import Button from "../parapluie/objects/util/Button.js";
 import LevelButton from "../objects/LevelButton.js";
 import MenuOverview from "./MenuOverview.js";
-import room24 from "./room24.js";
-import room25 from "./room25.js";
-import room27 from "./room27.js";
-import room28 from "./room28.js";
-import room29 from "./room29.js";
-import room30 from "./room30.js";
-import room31 from "./room31.js";
-import room32 from "./room32.js";
-import room33 from "./room33.js";
-import room34 from "./room34.js";
-import room35 from "./room35.js";
-import room36 from "./room36.js";
-import room37 from "./room37.js";
-import room38 from "./room38.js";
-import room39 from "./room39.js";
-import room40 from "./room40.js";
-import room41 from "./room41.js";
-import room42 from "./room42.js";
-import roomTest from "./roomTest.js";
+import level24 from "./level24.js";
+import level25 from "./level25.js";
+import level27 from "./level27.js";
+import level28 from "./level28.js";
+import level29 from "./level29.js";
+import level30 from "./level30.js";
+import level31 from "./level31.js";
+import level32 from "./level32.js";
+import level33 from "./level33.js";
+import level34 from "./level34.js";
+import level35 from "./level35.js";
+import level36 from "./level36.js";
+import level37 from "./level37.js";
+import level38 from "./level38.js";
+import level39 from "./level39.js";
+import level40 from "./level40.js";
+import level41 from "./level41.js";
+import level42 from "./level42.js";
+import levelTest from "./levelTest.js";
 
 export default class RoomMenuExperimental extends Room {
 	constructor(g, returnRoom = undefined) {
@@ -37,30 +37,30 @@ export default class RoomMenuExperimental extends Room {
 		let buttonHeight = 128;
 		let buttonMargin = 16;
 
-		let rooms = [
-			roomTest,
-			room24,
-			room25,
-			room27,
-			room28,
-			room29,
-			room30,
-			room31,
-			room32,
-			room33,
-			room34,
-			room35,
-			room36,
-			room37,
-			room38,
-			room39,
-			room40,
-			room41,
-			room42,
+		let levels = [
+			levelTest,
+			level24,
+			level25,
+			level27,
+			level28,
+			level29,
+			level30,
+			level31,
+			level32,
+			level33,
+			level34,
+			level35,
+			level36,
+			level37,
+			level38,
+			level39,
+			level40,
+			level41,
+			level42,
 		];
 
 		let itemsInRow = 4;
-		let itemsinColumn = Math.ceil(rooms.length / itemsInRow)
+		let itemsinColumn = Math.ceil(levels.length / itemsInRow)
 
 
 
@@ -72,7 +72,7 @@ export default class RoomMenuExperimental extends Room {
 		let marginTop = (g.roomHeight - columnHeight) / 2;
 
 		for(let i = 0; i < itemsinColumn; i++)
-			for(let j = 0; j < itemsInRow && i*itemsInRow + j < rooms.length; j++) {
+			for(let j = 0; j < itemsInRow && i*itemsInRow + j < levels.length; j++) {
 				this.addObject(new LevelButton(
 					this.g,
 					i*itemsInRow + j,
@@ -80,7 +80,7 @@ export default class RoomMenuExperimental extends Room {
 					marginTop + i * (buttonHeight + buttonMargin),
 					buttonWidth,
 					buttonHeight,
-					rooms[i*itemsInRow + j]
+					levels[i*itemsInRow + j]
 				)).setFontSize(36);
 			}
 

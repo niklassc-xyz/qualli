@@ -3,11 +3,11 @@ import SimBubbleEmitter from "../objects/SimBubble/SimBubbleEmitter.js";
 import Button from "../parapluie/objects/util/Button.js";
 import LevelButton from "../objects/LevelButton.js";
 import MenuOverview from "./MenuOverview.js";
-import room12 from "./room12.js";
-import room13 from "./room13.js";
-import room14 from "./room14.js";
-import room15 from "./room15.js";
-import room16 from "./room16.js";
+import level12 from "./level12.js";
+import level13 from "./level13.js";
+import level14 from "./level14.js";
+import level15 from "./level15.js";
+import level16 from "./level16.js";
 
 export default class RoomMenuAdvanced extends Room {
 	constructor(g, returnRoom = undefined) {
@@ -23,11 +23,11 @@ export default class RoomMenuAdvanced extends Room {
 		let buttonHeight = 128;
 		let buttonMargin = 16;
 
-		let rooms = [room12, room13, room14, room15, room16];
+		let levels = [level12, level13, level14, level15, level16];
 
 		//  let itemsInRow = 12;
 		let itemsInRow = 4;
-		let itemsinColumn = Math.ceil(rooms.length / itemsInRow)
+		let itemsinColumn = Math.ceil(levels.length / itemsInRow)
 
 
 		// Calculate start margin in order to center the items block
@@ -38,7 +38,7 @@ export default class RoomMenuAdvanced extends Room {
 		let marginTop = (g.roomHeight - columnHeight) / 2;
 
 		for(let i = 0; i < itemsinColumn; i++)
-			for(let j = 0; j < itemsInRow && i*itemsInRow + j < rooms.length; j++) {
+			for(let j = 0; j < itemsInRow && i*itemsInRow + j < levels.length; j++) {
 				this.addObject(new LevelButton(
 					this.g,
 					i*itemsInRow + j,
@@ -46,7 +46,7 @@ export default class RoomMenuAdvanced extends Room {
 					marginTop + i * (buttonHeight + buttonMargin),
 					buttonWidth,
 					buttonHeight,
-					rooms[i*itemsInRow + j]
+					levels[i*itemsInRow + j]
 				)).setFontSize(36);
 			}
 
