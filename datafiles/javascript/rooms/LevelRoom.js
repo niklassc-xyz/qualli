@@ -20,7 +20,6 @@ export default class LevelRoom extends Room {
 			throw new Error("Abstract classes can't be instantiated.");
 		}
 
-		this.baseManager = this.addObject(new BaseManager(g));
 		this.ais = [];
 
 
@@ -36,10 +35,12 @@ export default class LevelRoom extends Room {
 			10,
 			50,
 			50,
-			this.g.pause,
+			() => { this.g.pause() },
 			false
 		));
 		pauseButton.setFontSize(16);
+
+		this.baseManager = this.addObject(new BaseManager(g));
 	}
 
 	step() {
