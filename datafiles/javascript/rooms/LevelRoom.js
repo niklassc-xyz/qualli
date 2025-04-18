@@ -97,9 +97,9 @@ export default class LevelRoom extends Room {
 
 	// Checks if team has already lost
 	checkIfLost(team) {
-		for(var i = 0; i < this.objects.length; i++) {
-			if(this.objects[i] instanceof Jelly || this.objects[i] instanceof Base) {
-				if(this.objects[i].team === team) {
+		for(var i = 0; i < this.entities.length; i++) {
+			if(this.entities[i] instanceof Jelly || this.entities[i] instanceof Base) {
+				if(this.entities[i].team === team) {
 					return false;
 				}
 			}

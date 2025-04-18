@@ -60,9 +60,9 @@ export default class KI extends GameEntity {
 
 	// TODO rename
 	pruefe_ob_eigene_Raumschiffe_im_Spiel() {
-		for(var i = 0; i < this.g.room.objects.length; i++) {
-			if(this.g.room.objects[i] instanceof Jelly) {
-				if(this.g.room.objects[i].team === this.team) return true;
+		for(var i = 0; i < this.g.room.entities.length; i++) {
+			if(this.g.room.entities[i] instanceof Jelly) {
+				if(this.g.room.entities[i].team === this.team) return true;
 			}
 		}
 		return false;
@@ -153,8 +153,8 @@ export default class KI extends GameEntity {
 	// TODO do this in room
 	// TODO rename
 	pruefe_ob_gewonnen() {
-		for(var i = 0; i < this.g.room.objects.length; i++) {
-			if(this.g.room.objects[i] instanceof KI) {
+		for(var i = 0; i < this.g.room.entities.length; i++) {
+			if(this.g.room.entities[i] instanceof KI) {
 				return false;
 			}
 		}
