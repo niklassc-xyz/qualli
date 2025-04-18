@@ -7,7 +7,7 @@ export default class BaseManager extends DimensionEntity {
 	constructor(g) {
 		super(g, 0, 0, g.roomWidth, g.roomHeight);
 
-		this.g.input.registerClickable(this, this.clickDown, this.clickUp);
+		this.g.input.registerClickable(this);
 
 		// For circle animation
 		this.circleCounterMax = 20;
@@ -25,6 +25,10 @@ export default class BaseManager extends DimensionEntity {
 	draw() {
 		super.draw();
 		this.selectedDrawing();
+	}
+
+	destroy() {
+		this.g.input.unregisterClickable(this);
 	}
 
 	getBases() {

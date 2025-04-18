@@ -17,8 +17,6 @@ class Qualli extends Game {
 	pause() {
 		document.getElementById("pausedOverlay").classList.remove("hidden");
 		super.pause();
-
-		console.log("subclass pause", this._paused);
 	}
 
 	unpause() {
