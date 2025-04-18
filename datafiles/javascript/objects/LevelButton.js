@@ -10,11 +10,11 @@ export default class LevelButton extends Button {
 		this.won = g.progressManager.getLevelStats(level.name).won;
 
 		if (this.won > 3) {
-			this.medal = this.g.resourceManager.getSpriteFromPath("datafiles/sprites/medals/gold.png");
+			this.medal = this.g.resourceManager.getSpriteByPath("datafiles/sprites/medals/gold.png");
 		} else if (this.won > 1) {
-			this.medal = this.g.resourceManager.getSpriteFromPath("datafiles/sprites/medals/silver.png");
+			this.medal = this.g.resourceManager.getSpriteByPath("datafiles/sprites/medals/silver.png");
 		} else if (this.won > 0) {
-			this.medal = this.g.resourceManager.getSpriteFromPath("datafiles/sprites/medals/bronze.png");
+			this.medal = this.g.resourceManager.getSpriteByPath("datafiles/sprites/medals/bronze.png");
 		} else {
 			this.medal = undefined;
 		}

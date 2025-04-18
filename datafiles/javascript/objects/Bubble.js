@@ -131,7 +131,7 @@ export default class Bubble extends Base {
 		this.team = team;
 
 		// TODO manage sounds in Qualli class instead of using path here
-		this.g.resourceManager.playSoundFromPath("datafiles/sounds/bing4.ogg");
+		this.g.resourceManager.playByFromPath("datafiles/sounds/bing4.ogg");
 	}
 
 	// TODO make more efficient → test if it was faster before this commit
