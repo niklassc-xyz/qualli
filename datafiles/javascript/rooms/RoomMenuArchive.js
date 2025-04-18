@@ -2,10 +2,10 @@ import Room from "./../parapluie/Room.js";
 import SimBubbleEmitter from "../objects/SimBubble/SimBubbleEmitter.js";
 import Button from "../parapluie/objects/util/Button.js";
 import LevelButton from "../objects/LevelButton.js";
-import room17 from "./room17.js";
-import room18 from "./room18.js";
-import room19 from "./room19.js";
-import room26 from "./room26.js";
+import level17 from "./level17.js";
+import level18 from "./level18.js";
+import level19 from "./level19.js";
+import level26 from "./level26.js";
 import MenuOverview from "./MenuOverview.js";
 
 export default class RoomMenuArchive extends Room {
@@ -22,15 +22,15 @@ export default class RoomMenuArchive extends Room {
 		let buttonHeight = 128;
 		let buttonMargin = 16;
 
-		let rooms = [
-			room17,
-			room18,
-			room19,
-			room26,
+		let levels = [
+			level17,
+			level18,
+			level19,
+			level26,
 		];
 
 		let itemsInRow = 4;
-		let itemsinColumn = Math.ceil(rooms.length / itemsInRow)
+		let itemsinColumn = Math.ceil(levels.length / itemsInRow)
 
 
 
@@ -42,7 +42,7 @@ export default class RoomMenuArchive extends Room {
 		let marginTop = (g.roomHeight - columnHeight) / 2;
 
 		for(let i = 0; i < itemsinColumn; i++)
-			for(let j = 0; j < itemsInRow && i*itemsInRow + j < rooms.length; j++) {
+			for(let j = 0; j < itemsInRow && i*itemsInRow + j < levels.length; j++) {
 				this.addObject(new LevelButton(
 					this.g,
 					i*itemsInRow + j,
@@ -50,7 +50,7 @@ export default class RoomMenuArchive extends Room {
 					marginTop + i * (buttonHeight + buttonMargin),
 					buttonWidth,
 					buttonHeight,
-					rooms[i*itemsInRow + j]
+					levels[i*itemsInRow + j]
 				)).setFontSize(36);
 			}
 
