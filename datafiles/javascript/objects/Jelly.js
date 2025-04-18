@@ -1,8 +1,6 @@
 import SpriteEntity from "../parapluie/objects/SpriteEntity.js";
 import GameEntity from "../parapluie/objects/GameEntity.js";
 import Colors from "../appEtc/color/Colors.js";
-import Settings from "../parapluie/Settings.js";
-import resourceManager from "../parapluie/ResourceManager.js";
 import * as math from "../parapluie/functions/math.js";
 import * as collision from "../parapluie/functions/collision.js";
 
@@ -21,16 +19,16 @@ export default class Jelly extends SpriteEntity {
 		let sprite;
 		switch (team) {
 			case 1:
-				sprite = resourceManager.getSpriteFromPath("datafiles/sprites/qualleRed.png");
+				sprite = "datafiles/sprites/qualleRed.png";
 				break;
 			case 2:
-				sprite = resourceManager.getSpriteFromPath("datafiles/sprites/qualleBlue.png");
+				sprite = "datafiles/sprites/qualleBlue.png";
 				break;
 			case 3:
-				sprite = resourceManager.getSpriteFromPath("datafiles/sprites/qualleGreen.png");
+				sprite = "datafiles/sprites/qualleGreen.png";
 				break;
 			case 4:
-				sprite = resourceManager.getSpriteFromPath("datafiles/sprites/qualleYellow.png");
+				sprite = "datafiles/sprites/qualleYellow.png";
 				break;
 			default:
 				throw new Error(`Tried creating Jelly with unsupported team (${team})`);
@@ -160,7 +158,7 @@ export default class Jelly extends SpriteEntity {
 		// TODO origin
 		// TODO ellipsis
 		// Jelly glow
-		if (Settings.getJellyGlow()) {
+		if (this.g.settings.getJellyGlow()) {
 			let c = Colors.team[this.team];
 			this.g.painter.ctx.fillStyle = `rgba(${c.r}, ${c.g}, ${c.b}, 0.025`;
 			let maxr = Math.max(this.width, this.height);
