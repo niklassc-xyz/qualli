@@ -28,6 +28,7 @@ export default class BaseManager extends DimensionEntity {
 	}
 
 	destroy() {
+		super.destroy();
 		this.g.input.unregisterClickable(this);
 	}
 
