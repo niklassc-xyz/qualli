@@ -5,7 +5,7 @@ import KI1 from "../appEtc/KI1.js";
 import KI2 from "../appEtc/KI2.js";
 import ModDefend from "../appEtc/aiModules/ModDefend.js";
 
-export default class level39 extends LevelRoom {
+export default class Level39 extends LevelRoom {
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
 

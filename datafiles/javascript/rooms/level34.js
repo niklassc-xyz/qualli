@@ -3,7 +3,7 @@ import BubbleTemp from "../objects/BubbleTemp.js";
 import KI1 from "../appEtc/KI1.js";
 import ModFleeTemp from "../appEtc/aiModules/ModFleeTemp.js";
 
-export default class level34 extends LevelRoom {
+export default class Level34 extends LevelRoom {
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
 

@@ -2,7 +2,7 @@ import LevelRoom from "./LevelRoom.js";
 import Bubble from "../objects/Bubble.js";
 import KI2 from "../appEtc/KI2.js";
 
-export default class level25 extends LevelRoom {
+export default class Level25 extends LevelRoom {
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
 

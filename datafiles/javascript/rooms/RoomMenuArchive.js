@@ -2,10 +2,10 @@ import Room from "./../parapluie/Room.js";
 import SimBubbleEmitter from "../objects/SimBubble/SimBubbleEmitter.js";
 import Button from "../parapluie/objects/util/Button.js";
 import LevelButton from "../objects/LevelButton.js";
-import level17 from "./level17.js";
-import level18 from "./level18.js";
-import level19 from "./level19.js";
-import level26 from "./level26.js";
+import Level17 from "./Level17.js";
+import Level18 from "./Level18.js";
+import Level19 from "./Level19.js";
+import Level26 from "./Level26.js";
 import MenuOverview from "./MenuOverview.js";
 
 export default class RoomMenuArchive extends Room {
@@ -23,10 +23,10 @@ export default class RoomMenuArchive extends Room {
 		let buttonMargin = 16;
 
 		let levels = [
-			level17,
-			level18,
-			level19,
-			level26,
+			Level17,
+			Level18,
+			Level19,
+			Level26,
 		];
 
 		let itemsInRow = 4;

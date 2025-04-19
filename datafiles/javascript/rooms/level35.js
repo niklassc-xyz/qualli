@@ -4,7 +4,7 @@ import KI1 from "../appEtc/KI1.js";
 import KI2 from "../appEtc/KI2.js";
 import ModFleeTemp from "../appEtc/aiModules/ModFleeTemp.js";
 
-export default class level35 extends LevelRoom {
+export default class Level35 extends LevelRoom {
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
 

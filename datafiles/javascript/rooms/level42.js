@@ -5,7 +5,7 @@ import KI0 from "../appEtc/KI0.js";
 import KI3 from "../appEtc/KI3.js";
 import ProtectBase from "../objects/bases/ProtectBase.js";
 
-export default class level42 extends LevelRoom {
+export default class Level42 extends LevelRoom {
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
 
