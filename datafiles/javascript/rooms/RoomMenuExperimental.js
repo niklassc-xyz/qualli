@@ -3,25 +3,25 @@ import SimBubbleEmitter from "../objects/SimBubble/SimBubbleEmitter.js";
 import Button from "../parapluie/objects/util/Button.js";
 import LevelButton from "../objects/LevelButton.js";
 import MenuOverview from "./MenuOverview.js";
-import level24 from "./level24.js";
-import level25 from "./level25.js";
-import level27 from "./level27.js";
-import level28 from "./level28.js";
-import level29 from "./level29.js";
-import level30 from "./level30.js";
-import level31 from "./level31.js";
-import level32 from "./level32.js";
-import level33 from "./level33.js";
-import level34 from "./level34.js";
-import level35 from "./level35.js";
-import level36 from "./level36.js";
-import level37 from "./level37.js";
-import level38 from "./level38.js";
-import level39 from "./level39.js";
-import level40 from "./level40.js";
-import level41 from "./level41.js";
-import level42 from "./level42.js";
-import levelTest from "./levelTest.js";
+import Level24 from "./Level24.js";
+import Level25 from "./Level25.js";
+import Level27 from "./Level27.js";
+import Level28 from "./Level28.js";
+import Level29 from "./Level29.js";
+import Level30 from "./Level30.js";
+import Level31 from "./Level31.js";
+import Level32 from "./Level32.js";
+import Level33 from "./Level33.js";
+import Level34 from "./Level34.js";
+import Level35 from "./Level35.js";
+import Level36 from "./Level36.js";
+import Level37 from "./Level37.js";
+import Level38 from "./Level38.js";
+import Level39 from "./Level39.js";
+import Level40 from "./Level40.js";
+import Level41 from "./Level41.js";
+import Level42 from "./Level42.js";
+import LevelTest from "./LevelTest.js";
 
 export default class RoomMenuExperimental extends Room {
 	constructor(g, returnRoom = undefined) {
@@ -38,25 +38,25 @@ export default class RoomMenuExperimental extends Room {
 		let buttonMargin = 16;
 
 		let levels = [
-			levelTest,
-			level24,
-			level25,
-			level27,
-			level28,
-			level29,
-			level30,
-			level31,
-			level32,
-			level33,
-			level34,
-			level35,
-			level36,
-			level37,
-			level38,
-			level39,
-			level40,
-			level41,
-			level42,
+			LevelTest,
+			Level24,
+			Level25,
+			Level27,
+			Level28,
+			Level29,
+			Level30,
+			Level31,
+			Level32,
+			Level33,
+			Level34,
+			Level35,
+			Level36,
+			Level37,
+			Level38,
+			Level39,
+			Level40,
+			Level41,
+			Level42,
 		];
 
 		let itemsInRow = 4;

@@ -3,22 +3,22 @@ import SimBubbleEmitter from "../objects/SimBubble/SimBubbleEmitter.js";
 import Button from "../parapluie/objects/util/Button.js";
 import LevelButton from "../objects/LevelButton.js";
 import MenuOverview from "./MenuOverview.js";
-import level0 from "./level0.js";
-import level1 from "./level1.js";
-import level2 from "./level2.js";
-import level3 from "./level3.js";
-import level4 from "./level4.js";
-import level5 from "./level5.js";
-import level6 from "./level6.js";
-import level7 from "./level7.js";
-import level8 from "./level8.js";
-import level9 from "./level9.js";
-import level10 from "./level10.js";
-import level11 from "./level11.js";
-import level20 from "./level20.js";
-import level21 from "./level21.js";
-import level22 from "./level22.js";
-import level23 from "./level23.js";
+import Level0 from "./Level0.js";
+import Level1 from "./Level1.js";
+import Level2 from "./Level2.js";
+import Level3 from "./Level3.js";
+import Level4 from "./Level4.js";
+import Level5 from "./Level5.js";
+import Level6 from "./Level6.js";
+import Level7 from "./Level7.js";
+import Level8 from "./Level8.js";
+import Level9 from "./Level9.js";
+import Level10 from "./Level10.js";
+import Level11 from "./Level11.js";
+import Level20 from "./Level20.js";
+import Level21 from "./Level21.js";
+import Level22 from "./Level22.js";
+import Level23 from "./Level23.js";
 
 export default class RoomMenuMain extends Room {
 	constructor(g, returnRoom = undefined) {
@@ -28,22 +28,22 @@ export default class RoomMenuMain extends Room {
 
 		this.n_step = 0;
 
-		let levels = [level0,
-                     level1,
-                     level2,
-                     level3,
-                     level4,
-                     level5,
-                     level6,
-                     level7,
-                     level8,
-                     level9,
-                     level10,
-                     level11,
-                     level20,
-                     level21,
-                     level22,
-                     level23];
+		let levels = [Level0,
+                     Level1,
+                     Level2,
+                     Level3,
+                     Level4,
+                     Level5,
+                     Level6,
+                     Level7,
+                     Level8,
+                     Level9,
+                     Level10,
+                     Level11,
+                     Level20,
+                     Level21,
+                     Level22,
+                     Level23];
 
 		this.addObject(new Button(this.g, "←", 42, g.roomHeight - 128, 90, 90, () => { g.gotoRoom(MenuOverview); } )).setFontSize(24) ;
 
