@@ -26,8 +26,6 @@ export default class RoomMenuMain extends Room {
 
 		this.addObject(new SimBubbleEmitter(this.g, [120, 255, 120]));
 
-		this.n_step = 0;
-
 		let levels = [Level0,
                      Level1,
                      Level2,

@@ -15,8 +15,6 @@ export default class RoomMenuAdvanced extends Room {
 
 		this.addObject(new SimBubbleEmitter(g, [255, 120, 120]));
 
-		this.n_step = 0; // TODO replace with stepCount
-
 		this.addObject(new Button(g, "←", 42, g.roomHeight - 128, 90, 90, () => { g.gotoRoom(MenuOverview); } )).setFontSize(24) ;
 
 		let buttonWidth = 128;
