@@ -5,8 +5,6 @@ import Base from "../../objects/bases/Base.js";
 import BaseManager from "../../objects/bases/BaseManager.js";
 
 
-// TODO Import these in the individual level rooms only when needed
-
 // Abstract Class LevelRoom
 // All levels should extend from this
 
