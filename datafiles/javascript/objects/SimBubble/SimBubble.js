@@ -1,5 +1,5 @@
 import SpriteEntity from "../../parapluie/objects/SpriteEntity.js";
-import LevelRoom from "../../rooms/LevelRoom.js";
+import LevelRoom from "../../rooms/levels/Level.js";
 import * as graphics from "../../parapluie/functions/graphics.js";
 import * as collision from "../../parapluie/functions/collision.js";
 

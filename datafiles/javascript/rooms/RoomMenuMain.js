@@ -63,20 +63,29 @@ export default class RoomMenuMain extends Room {
 
 		let columnHeight = ((itemsinColumn-1) * buttonMargin + itemsinColumn * buttonHeight);
 		let marginTop = (g.roomHeight - columnHeight) / 2;
+		let prevWon = -1;
 
-		for(let i = 0; i < itemsinColumn; i++)
-			for(let j = 0; j < itemsInRow && i*itemsInRow + j < levels.length; j++) {
-				this.addObject(new LevelButton(
+		for (let i = 0; i < itemsinColumn; i++)
+			for (let j = 0; j < itemsInRow && i*itemsInRow + j < levels.length; j++) {
+				const iLvl = i*itemsInRow + j;
+				let locked = true;
+				if (iLvl === 0 || prevWon > 0)
+					locked = false;
+
+				const newButton = this.addObject(new LevelButton(
 					this.g,
-					i*itemsInRow + j,
+					iLvl,
 					marginLeft + j * (buttonWidth + buttonMargin),
 					marginTop + i * (buttonHeight + buttonMargin),
 					buttonWidth,
 					buttonHeight,
-					levels[i*itemsInRow + j],
-				)).setFontSize(36);
-			}
+					levels[iLvl],
+					locked,
+				));
 
+				newButton.setFontSize(36);
+				prevWon = newButton.won;
+			}
 	}
 
 	draw() {
