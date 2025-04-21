@@ -11,6 +11,6 @@ export default class LevelMenuAdvanced extends LevelMenu {
 		const levels = [Level12, Level13, Level14, Level15, Level16];
 		const simBubbleBaseColor = [255, 120, 120];
 
-		super(g, title, levels, simBubbleBaseColor, returnRoom = undefined);
+		super(g, title, levels, simBubbleBaseColor, returnRoom);
 	}
 }

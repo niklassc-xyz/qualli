@@ -3,14 +3,14 @@ import SimBubbleEmitter from "../../objects/SimBubble/SimBubbleEmitter.js";
 import Button from "../../parapluie/objects/util/Button.js";
 import LevelButton from "../../objects/LevelButton.js";
 
-export default class RoomMenuMain extends Room {
+export default class LevelMenu extends Room {
 	constructor(g, title, levels, simBubbleBaseColor=undefined, returnRoom=undefined) {
 		super(g, returnRoom);
 		this.title = title;
 		// this.levels = levels;
 
 		this.addObject(new SimBubbleEmitter(this.g, simBubbleBaseColor));
-		this.addObject(new Button(this.g, "←", 42, g.roomHeight - 128, 90, 90, () => { this.return(); console.log("TEST"); } )).setFontSize(24);
+		this.addObject(new Button(this.g, "←", 42, g.roomHeight - 128, 90, 90, () => { this.return(); } )).setFontSize(24);
 
 		let buttonWidth = 128;
 		let buttonHeight = 128;

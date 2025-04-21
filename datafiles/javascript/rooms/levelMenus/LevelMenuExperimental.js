@@ -45,6 +45,6 @@ export default class LevelMenuExperimental extends LevelMenu {
 		];
 		const simBubbleBaseColor = [255, 120, 210];
 
-		super(g, title, levels, simBubbleBaseColor, returnRoom = undefined);
+		super(g, title, levels, simBubbleBaseColor, returnRoom);
 	}
 }
