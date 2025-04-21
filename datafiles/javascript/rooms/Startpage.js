@@ -12,14 +12,16 @@ export default class Startpage extends Room {
 
 		this.n_step = 0; // TODO is this needed → use stepCount
 
-		var buttonWidth = 256;
-		var buttonHeight = 192;
-		var buttonMargin = 128;
 
-		this.addObject(new Button(this.g, "Start", g.roomWidth / 2 - buttonMargin - (3/2) * buttonWidth, g.roomHeight / 2 - buttonHeight / 2, buttonWidth, buttonHeight, () => { g.gotoRoom(MenuOverview) }  )).borderColour = "yellow";
+		const heightPercentage = 3/5
+		const buttonWidth = 300;
+		const buttonHeight = 230;
+		const buttonMargin = 100;
+
+		this.addObject(new Button(this.g, "Start", g.roomWidth / 2 - buttonMargin - (3/2) * buttonWidth, heightPercentage*g.roomHeight - buttonHeight / 2, buttonWidth, buttonHeight, () => { g.gotoRoom(MenuOverview) }  )).borderColour = "yellow";
 		// TODO implement instructions
-		this.addObject(new Button(this.g, "Guide", g.roomWidth / 2 - buttonWidth / 2, g.roomHeight / 2 - buttonHeight / 2, buttonWidth, buttonHeight, () => alert("TODO") ));
-		this.addObject(new Button(this.g, "Settings", g.roomWidth / 2 + buttonMargin + buttonWidth / 2, g.roomHeight / 2 - buttonHeight / 2, buttonWidth, buttonHeight, this.g.settings.show));
+		this.addObject(new Button(this.g, "Guide", g.roomWidth / 2 - buttonWidth / 2, heightPercentage*g.roomHeight - buttonHeight / 2, buttonWidth, buttonHeight, () => alert("TODO") ));
+		this.addObject(new Button(this.g, "Settings", g.roomWidth / 2 + buttonMargin + buttonWidth / 2, heightPercentage*g.roomHeight - buttonHeight / 2, buttonWidth, buttonHeight, this.g.settings.show));
 
 		this.addObject(new Sunshine(this.g, g.roomWidth / 2, -400));
 	}
@@ -29,7 +31,7 @@ export default class Startpage extends Room {
 
 		// Title
 		this.g.painter.ctx.strokeStyle = "#ffffff";
-		this.g.painter.ctx.font = "175px fnt_Comforta_Light";
+		this.g.painter.ctx.font = "200px fnt_Comforta_Light";
 		this.g.painter.ctx.textAlign = "center";
 		this.g.painter.ctx.lineWidth = 8;
 		let fill = 0.9
