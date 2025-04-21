@@ -16,14 +16,24 @@ export default class SimBubbleEmitter extends GameEntity {
 		super.step();
 
 		if (Math.random() < this.p) {
+			this.generateBubble(false);
+		}
+	}
+
+	// Set to true to evenly distributed it over the screen, otherwise bubbles
+	// get created at the bottom, outside of the room
+	generateBubble(distributed=false) {
 			let sourceX = this.g.roomWidth/2;
 			let sourceWidth = this.g.roomWidth;
 			
-			let x = sourceX - sourceWidth + 2*Math.random()*sourceWidth;
-
 			let r = Math.random() * 64 + 8;
-			let y = this.g.roomHeight + r;
 
+			let x = sourceX - sourceWidth + 2*Math.random()*sourceWidth;
+			let y = this.g.roomHeight + r;
+			if (distributed) {
+				x = Math.random() * this.g.roomWidth;
+				y = Math.random() * this.g.roomHeight;
+			}
 
 			let base = new Color(this.basecolor[0], this.basecolor[1], this.basecolor[2]);
 			let black = new Color(0, 0, 50);
@@ -37,7 +47,6 @@ export default class SimBubbleEmitter extends GameEntity {
 
 			let carr = [c[ci].r, c[ci].g, c[ci].b];
 
-			this.g.addObject(new SimBubble(this.g, x, y, r, carr));
-		}
+			return this.g.addObject(new SimBubble(this.g, x, y, r, carr));
 	}
 }

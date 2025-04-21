@@ -8,8 +8,7 @@ export default class Startpage extends Room {
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
 
-
-		this.addObject(new SimBubbleEmitter(this.g));
+		const simBubbleEmitter = this.addObject(new SimBubbleEmitter(this.g, [120, 210, 255]));
 
 		this.n_step = 0; // TODO is this needed → use stepCount
 
@@ -23,6 +22,12 @@ export default class Startpage extends Room {
 		this.addObject(new Button(this.g, "Settings", g.roomWidth / 2 + buttonMargin + buttonWidth / 2, g.roomHeight / 2 - buttonHeight / 2, buttonWidth, buttonHeight, this.g.settings.show));
 
 		this.addObject(new Sunshine(this.g, g.roomWidth / 2, -400));
+
+		// Create a few SimBubbles upfront
+		for (let i = 0; i < 15; i++) {
+			let bubble = simBubbleEmitter.generateBubble(true);
+			bubble.setVspeed(-2);
+		}
 	}
 
 	draw() {
