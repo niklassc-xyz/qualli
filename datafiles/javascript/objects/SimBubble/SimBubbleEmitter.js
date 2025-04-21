@@ -10,6 +10,16 @@ export default class SimBubbleEmitter extends GameEntity {
 
 		this.basecolor = basecolor;
 		this.p = p;
+
+		// Check if any simBubbles exist, if not generate some upfront
+		// This should take effect when the game is entered or when returning
+		// from a level, but not when switching between rooms that both have emitters
+		if (!this.checkForSimBubbles()) {
+			for (let i = 0; i < 15; i++) {
+				let bubble = this.generateBubble(true);
+				bubble.setVspeed(-2);
+			}
+		}
 	}
 
 	step() {
@@ -19,6 +29,16 @@ export default class SimBubbleEmitter extends GameEntity {
 			this.generateBubble(false);
 		}
 	}
+
+	checkForSimBubbles() {
+		for (let i = 0; i < this.g.entities.length; i++) {
+			if (this.g.entities[i] instanceof SimBubble)
+				return true;
+		}
+
+		return false;
+	}
+
 
 	// Set to true to evenly distributed it over the screen, otherwise bubbles
 	// get created at the bottom, outside of the room
