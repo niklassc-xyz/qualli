@@ -1,11 +1,10 @@
-import Base from "./bases/Base.js";
-import Colors from "../appEtc/color/Colors.js";
-import LinkedList from "../parapluie/LinkedList/LinkedList.js";
-import Jelly from "./Jelly.js";
-import Color from "../appEtc/color/Color.js";
+import Base from "./Base.js";
+import Colors from "../../appEtc/color/Colors.js";
+import LinkedList from "../../parapluie/LinkedList/LinkedList.js";
+import Jelly from "../Jelly.js";
+import Color from "../../appEtc/color/Color.js";
 
 
-// TODO move to bases
 export default class Bubble extends Base {
 	constructor(g, x, y, team=0, size=1, units=25) {
 		let width = 80 * (1 + (size / 3));

@@ -1,5 +1,5 @@
 import AiModule from "./AiModule.js";
-import BubbleTemp from "../../objects/BubbleTemp.js";
+import BubbleTemp from "../../objects/bases/BubbleTemp/BubbleTemp.js";
 
 // When ttl of bubble is soon over, this module evacuates to a random own
 // bubble if available. Otherwise to random other bubble.

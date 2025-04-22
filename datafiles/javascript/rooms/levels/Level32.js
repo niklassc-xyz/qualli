@@ -1,6 +1,6 @@
 import Level from "./Level.js";
-import Bubble from "../../objects/Bubble.js";
-import BubbleTemp from "../../objects/BubbleTemp.js";
+import Bubble from "../../objects/bases/Bubble.js";
+import BubbleTemp from "../../objects/bases/BubbleTemp/BubbleTemp.js";
 import KI2 from "../../appEtc/KI2.js";
 
 export default class Level32 extends Level {

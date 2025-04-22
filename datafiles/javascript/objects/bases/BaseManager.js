@@ -1,5 +1,5 @@
 import DimensionEntity from "../../parapluie/objects/DimensionEntity.js";
-import Bubble from "../Bubble.js";
+import Bubble from "./Bubble.js";
 import * as collision from "../../parapluie/functions/collision.js";
 
 export default class BaseManager extends DimensionEntity {

@@ -1,6 +1,6 @@
 import Level from "./Level.js";
 import KI0 from "../../appEtc/KI0.js";
-import Bubble from "../../objects/Bubble.js";
+import Bubble from "../../objects/bases/Bubble.js";
 
 
 export default class Level0 extends Level {

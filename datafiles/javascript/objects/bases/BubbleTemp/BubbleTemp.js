@@ -1,7 +1,7 @@
-import Bubble from "./Bubble.js";
+import Bubble from "../Bubble.js";
 import BubbleSeed from "./BubbleSeed.js";
-import Colors from "../appEtc/color/Colors.js";
-import FloatSign from "./FloatSign.js";
+import Colors from "../../../appEtc/color/Color.js";
+import FloatSign from "../../FloatSign.js";
 
 export default class BubbleTemp extends Bubble {
 	constructor(g, x, y, team, size, units, ttl = undefined) {
