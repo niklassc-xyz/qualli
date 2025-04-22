@@ -56,6 +56,24 @@ export default class Level extends Room {
 		super.step();
 	}
 
+	draw() {
+		super.draw();
+
+
+		if (this.status === "won") {
+			this.g.painter.setFillStyle("#efaf00");
+			this.g.painter.setStrokeStyle("black");
+			this.g.painter.setLineWidth(1);
+			this.g.painter.setFont("30px fnt_Comforta_Bold");
+
+			const text = "Won";
+			const textHeight = 20;
+			console.log("Test");
+			this.g.painter.fillText("Won 👑", this.g.roomWidth/2, this.g.roomHeight - textHeight)
+			this.g.painter.strokeText("Won 👑", this.g.roomWidth/2, this.g.roomHeight - textHeight)
+		}
+	}
+
 	surrender() {
 		if (!confirm("Do you really want to give up?")) {
 			return;
