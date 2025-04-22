@@ -1,8 +1,8 @@
 import Level from "./Level.js";
 import KI0 from "../../appEtc/KI0.js";
 import ModFleeTemp from "../../appEtc/aiModules/ModFleeTemp.js";
-import Bubble from "../../objects/Bubble.js";
-import BubbleTemp from "../../objects/BubbleTemp.js";
+import Bubble from "../../objects/bases/Bubble.js";
+import BubbleTemp from "../../objects/bases/BubbleTemp/BubbleTemp.js";
 import Boss from "../../objects/bases/Boss.js";
 
 

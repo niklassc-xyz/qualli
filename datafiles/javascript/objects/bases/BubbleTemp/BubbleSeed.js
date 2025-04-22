@@ -1,4 +1,4 @@
-import PhysicalEntity from "../parapluie/objects/PhysicalEntity.js";
+import PhysicalEntity from "../../../parapluie/objects/PhysicalEntity.js";
 
 // Creates a bubble
 export default class BubbleSeed extends PhysicalEntity {

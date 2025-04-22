@@ -1,5 +1,5 @@
 import Level from "./Level.js";
-import BubbleTemp from "../../objects/BubbleTemp.js";
+import BubbleTemp from "../../objects/bases/BubbleTemp/BubbleTemp.js";
 import KI0 from "../../appEtc/KI0.js";
 
 export default class Level28 extends Level {

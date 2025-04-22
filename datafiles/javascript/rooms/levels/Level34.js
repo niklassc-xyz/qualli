@@ -1,5 +1,5 @@
 import Level from "./Level.js";
-import BubbleTemp from "../../objects/BubbleTemp.js";
+import BubbleTemp from "../../objects/bases/BubbleTemp/BubbleTemp.js";
 import KI1 from "../../appEtc/KI1.js";
 import ModFleeTemp from "../../appEtc/aiModules/ModFleeTemp.js";
 

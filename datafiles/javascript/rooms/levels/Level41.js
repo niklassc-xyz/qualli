@@ -1,5 +1,5 @@
 import Level from "./Level.js";
-import Bubble from "../../objects/Bubble.js";
+import Bubble from "../../objects/bases/Bubble.js";
 import ModDefend from "../../appEtc/aiModules/ModDefend.js";
 import KI0 from "../../appEtc/KI0.js";
 import KI3 from "../../appEtc/KI3.js";
