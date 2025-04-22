@@ -1,4 +1,5 @@
 import DimensionEntity from "../../parapluie/objects/DimensionEntity.js";
+import Bubble from "../Bubble.js";
 import * as collision from "../../parapluie/functions/collision.js";
 
 export default class BaseManager extends DimensionEntity {
@@ -34,6 +35,25 @@ export default class BaseManager extends DimensionEntity {
 
 	getBases() {
 		return this._bases;
+	}
+
+	getBubbles() {
+		let bubbles = [];
+		for (let i = 0; i < this._bases.length; i1++) {
+			if (this._bases[i] instanceof Bubble)
+				bubbles.push(this._bases[i]);
+		}
+		return this.bubbles;
+	}
+
+	getBubblesByTeam(team) {
+		let bubbles = [];
+		for(let i = 0; i < this._bases.length; i++) {
+			if(this._bases[i] instanceof Bubble && this._bases[i].team === team) {
+				bubbles[bubbles.length] = this._bases[i];
+			}
+		}
+		return bubbles;
 	}
 
 	// Returns first base which collides with (x|y), undefined if no base at this point

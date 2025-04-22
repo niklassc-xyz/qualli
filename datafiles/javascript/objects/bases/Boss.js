@@ -4,9 +4,9 @@ import Jelly from "../Jelly.js";
 
 export default class Boss extends Base {
 	constructor(g, x, y, team=0) {
-		const width = 64;
-		const height = 41;
-		const sprite = "datafiles/sprites/RaketeBlue.png";
+		const width = 100;
+		const height = 50;
+		const sprite = "datafiles/sprites/squid.svg";
 		super(g, x, y, width, height, sprite, team);
 
 		this.health = 100;
