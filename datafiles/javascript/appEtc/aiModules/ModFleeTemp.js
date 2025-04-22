@@ -10,7 +10,7 @@ export default class ModFleeTemp extends AiModule {
 	}
 
 	modStep(ai) {
-		let bases = ai.getOwnBases();
+		let bases = ai.getOwnBubbles();
 
 		// Check own bases if they're being destroyed soon
 		for (let i = 0; i < bases.length; i++) {
@@ -20,7 +20,7 @@ export default class ModFleeTemp extends AiModule {
 					let n = 1;
 					// Flee to random owned base
 					for (let i = 0; i < n; i++) {
-						let target = ai.getRandomBaseOtherThan(bubble);
+						let target = ai.getRandomBubbleOtherThan(bubble);
 						// Use any random bubble
 						if (target === undefined) {
 							const bases = this.g.room.baseManager.getBases();

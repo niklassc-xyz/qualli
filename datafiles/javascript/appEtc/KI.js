@@ -77,6 +77,10 @@ export default class KI extends GameEntity {
 		return this.g.room.baseManager.getBasesByTeam(this.team);
 	}
 
+	getOwnBubbles() {
+		return this.g.room.baseManager.getBubblesByTeam(this.team);
+	}
+
 	getForeignBases() {
 		let allBases = this.g.room.baseManager.getBases();
 		let bases = [];
@@ -89,19 +93,19 @@ export default class KI extends GameEntity {
 		return bases;
 	}
 
-	// Returns a random own base that is not `excludeBase`
-	getRandomBaseOtherThan(excludeBase) {
-		let bases = this.getOwnBases();
+	// Returns a random own bubbles that is not `excludeBubble`
+	getRandomBubbleOtherThan(excludeBubble) {
+		let bubbles = this.getOwnBubbles();
 
-		if (bases.length < 2) {
+		if (bubbles.length < 2) {
 			return undefined;
 		}
 
 		while (true) {
-			let ri = Math.floor(Math.random() * bases.length);
-			let randomBase = bases[ri];
+			let ri = Math.floor(Math.random() * bubbles.length);
+			let randomBase = bubbles[ri];
 
-			if (randomBase !== excludeBase) {
+			if (randomBase !== excludeBubble) {
 				return randomBase;
 			}
 		}
