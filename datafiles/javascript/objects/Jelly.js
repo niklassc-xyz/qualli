@@ -92,16 +92,17 @@ export default class Jelly extends SpriteEntity {
 				let positiveTurnDistance = math.mMod(zDir - this.parentJelly.direction, 360); // clockwise
 				let negativeTurnDistance = math.mMod(this.parentJelly.direction - zDir, 360); // anticlockwise
 
-				if(positiveTurnDistance <= turnSpeed || negativeTurnDistance <= turnSpeed)
+				if (positiveTurnDistance <= turnSpeed || negativeTurnDistance <= turnSpeed) {
 					this.parentJelly.setDirection(zDir);
-				else
-					if(positiveTurnDistance < negativeTurnDistance) {
+				} else {
+					if (positiveTurnDistance < negativeTurnDistance) {
 						this.parentJelly.setDirection(this.parentJelly.direction + turnSpeed);
 					} else {
 						this.parentJelly.setDirection(this.parentJelly.direction - turnSpeed);
 					}
+				}
 
-				if(Math.abs(zDir - this.parentJelly.direction) <= turnSpeed && Math.abs(this.parentJelly.speed - this.targetSpeed) <= acceleration && this.parentJelly.width === this.parentJelly.widthShould) {
+				if (Math.abs(zDir - this.parentJelly.direction) <= turnSpeed && Math.abs(this.parentJelly.speed - this.targetSpeed) <= acceleration && this.parentJelly.width === this.parentJelly.widthShould) {
 					// TODO is this deleted when parentJelly is deleted
 					this.parentJelly.setSpeed(this.targetSpeed);
 					this.parentJelly.setDirection(zDir);
