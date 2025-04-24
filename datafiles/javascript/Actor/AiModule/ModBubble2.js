@@ -28,7 +28,7 @@ export default class ModBubble2 extends AiModule {
 
 				let feasibleTargets = this.getForeignBubblesWeakerThan(attackCapacity);
 				if (feasibleTargets.length === 0) {
-					this.setTimer(100 + Math.round(Math.random() * 100));
+					this.setTimer("mainAction", 100 + Math.round(Math.random() * 100));
 					return;
 				}
 
@@ -51,7 +51,7 @@ export default class ModBubble2 extends AiModule {
 					ownBubbles[i].action(bestTarget);
 				}
 
-				this.setTimer(50 + Math.round(Math.random() * 100));
+				this.setTimer("mainAction", 50 + Math.round(Math.random() * 100));
 				return;
 			}
 		}
