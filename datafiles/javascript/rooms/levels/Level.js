@@ -3,6 +3,7 @@ import Button from "../../parapluie/objects/util/Button.js";
 import Jelly from "../../objects/Jelly.js";
 import Base from "../../objects/bases/Base.js";
 import BaseManager from "../../objects/bases/BaseManager.js";
+import Actor from "../../Actor/Actor.js";
 
 
 // Abstract Class LevelRoom
@@ -18,7 +19,8 @@ export default class Level extends Room {
 			throw new Error("Abstract classes can't be instantiated.");
 		}
 
-		this.ais = [];
+		this.ais = []; // TODO remove
+		this._actors = [];
 
 
 		this.status = "running"; // running, lost, won
@@ -39,6 +41,8 @@ export default class Level extends Room {
 		pauseButton.setFontSize(16);
 
 		this.baseManager = this.addObject(new BaseManager(g));
+
+		this.addActor(new Actor(this.g, 1));
 	}
 
 	step() {
@@ -59,7 +63,13 @@ export default class Level extends Room {
 	draw() {
 		super.draw();
 
+		// Draw icons of actors
+		for (let i = 0; i < this._actors.length; i++) {
+			const x = (32 + i*48);
+			this._actors[i].drawIcon(x, 32);
+		}
 
+		// When level ended, show lost/won
 		if (this.status === "won") {
 			this.g.painter.setFillStyle("#efaf00");
 			this.g.painter.setStrokeStyle("black");
@@ -68,7 +78,6 @@ export default class Level extends Room {
 
 			const text = "Won";
 			const textHeight = 20;
-			console.log("Test");
 			this.g.painter.fillText("Won 👑", this.g.roomWidth/2, this.g.roomHeight - textHeight)
 			this.g.painter.strokeText("Won 👑", this.g.roomWidth/2, this.g.roomHeight - textHeight)
 		} else if (this.status === "lost") {
@@ -79,7 +88,6 @@ export default class Level extends Room {
 
 			const text = "Won";
 			const textHeight = 20;
-			console.log("Test");
 			this.g.painter.fillText("Lost 🏳", this.g.roomWidth/2, this.g.roomHeight - textHeight)
 			this.g.painter.strokeText("Lost 🏳", this.g.roomWidth/2, this.g.roomHeight - textHeight)
 
@@ -142,5 +150,10 @@ export default class Level extends Room {
 
 	unregisterBase(base) {
 		return this.baseManager.unregisterBase(base);
+	}
+
+	addActor(actor) {
+		this._actors.push(actor);
+		return this.addObject(actor);
 	}
 }

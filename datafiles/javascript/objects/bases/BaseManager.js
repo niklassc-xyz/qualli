@@ -39,11 +39,11 @@ export default class BaseManager extends DimensionEntity {
 
 	getBubbles() {
 		let bubbles = [];
-		for (let i = 0; i < this._bases.length; i1++) {
+		for (let i = 0; i < this._bases.length; i++) {
 			if (this._bases[i] instanceof Bubble)
 				bubbles.push(this._bases[i]);
 		}
-		return this.bubbles;
+		return bubbles;
 	}
 
 	getBubblesByTeam(team) {
@@ -92,7 +92,7 @@ export default class BaseManager extends DimensionEntity {
 				if (hoveredBase === this._selected) {
 					this._selected = hoveredBase;
 				} else {
-					this._selected.attack(hoveredBase);
+					this._selected.action(hoveredBase);
 					this._selected = undefined;
 				}
 
