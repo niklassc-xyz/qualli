@@ -85,20 +85,20 @@ export default class Level extends Room {
 			this.g.painter.setLineWidth(1);
 			this.g.painter.setFont("30px fnt_Comforta_Bold");
 
-			const text = "Won";
+			const text = "Won 👑";
 			const textHeight = 20;
-			this.g.painter.fillText("Won 👑", this.g.roomWidth/2, this.g.roomHeight - textHeight)
-			this.g.painter.strokeText("Won 👑", this.g.roomWidth/2, this.g.roomHeight - textHeight)
+			this.g.painter.fillText(text, this.g.roomWidth/2, this.g.roomHeight - textHeight)
+			this.g.painter.strokeText(text, this.g.roomWidth/2, this.g.roomHeight - textHeight)
 		} else if (this.status === "lost") {
 			this.g.painter.setFillStyle("#f4aaff");
 			this.g.painter.setStrokeStyle("black");
 			this.g.painter.setLineWidth(1);
 			this.g.painter.setFont("30px fnt_Comforta_Bold");
 
-			const text = "Won";
+			const text = "Lost 🏳";
 			const textHeight = 20;
-			this.g.painter.fillText("Lost 🏳", this.g.roomWidth/2, this.g.roomHeight - textHeight)
-			this.g.painter.strokeText("Lost 🏳", this.g.roomWidth/2, this.g.roomHeight - textHeight)
+			this.g.painter.fillText(text, this.g.roomWidth/2, this.g.roomHeight - textHeight)
+			this.g.painter.strokeText(text, this.g.roomWidth/2, this.g.roomHeight - textHeight)
 
 		}
 	}
