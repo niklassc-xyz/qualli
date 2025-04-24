@@ -42,7 +42,6 @@ export default class Level extends Room {
 	step() {
 		if (this.status == "running") {
 			const winner = this.checkGameOver();
-			console.log(winner);
 			if (winner !== false) {
 				this.g.showEndgame(true)
 				if (winner.team === 1) {
