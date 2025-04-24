@@ -10,10 +10,13 @@ export default class AiModule {
 			this._timers.set(name, timeLeft-1);
 			if (this._timers.get(name) <= 0) {
 				this._timers.delete(name);
-				console.log("EXEC");
 				this.execTimer(name);
 			}
 		}
+	}
+
+	setTimer(name, steps) {
+		this._timers.set(name, steps);
 	}
 
 	// Alarams should return, not break. Subclasses should call this **after**
@@ -32,7 +35,6 @@ export default class AiModule {
 
 	getOwnStrongestBubble() {
 		let bubbles = this.g.room.baseManager.getBubblesByTeam(this.team);
-		console.log(bubbles);
 		if(bubbles.length === 0) return undefined;
 		let strongestIndex = 0;
 		for (let i = 0; i < bubbles.length; i++) {
@@ -48,13 +50,22 @@ export default class AiModule {
 	}
 
 	getForeignBubbles() {
-		let allBases = this.g.room.baseManager.getBubbles();
-		let bases = [];
-		for (let i = 0; i < allBases.length; i++) {
-			if (allBases[i].team !== this.team) {
-				bases.push(allBases[i]);
-			}
+		let allBubbles = this.g.room.baseManager.getBubbles();
+		let bubbles = [];
+		for (let i = 0; i < allBubbles.length; i++) {
+			if (allBubbles[i].team !== this.team)
+				bubbles.push(allBubbles[i]);
 		}
-		return bases;
+		return bubbles;
+	}
+
+	getForeignBubblesWeakerThan(amount) {
+		const foreignBubbles = this.getForeignBubbles();
+		let bubbles = [];
+		for (let i = 0; i < foreignBubbles.length; i++) {
+			if (foreignBubbles[i].units < amount)
+				bubbles.push(foreignBubbles[i]);
+		}
+		return bubbles;
 	}
 }

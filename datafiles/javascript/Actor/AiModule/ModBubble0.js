@@ -7,34 +7,29 @@ export default class ModBubble0 extends AiModule {
 	constructor(g) {
 		super(g);
 
-		this._timers.set("mainAction", 20);
+		this.setTimer("mainAction", 20);
 	}
 
 	execTimer(name) {
 		switch (name) {
 			case "mainAction":
-				console.log("mainAction");
-
 				const feasibleTargets = this.getFeasibleTargets();
 				if (feasibleTargets.length === 0) {
-					console.log("Support");
 					// No feasible targets → send units from random bubble to strongest
 					const ownBases = this.getOwnBubbles();
 					var bubbleStart = ownBases[Math.floor(Math.random() * ownBases.length)];
 					var bubbleTarget = this.getOwnStrongestBubble();
 				} else {
-					console.log("Attack");
 					// A Bubble can be captured → attack
 					var bubbleStart = this.getOwnStrongestBubble();
 					var bubbleTarget = feasibleTargets[Math.floor(Math.random() * feasibleTargets.length)];
 				}
 
-				console.log(bubbleStart, bubbleTarget);
 				if (bubbleStart !== bubbleTarget)
 					bubbleStart.action(bubbleTarget);
 					// this.action(bubbleStart, bubbleTarget);
 
-				this._timers.set("mainAction", 200 + Math.round(Math.random() * 100));
+				this.setTimer("mainAction", 200 + Math.round(Math.random() * 100));
 				return;
 		}
 
