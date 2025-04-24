@@ -1,4 +1,5 @@
 import Level from "./Level.js";
+import Actor from "../../Actor/Actor.js";
 import BubbleTemp from "../../objects/bases/BubbleTemp/BubbleTemp.js";
 import KI0 from "../../appEtc/KI0.js";
 

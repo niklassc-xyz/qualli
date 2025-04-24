@@ -1,7 +1,7 @@
 import Room from "./../../parapluie/Room.js";
+import Actor from "../../Actor/Actor.js";
 import Button from "../../parapluie/objects/util/Button.js";
 import BaseManager from "../../objects/bases/BaseManager.js";
-import Actor from "../../Actor/Actor.js";
 
 
 // Abstract Class LevelRoom

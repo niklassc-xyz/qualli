@@ -1,4 +1,5 @@
 import Level from "./Level.js";
+import Actor from "../../Actor/Actor.js";
 import Bubble from "../../objects/bases/Bubble.js";
 import ModDefend from "../../appEtc/aiModules/ModDefend.js";
 import KI0 from "../../appEtc/KI0.js";
