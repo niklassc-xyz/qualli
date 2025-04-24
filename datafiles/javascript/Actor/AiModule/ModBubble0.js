@@ -3,7 +3,6 @@ import AiModule from "./AiModule.js";
 // Attacks with 50 % of the strongest bubble if possible, otherwise send units
 // to strongest bubble from random one
 export default class ModBubble0 extends AiModule {
-	actor; team; // Set by Actor when added
 	constructor(g) {
 		super(g);
 

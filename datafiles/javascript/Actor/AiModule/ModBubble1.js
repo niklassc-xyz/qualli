@@ -5,7 +5,6 @@ import AiModule from "./AiModule.js";
 // Best target is chosen among the feasible targets based on its size (positive)
 // and defending units (negative)
 export default class ModBubble1 extends AiModule {
-	actor; team; // Set by Actor when added
 	constructor(g) {
 		super(g);
 
@@ -63,6 +62,7 @@ export default class ModBubble1 extends AiModule {
 				}
 
 				// Chose best target based on size and units
+				// TODO optimize → size should be more important
 				let bestTarget;
 				let bestTargetValue = Number.MIN_VALUE;
 				for(let i = 0; i < feasibleTargets.length; i++) {

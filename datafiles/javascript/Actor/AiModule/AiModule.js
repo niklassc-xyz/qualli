@@ -1,4 +1,5 @@
 export default class AiModule {
+	actor; team; // Set by Actor when added
 	constructor(g) {
 		this.g = g;
 		// TimerName: steps left
