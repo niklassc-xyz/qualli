@@ -1,7 +1,5 @@
 import Room from "./../../parapluie/Room.js";
 import Button from "../../parapluie/objects/util/Button.js";
-import Jelly from "../../objects/Jelly.js";
-import Base from "../../objects/bases/Base.js";
 import BaseManager from "../../objects/bases/BaseManager.js";
 import Actor from "../../Actor/Actor.js";
 
@@ -19,13 +17,9 @@ export default class Level extends Room {
 			throw new Error("Abstract classes can't be instantiated.");
 		}
 
-		this.ais = []; // TODO remove
 		this._actors = [];
 
-
 		this.status = "running"; // running, lost, won
-		this.alarm = [];
-		this.alarm[0] = 10;
 
 		// Pause button
 		let pauseButton = this.addObject(new Button(
@@ -46,18 +40,34 @@ export default class Level extends Room {
 	}
 
 	step() {
-		// TODO alarm system
-		for(let i = 0; i < this.alarm.length; i++) {
-			if(this.alarm[i] === undefined)
-				continue;
-
-			if(this.alarm[i] > 0)
-				this.alarm[i]--;
-			else
-				this.alarmieren(i);
+		if (this.status == "running") {
+			const winner = this.checkGameOver();
+			console.log(winner);
+			if (winner !== false) {
+				this.g.showEndgame(true)
+				if (winner.team === 1) {
+					this.status = "won";
+					this.g.progressManager.updateLevelStats(this.constructor.name, true);
+				} else {
+					this.status = "lost";
+					this.g.progressManager.updateLevelStats(this.constructor.name, false);
+				}
+			}
 		}
+	}
 
-		super.step();
+	// Checks if game is over and returns winner, false otherwise
+	checkGameOver() {
+		let winner;
+		for (let i = 0; i < this._actors.length; i++) {
+			if (!this._actors[i].lost) {
+				if (typeof winner !== "undefined")
+					return false;
+				winner = this._actors[i];
+			}
+
+		}
+		return winner;
 	}
 
 	draw() {
@@ -109,37 +119,6 @@ export default class Level extends Room {
 		}
 
 		this.g.gotoRoom(this.constructor);
-		return true;
-	}
-
-	// TODO rename → timer
-	alarmieren(nr) {
-		switch(nr) {
-			case 0:
-				if(this.status == "running" && this.checkIfLost(1)) {
-					this.status = "lost";
-					this.g.showEndgame(false);
-					this.g.progressManager.updateLevelStats(this.g.room.constructor.name, false);
-				}
-				this.alarm[0] = 300;
-
-				break;
-
-			default:
-				console.log("Error: alarm has no function.");
-				break;
-		}
-	}
-
-	// Checks if team has already lost
-	checkIfLost(team) {
-		for(var i = 0; i < this.entities.length; i++) {
-			if(this.entities[i] instanceof Jelly || this.entities[i] instanceof Base) {
-				if(this.entities[i].team === team) {
-					return false;
-				}
-			}
-		}
 		return true;
 	}
 
