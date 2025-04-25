@@ -1,12 +1,10 @@
 import Level from "./Level.js";
 import Actor from "../../Actor/Actor.js";
-import KI0 from "../../appEtc/KI0.js";
 import ModFleeTemp from "../../appEtc/aiModules/ModFleeTemp.js";
 import Bubble from "../../objects/bases/Bubble.js";
 import BubbleTemp from "../../objects/bases/BubbleTemp/BubbleTemp.js";
 import Boss from "../../objects/bases/Boss.js";
 
-import Actor from "../../Actor/Actor.js";
 import ModBubble0 from "../../Actor/AiModule/ModBubble0.js";
 import ModBubble1 from "../../Actor/AiModule/ModBubble1.js";
 import ModBubble2 from "../../Actor/AiModule/ModBubble2.js";
@@ -30,8 +28,8 @@ export default class LevelTest extends Level {
 		this.addBase(new Boss(this.g, 100, 100, 2));
 
 		const ai0 = this.addActor(new Actor(this.g, 2));
-		// ai0.addModule(new ModBubble0(this.g));
+		ai0.addModule(new ModBubble0(this.g));
 		// ai0.addModule(new ModBubble1(this.g));
-		ai0.addModule(new ModBubble2(this.g));
+		// ai0.addModule(new ModBubble2(this.g));
 	}
 }

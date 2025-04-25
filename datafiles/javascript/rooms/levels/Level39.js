@@ -1,25 +1,28 @@
 import Level from "./Level.js";
 import Actor from "../../Actor/Actor.js";
 import Bubble from "../../objects/bases/Bubble.js";
-import KI0 from "../../appEtc/KI0.js";
-import KI1 from "../../appEtc/KI1.js";
-import KI2 from "../../appEtc/KI2.js";
-import ModDefend from "../../appEtc/aiModules/ModDefend.js";
+import ModBubble0 from "../../Actor/AiModule/ModBubble0.js";
+import ModBubble1 from "../../Actor/AiModule/ModBubble1.js";
+import ModBubble2 from "../../Actor/AiModule/ModBubble2.js";
+import ModDefendBubble from "../../Actor/AiModule/ModDefendBubble.js";
+
 
 export default class Level39 extends Level {
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
 
-		let ai0 = this.addObject(new KI0(this.g, 2));
-		let ai1 = this.addObject(new KI1(this.g, 3));
-		let ai2 = this.addObject(new KI2(this.g, 4));
+		const ai0 = this.addActor(new Actor(this.g, 2));
+		ai0.addModule(new ModBubble0(this.g));
+		ai0.addModule(new ModDefendBubble(this.g));
 
-		let mod0 = new ModDefend(g);
-		ai0.modules.push(mod0);
-		let mod1 = new ModDefend(g);
-		ai1.modules.push(mod1);
-		let mod2 = new ModDefend(g);
-		ai2.modules.push(mod2);
+		const ai1 = this.addActor(new Actor(this.g, 3));
+		ai1.addModule(new ModBubble1(this.g));
+		ai1.addModule(new ModDefendBubble(this.g));
+
+		const ai2 = this.addActor(new Actor(this.g, 4));
+		ai2.addModule(new ModBubble2(this.g));
+		ai2.addModule(new ModDefendBubble(this.g));
+
 
 		let planetDistance = 200; // centre to centre
 		let itemsInRow = 6;

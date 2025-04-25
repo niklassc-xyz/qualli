@@ -4,9 +4,8 @@ import Button from "../../parapluie/objects/util/Button.js";
 import BaseManager from "../../objects/bases/BaseManager.js";
 
 
-// Abstract Class LevelRoom
+// Abstract Class for levels
 // All levels should extend from this
-
 export default class Level extends Room {
 	static background = "datafiles/sprites/bg8FullHd.png";
 
@@ -43,6 +42,7 @@ export default class Level extends Room {
 		if (this.status == "running") {
 			const winner = this.checkGameOver();
 			if (winner !== false) {
+				// console.log(winner);
 				this.g.showEndgame(true)
 				if (winner.team === 1) {
 					this.status = "won";

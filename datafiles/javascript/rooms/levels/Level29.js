@@ -1,14 +1,17 @@
 import Level from "./Level.js";
 import Actor from "../../Actor/Actor.js";
 import BubbleTemp from "../../objects/bases/BubbleTemp/BubbleTemp.js";
-import KI1 from "../../appEtc/KI1.js";
+import ModBubble1 from "../../Actor/AiModule/ModBubble1.js";
 
 export default class Level29 extends Level {
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
 
-		this.addObject(new KI1(this.g, 2));
-		this.addObject(new KI1(this.g, 3));
+		const ai0 = this.addActor(new Actor(this.g, 2));
+		ai0.addModule(new ModBubble1(this.g));
+
+		const ai1 = this.addActor(new Actor(this.g, 3));
+		ai1.addModule(new ModBubble1(this.g));
 
 		let planetDistance = 200; // centre to centre
 		let itemsInRow = 6;
