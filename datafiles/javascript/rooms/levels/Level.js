@@ -42,13 +42,13 @@ export default class Level extends Room {
 		if (this.status == "running") {
 			const winner = this.checkGameOver();
 			if (winner !== false) {
-				// console.log(winner);
-				this.g.showEndgame(true)
 				if (winner.team === 1) {
 					this.status = "won";
+					this.g.showEndgame(true);
 					this.g.progressManager.updateLevelStats(this.constructor.name, true);
 				} else {
 					this.status = "lost";
+					this.g.showEndgame(false);
 					this.g.progressManager.updateLevelStats(this.constructor.name, false);
 				}
 			}
