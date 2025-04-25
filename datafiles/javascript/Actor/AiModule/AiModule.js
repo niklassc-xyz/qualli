@@ -20,7 +20,7 @@ export default class AiModule {
 		this._timers.set(name, steps);
 	}
 
-	// Alarams should return, not break. Subclasses should call this **after**
+	// Alarms should return, not break. Subclasses should call this **after**
 	// doing their timer switch
 	execTimer(name) {
 		// switch (name) {
