@@ -2,7 +2,6 @@ import Level from "./Level.js";
 import Actor from "../../Actor/Actor.js";
 import Bubble from "../../objects/bases/Bubble.js";
 import ModBubble0 from "../../Actor/AiModule/ModBubble0.js";
-import ModBubble1 from "../../Actor/AiModule/ModBubble1.js";
 
 export default class Level27 extends Level {
 	constructor(g, returnRoom = undefined) {
