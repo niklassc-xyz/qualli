@@ -50,6 +50,12 @@ export default class AiModule {
 		return this.g.room.baseManager.getBubblesByTeam(this.team);
 	}
 
+	getOwnBubblesExcept(excludeBubble) {
+		let bubbles = this.getOwnBubbles();
+
+		return bubbles.filter(item => item !== excludeBubble);
+	}
+
 	getForeignBubbles() {
 		let allBubbles = this.g.room.baseManager.getBubbles();
 		let bubbles = [];
