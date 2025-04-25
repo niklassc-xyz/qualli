@@ -1,13 +1,11 @@
 import Room from "./../../parapluie/Room.js";
+import Actor from "../../Actor/Actor.js";
 import Button from "../../parapluie/objects/util/Button.js";
-import Jelly from "../../objects/Jelly.js";
-import Base from "../../objects/bases/Base.js";
 import BaseManager from "../../objects/bases/BaseManager.js";
 
 
-// Abstract Class LevelRoom
+// Abstract Class for levels
 // All levels should extend from this
-
 export default class Level extends Room {
 	static background = "datafiles/sprites/bg8FullHd.png";
 
@@ -18,12 +16,9 @@ export default class Level extends Room {
 			throw new Error("Abstract classes can't be instantiated.");
 		}
 
-		this.ais = [];
-
+		this._actors = [];
 
 		this.status = "running"; // running, lost, won
-		this.alarm = [];
-		this.alarm[0] = 10;
 
 		// Pause button
 		let pauseButton = this.addObject(new Button(
@@ -39,49 +34,71 @@ export default class Level extends Room {
 		pauseButton.setFontSize(16);
 
 		this.baseManager = this.addObject(new BaseManager(g));
+
+		this.addActor(new Actor(this.g, 1));
 	}
 
 	step() {
-		// TODO alarm system
-		for(let i = 0; i < this.alarm.length; i++) {
-			if(this.alarm[i] === undefined)
-				continue;
-
-			if(this.alarm[i] > 0)
-				this.alarm[i]--;
-			else
-				this.alarmieren(i);
+		if (this.status == "running") {
+			const winner = this.checkGameOver();
+			if (winner !== false) {
+				if (winner.team === 1) {
+					this.status = "won";
+					this.g.showEndgame(true);
+					this.g.progressManager.updateLevelStats(this.constructor.name, true);
+				} else {
+					this.status = "lost";
+					this.g.showEndgame(false);
+					this.g.progressManager.updateLevelStats(this.constructor.name, false);
+				}
+			}
 		}
+	}
 
-		super.step();
+	// Checks if game is over and returns winner, false otherwise
+	checkGameOver() {
+		let winner;
+		for (let i = 0; i < this._actors.length; i++) {
+			if (!this._actors[i].lost) {
+				if (typeof winner !== "undefined")
+					return false;
+				winner = this._actors[i];
+			}
+
+		}
+		return winner;
 	}
 
 	draw() {
 		super.draw();
 
+		// Draw icons of actors
+		for (let i = 0; i < this._actors.length; i++) {
+			const x = (32 + i*48);
+			this._actors[i].drawIcon(x, 32);
+		}
 
+		// When level ended, show lost/won
 		if (this.status === "won") {
 			this.g.painter.setFillStyle("#efaf00");
 			this.g.painter.setStrokeStyle("black");
 			this.g.painter.setLineWidth(1);
 			this.g.painter.setFont("30px fnt_Comforta_Bold");
 
-			const text = "Won";
+			const text = "Won 👑";
 			const textHeight = 20;
-			console.log("Test");
-			this.g.painter.fillText("Won 👑", this.g.roomWidth/2, this.g.roomHeight - textHeight)
-			this.g.painter.strokeText("Won 👑", this.g.roomWidth/2, this.g.roomHeight - textHeight)
+			this.g.painter.fillText(text, this.g.roomWidth/2, this.g.roomHeight - textHeight)
+			this.g.painter.strokeText(text, this.g.roomWidth/2, this.g.roomHeight - textHeight)
 		} else if (this.status === "lost") {
 			this.g.painter.setFillStyle("#f4aaff");
 			this.g.painter.setStrokeStyle("black");
 			this.g.painter.setLineWidth(1);
 			this.g.painter.setFont("30px fnt_Comforta_Bold");
 
-			const text = "Won";
+			const text = "Lost 🏳";
 			const textHeight = 20;
-			console.log("Test");
-			this.g.painter.fillText("Lost 🏳", this.g.roomWidth/2, this.g.roomHeight - textHeight)
-			this.g.painter.strokeText("Lost 🏳", this.g.roomWidth/2, this.g.roomHeight - textHeight)
+			this.g.painter.fillText(text, this.g.roomWidth/2, this.g.roomHeight - textHeight)
+			this.g.painter.strokeText(text, this.g.roomWidth/2, this.g.roomHeight - textHeight)
 
 		}
 	}
@@ -104,37 +121,6 @@ export default class Level extends Room {
 		return true;
 	}
 
-	// TODO rename → timer
-	alarmieren(nr) {
-		switch(nr) {
-			case 0:
-				if(this.status == "running" && this.checkIfLost(1)) {
-					this.status = "lost";
-					this.g.showEndgame(false);
-					this.g.progressManager.updateLevelStats(this.g.room.constructor.name, false);
-				}
-				this.alarm[0] = 300;
-
-				break;
-
-			default:
-				console.log("Error: alarm has no function.");
-				break;
-		}
-	}
-
-	// Checks if team has already lost
-	checkIfLost(team) {
-		for(var i = 0; i < this.entities.length; i++) {
-			if(this.entities[i] instanceof Jelly || this.entities[i] instanceof Base) {
-				if(this.entities[i].team === team) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-
 	addBase(base) {
 		this.baseManager.registerBase(base);
 		return this.addObject(base);
@@ -142,5 +128,10 @@ export default class Level extends Room {
 
 	unregisterBase(base) {
 		return this.baseManager.unregisterBase(base);
+	}
+
+	addActor(actor) {
+		this._actors.push(actor);
+		return this.addObject(actor);
 	}
 }

@@ -91,16 +91,13 @@ export default class Bubble extends Base {
 		}
 	}
 
-	// Attack bubble other
-	// TODO obsolete?
-	attack(other) {
+	action(base) {
 		let amount = Math.floor(this.units / 2)
-
-		this.attackN(other, amount)
+		this.sendUnits(base, amount)
 	}
 
-	// Attack bubble other
-	attackN(other, amount) {
+	// Send `amount` units
+	sendUnits(base, amount) {
 		// throw new Error("Cannot attack with more units than bubble has.")
 
 		if (amount > this.units) {
@@ -113,7 +110,7 @@ export default class Bubble extends Base {
 
 		for (let i = 0; i < amount; i++) {
 			// let newJelly = new Jelly(this.x, this.y, this.team, other)
-			this.createQueue.addLast([this.x, this.y, this.team, other])
+			this.createQueue.addLast([this.x, this.y, this.team, base])
 		}
 	}
 

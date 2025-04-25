@@ -1,20 +1,20 @@
 import Level from "./Level.js";
+import Actor from "../../Actor/Actor.js";
 import Bubble from "../../objects/bases/Bubble.js";
-import ModDefend from "../../appEtc/aiModules/ModDefend.js";
-import KI0 from "../../appEtc/KI0.js";
-import KI3 from "../../appEtc/KI3.js";
+import ModBubble0 from "../../Actor/AiModule/ModBubble0.js";
+import ModDefendBubble from "../../Actor/AiModule/ModDefendBubble.js";
 import ProtectBase from "../../objects/bases/ProtectBase.js";
+
 
 export default class Level42 extends Level {
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
 
+		const ai0 = this.addActor(new Actor(this.g, 2));
+		ai0.addModule(new ModDefendBubble(this.g));
 
-		let ai0 = this.addObject(new KI3(this.g, 2));
-		let mod0 = new ModDefend(g);
-		ai0.modules.push(mod0);
-
-		this.addObject(new KI0(this.g, 3));
+		const ai1 = this.addActor(new Actor(this.g, 3));
+		ai1.addModule(new ModBubble0(this.g));
 
 
 

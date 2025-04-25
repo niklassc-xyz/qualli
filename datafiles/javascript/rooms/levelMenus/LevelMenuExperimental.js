@@ -17,13 +17,13 @@ import Level39 from "../levels/Level39.js";
 import Level40 from "../levels/Level40.js";
 import Level41 from "../levels/Level41.js";
 import Level42 from "../levels/Level42.js";
+import Level43 from "../levels/Level43.js";
 import LevelTest from "../levels/LevelTest.js";
 
 export default class LevelMenuExperimental extends LevelMenu {
 	constructor(g, returnRoom=undefined) {
 		const title = "Experimental ⚛";
 		const levels = [
-			LevelTest,
 			Level24,
 			Level25,
 			Level27,
@@ -42,6 +42,8 @@ export default class LevelMenuExperimental extends LevelMenu {
 			Level40,
 			Level41,
 			Level42,
+			Level43,
+			LevelTest,
 		];
 		const simBubbleBaseColor = [255, 120, 210];
 

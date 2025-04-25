@@ -28,6 +28,11 @@ export default class Base extends SpriteEntity {
 		this.g.room.unregisterBase(this);
 	}
 
+	// Do action from this to `base`
+	action(base) {
+
+	}
+
 	/**
 	 * When units of value n arrive that belong to team team
 	 *

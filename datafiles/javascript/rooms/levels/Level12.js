@@ -1,12 +1,14 @@
 import Level from "./Level.js";
+import Actor from "../../Actor/Actor.js";
 import Bubble from "../../objects/bases/Bubble.js";
-import KI1 from "../../appEtc/KI1.js";
+import ModBubble1 from "../../Actor/AiModule/ModBubble1.js";
 
 export default class Level12 extends Level {
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
 
-		this.addObject(new KI1(this.g, 2));
+		const ai0 = this.addActor(new Actor(this.g, 2));
+		ai0.addModule(new ModBubble1(this.g));
 
 		this.addBase(new Bubble(this.g, 128, 640, 1, 1, 100));
 		this.addBase(new Bubble(this.g, 1000, 288, 0, 1));
