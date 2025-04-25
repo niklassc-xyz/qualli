@@ -1,7 +1,6 @@
 import GameEntity from "../parapluie/objects/GameEntity.js";
 import Colors from "../appEtc/color/Colors.js";
 import Jelly from "../objects/Jelly.js";
-import Base from "../objects/bases/Base.js";
 
 export default class Actor extends GameEntity {
 	constructor(g, team) {
@@ -70,7 +69,7 @@ export default class Actor extends GameEntity {
 		// TODO do this better
 		// Check if Actors has active jellies
 		const entities = this.g.room.entities;
-		for (let i = 0; i < entities; i++) {
+		for (let i = 0; i < entities.length; i++) {
 			if (entities[i] instanceof Jelly) {
 				if (entities[i].team === this.team)
 					return false;
