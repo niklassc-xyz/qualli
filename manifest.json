@@ -1,0 +1,11 @@
+{
+  "short_name": "Qualli",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "datafiles/icon.svg",
+      "sizes": "512x512"
+    }
+  ],
+  "display": "standalone"
+}
