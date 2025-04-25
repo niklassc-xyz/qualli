@@ -1,6 +1,5 @@
 import Level from "./Level.js";
 import Actor from "../../Actor/Actor.js";
-import ModFleeTemp from "../../appEtc/aiModules/ModFleeTemp.js";
 import Bubble from "../../objects/bases/Bubble.js";
 import BubbleTemp from "../../objects/bases/BubbleTemp/BubbleTemp.js";
 import Boss from "../../objects/bases/Boss.js";
