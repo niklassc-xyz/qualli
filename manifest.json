@@ -1,11 +1,14 @@
 {
+  "name": "Qualli",
   "short_name": "Qualli",
   "start_url": "/",
+  "description": "A JavaScript Game",
   "icons": [
     {
-      "src": "datafiles/icon.svg",
+      "src": "datafiles/icon.png",
       "sizes": "512x512"
     }
   ],
-  "display": "standalone"
+  "display": "fullscreen",
+  "orientation": "landscape"
 }
