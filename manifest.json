@@ -10,5 +10,5 @@
     }
   ],
   "display": "fullscreen",
-  "orientation": "landscape"
+  "orientation": "standalone"
 }
