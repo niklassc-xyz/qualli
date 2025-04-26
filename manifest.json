@@ -9,6 +9,6 @@
       "sizes": "512x512"
     }
   ],
-  "display": "fullscreen",
-  "orientation": "standalone"
+  "display": "standalone",
+  "orientation": "landscape"
 }
