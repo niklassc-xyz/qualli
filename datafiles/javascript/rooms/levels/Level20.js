@@ -51,24 +51,24 @@ export default class Level20 extends Level {
 
 	// Return team that has less planets
 	getLosingTeamByPlanet() {
-		let sum_team_1 = 0
-		let sum_team_2 = 0
+		let sumTeam1 = 0
+		let sumTeam2 = 0
 		
 		const bases = this.g.room.baseManager.getBases();
 		for(let i = 0; i < bases.length; i++) {
 			if(bases[i].team == 1)
-				sum_team_1++
+				sumTeam1++
 			else if(bases[i].team == 2)
-				sum_team_2++
+				sumTeam2++
 		}
 
 		// Stop supporting when team has no planets, otherwise game never ends
-		if(sum_team_1 == 0 || sum_team_2 == 0)
+		if(sumTeam1 == 0 || sumTeam2 == 0)
 			return 0
 
-		if(sum_team_1 < sum_team_2)
+		if(sumTeam1 < sumTeam2)
 			return 1
-		else  if(sum_team_1 > sum_team_2)
+		else  if(sumTeam1 > sumTeam2)
 			return 2
 		return 0
 	}
