@@ -56,8 +56,6 @@ export default class Jelly extends SpriteEntity {
 
 		this.ziel.arriving[this.team]++;
 
-		// this.opt_swapScreen = 3; // TODO remove
-
 
 		// TODO dont nest
 		// TODO rename? → express intent, what it does (accelerator or something)
