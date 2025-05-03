@@ -10,9 +10,6 @@ export default class Startpage extends Room {
 
 		this.addObject(new SimBubbleEmitter(this.g, [120, 210, 255]));
 
-		this.n_step = 0; // TODO is this needed → use stepCount
-
-
 		const heightPercentage = 3/5
 		const buttonWidth = 300;
 		const buttonHeight = 230;
@@ -74,8 +71,6 @@ export default class Startpage extends Room {
 		this.g.painter.ctx.fillStyle = grad;
 		this.g.painter.ctx.fillText("Qualli", this.g.roomWidth/2, 148);
 
-		this.n_step++; // TODO remove
-
 
 		// TODO remove
 		if (this.g.getDebug()) {
@@ -84,10 +79,10 @@ export default class Startpage extends Room {
 			this.g.painter.ctx.fillStyle = "white";
 			for(var i = 0; i < 5; i++) {
 				this.g.painter.ctx.beginPath();
-				this.g.painter.ctx.arc(this.g.roomWidth / 2, this.g.roomHeight - 64, i * ((this.g.painter.ctx.lineWidth-1)*2), (this.n_step* (i*0.01+0.1)) + 1.25 * Math.PI, (this.n_step*(i*0.01+0.1)) + 1.75 * Math.PI, false);
+				this.g.painter.ctx.arc(this.g.roomWidth / 2, this.g.roomHeight - 64, i * ((this.g.painter.ctx.lineWidth-1)*2), (this.g.stepCount* (i*0.01+0.1)) + 1.25 * Math.PI, (this.g.stepCount*(i*0.01+0.1)) + 1.75 * Math.PI, false);
 				this.g.painter.ctx.stroke();
 				this.g.painter.ctx.beginPath();
-				this.g.painter.ctx.arc(this.g.roomWidth / 2, this.g.roomHeight - 64, this.g.painter.ctx.lineWidth+i * ((this.g.painter.ctx.lineWidth-1)*2), -(this.n_step* (i*0.01+0.1)) + 1.25 * Math.PI, -(this.n_step*(i*0.01+0.1)) + 1.75 * Math.PI, false);
+				this.g.painter.ctx.arc(this.g.roomWidth / 2, this.g.roomHeight - 64, this.g.painter.ctx.lineWidth+i * ((this.g.painter.ctx.lineWidth-1)*2), -(this.g.stepCount* (i*0.01+0.1)) + 1.25 * Math.PI, -(this.g.stepCount*(i*0.01+0.1)) + 1.75 * Math.PI, false);
 				this.g.painter.ctx.stroke();
 			}
 		}
