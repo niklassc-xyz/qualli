@@ -1,8 +1,8 @@
 import Settings from "./datafiles/javascript/Settings.js";
 import ProgressManager from "./datafiles/javascript/appEtc/ProgressManager.js";
-
-import startpage from "./datafiles/javascript/rooms/Startpage.js";
 import Game from "./datafiles/javascript/parapluie/Game.js";
+import PausedOverlay from "./datafiles/javascript/overlays/PausedOverlay.js";
+import Startpage from "./datafiles/javascript/rooms/Startpage.js";
 
 class Qualli extends Game {
 	constructor(initalRoom, fps=60) {
@@ -10,17 +10,18 @@ class Qualli extends Game {
 
 		this.progressManager = new ProgressManager(this.storage);
 		this.settings = new Settings(this);
+		this._pausedOverlay = new PausedOverlay();
 
 		this.start();
 	}
 
 	pause() {
-		document.getElementById("pausedOverlay").classList.remove("hidden");
+		this.overlayManager.openOverlay(this._pausedOverlay);
 		super.pause();
 	}
 
 	unpause() {
-		document.getElementById("pausedOverlay").classList.add("hidden");
+		this.overlayManager.closeOverlay(this._pausedOverlay);
 		super.unpause();
 	}
 
@@ -42,6 +43,6 @@ class Qualli extends Game {
 window.ProgressManager = ProgressManager;
 
 window.onload = () => {
-	var game = new Qualli(startpage);
+	var game = new Qualli(Startpage);
 	window.g = game;
 }

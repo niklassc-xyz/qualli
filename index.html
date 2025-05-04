@@ -30,18 +30,6 @@
 			</div>
 		</div>
 
-		<div id="pausedOverlay" class="overlay hidden">
-			<div id="pausedContent" class="overlayContent">
-				<h1>Paused</h1>
-				<div class="gridTwoCol">
-					<input id="pResume" type="button" value="Resume ▶" onClick="g.unpause()" />
-					<input id="pSettings" type="button" value="Settings ⚙" onClick="g.settings.show()" />
-					<input id="pRestart" type="button" value="Restart ♻" onClick="if(g.room.restart(true) != false) { g.unpause() }" />
-					<input id="pExit" type="button" value="Exit 🏳" onClick="g.room.surrender()" />
-				</div>
-			</div>
-		</div>
-
 		<noscript>
 			<p style="font-size: 1.5em; color: red; background: yellow; text-align: center;">
 			Error: JavaScript is not supported or disabled.
