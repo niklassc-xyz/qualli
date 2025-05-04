@@ -31,10 +31,6 @@ canvas {
 	height: 100%;
 }
 
-.hidden {
-	display: none;
-}
-
 @font-face {
 	font-family: fnt_Comforta_Regular;
 	src: url(datafiles/fonts/Comfortaa-Regular.ttf);
