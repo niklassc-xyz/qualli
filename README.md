@@ -30,7 +30,7 @@ Run `npm run start`
 
 ### Android
 
-Refer to [qualli-capacitor](https://github.com/niklassc7/qualli-capacitor).
+Refer to [qualli-capacitor](https://github.com/niklassc-xyz/qualli-capacitor).
 
 ## Screenshots
 
@@ -40,5 +40,5 @@ Refer to [qualli-capacitor](https://github.com/niklassc7/qualli-capacitor).
 
 ## Goals
 
-* No dependencies except [engine](https://github.com/niklassc7/parapluie)
+* No dependencies except [engine](https://github.com/niklassc-xyz/parapluie)
 * No build steps

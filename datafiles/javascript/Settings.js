@@ -1,3 +1,5 @@
+import SettingsOverlay from "./overlays/SettingsOverlay.js";
+
 export default class Settings {
 	constructor(g) {
 		this.g = g;
@@ -11,11 +13,11 @@ export default class Settings {
 		this.g.storage.setIfNotSet("settingsMute", true);
 		this.g.storage.setIfNotSet("settingsJellyGlow", true);
 
-		document.getElementById("sDebug").checked = this.getDebug();
-		document.getElementById("sExperimental").checked = this.getExperimental();
-		document.getElementById("sScaling").checked = this.getScaling();
-		document.getElementById("sMute").checked = this.getMute();
-		document.getElementById("sJellyGlow").checked = this.getJellyGlow();
+		this._overlay = new SettingsOverlay(this.getDebug(),
+		                                    this.getExperimental(),
+		                                    this.getScaling(),
+		                                    this.getMute(),
+		                                    this.getJellyGlow());
 
 		// Values that are stored in the Game need to be set after each
 		// initialization of the Game
@@ -26,12 +28,12 @@ export default class Settings {
 
 	// Show overlay
 	show() {
-		document.getElementById("settingsOverlay").classList.remove("hidden");
+		this.g.overlayManager.openOverlay(this._overlay);
 	}
 
 	// Hide overlay
 	hide() {
-		document.getElementById("settingsOverlay").classList.add("hidden");
+		this.g.overlayManager.closeOverlay(this._overlay);
 	}
 
 	getDebug() {
