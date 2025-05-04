@@ -2,6 +2,7 @@ import Settings from "./datafiles/javascript/Settings.js";
 import ProgressManager from "./datafiles/javascript/appEtc/ProgressManager.js";
 import Game from "./datafiles/javascript/parapluie/Game.js";
 import PausedOverlay from "./datafiles/javascript/overlays/PausedOverlay.js";
+import EndgameOverlay from "./datafiles/javascript/overlays/EndgameOverlay.js";
 import Startpage from "./datafiles/javascript/rooms/Startpage.js";
 
 class Qualli extends Game {
@@ -11,6 +12,7 @@ class Qualli extends Game {
 		this.progressManager = new ProgressManager(this.storage);
 		this.settings = new Settings(this);
 		this._pausedOverlay = new PausedOverlay();
+		this._endgameOverlay;
 
 		this.start();
 	}
@@ -28,13 +30,13 @@ class Qualli extends Game {
 	showEndgame(won) {
 		let levelTime = (this.stepCount / 60).toFixed(1);
 
-		document.getElementById("egWon").innerHTML = won ? "won 🥳" : "lost 🤬"
-		document.getElementById("egTime").innerHTML = `${levelTime} seconds`
-		document.getElementById("endgameOverlay").classList.remove("hidden")
+		this._endgameOverlay = new EndgameOverlay(won, levelTime);
+		this.overlayManager.openOverlay(this._endgameOverlay);
 	}
 
 	hideEndgame() {
-		document.getElementById("endgameOverlay").classList.add("hidden")
+		this.overlayManager.closeOverlay(this._endgameOverlay);
+		this._endgameOverlay = undefined;
 	}
 }
 
