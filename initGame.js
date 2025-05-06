@@ -18,12 +18,12 @@ class Qualli extends Game {
 	}
 
 	pause() {
-		this.overlayManager.openOverlay(this._pausedOverlay);
+		this._pausedOverlay.add();
 		super.pause();
 	}
 
 	unpause() {
-		this.overlayManager.closeOverlay(this._pausedOverlay);
+		this._pausedOverlay.remove();
 		super.unpause();
 	}
 
@@ -31,11 +31,11 @@ class Qualli extends Game {
 		let levelTime = (this.stepCount / 60).toFixed(1);
 
 		this._endgameOverlay = new EndgameOverlay(won, levelTime);
-		this.overlayManager.openOverlay(this._endgameOverlay);
+		this._endgameOverlay.add();
 	}
 
 	hideEndgame() {
-		this.overlayManager.closeOverlay(this._endgameOverlay);
+		this._endgameOverlay.remove();
 		this._endgameOverlay = undefined;
 	}
 }

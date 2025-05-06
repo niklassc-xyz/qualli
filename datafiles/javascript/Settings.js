@@ -28,12 +28,12 @@ export default class Settings {
 
 	// Show overlay
 	show() {
-		this.g.overlayManager.openOverlay(this._overlay);
+		this._overlay.add();
 	}
 
 	// Hide overlay
 	hide() {
-		this.g.overlayManager.closeOverlay(this._overlay);
+		this._overlay.remove();
 	}
 
 	getDebug() {
