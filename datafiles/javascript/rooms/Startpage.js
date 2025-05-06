@@ -17,7 +17,7 @@ export default class Startpage extends Room {
 
 		const buttonStart = this.addObject(new Button(this.g, "Start", g.roomWidth / 2 - buttonMargin - (3/2) * buttonWidth, heightPercentage*g.roomHeight - buttonHeight / 2, buttonWidth, buttonHeight, () => { g.gotoRoom(MenuOverview) }  ));
 		const buttonGuide = this.addObject(new Button(this.g, "Guide", g.roomWidth / 2 - buttonWidth / 2, heightPercentage*g.roomHeight - buttonHeight / 2, buttonWidth, buttonHeight, () => alert("TODO") ));
-		const buttonSettings = this.addObject(new Button(this.g, "Settings", g.roomWidth / 2 + buttonMargin + buttonWidth / 2, heightPercentage*g.roomHeight - buttonHeight / 2, buttonWidth, buttonHeight, this.g.settings.show));
+		const buttonSettings = this.addObject(new Button(this.g, "Settings", g.roomWidth / 2 + buttonMargin + buttonWidth / 2, heightPercentage*g.roomHeight - buttonHeight / 2, buttonWidth, buttonHeight, () => this.g.settings.show()));
 
 		buttonStart.borderColour = "yellow";
 		buttonStart.borderWidth = 3;

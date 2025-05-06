@@ -1,8 +1,9 @@
 import Settings from "./datafiles/javascript/Settings.js";
 import ProgressManager from "./datafiles/javascript/appEtc/ProgressManager.js";
-
-import startpage from "./datafiles/javascript/rooms/Startpage.js";
 import Game from "./datafiles/javascript/parapluie/Game.js";
+import PausedOverlay from "./datafiles/javascript/overlays/PausedOverlay.js";
+import EndgameOverlay from "./datafiles/javascript/overlays/EndgameOverlay.js";
+import Startpage from "./datafiles/javascript/rooms/Startpage.js";
 
 class Qualli extends Game {
 	constructor(initalRoom, fps=60) {
@@ -10,30 +11,32 @@ class Qualli extends Game {
 
 		this.progressManager = new ProgressManager(this.storage);
 		this.settings = new Settings(this);
+		this._pausedOverlay = new PausedOverlay();
+		this._endgameOverlay;
 
 		this.start();
 	}
 
 	pause() {
-		document.getElementById("pausedOverlay").classList.remove("hidden");
+		this._pausedOverlay.add();
 		super.pause();
 	}
 
 	unpause() {
-		document.getElementById("pausedOverlay").classList.add("hidden");
+		this._pausedOverlay.remove();
 		super.unpause();
 	}
 
 	showEndgame(won) {
 		let levelTime = (this.stepCount / 60).toFixed(1);
 
-		document.getElementById("egWon").innerHTML = won ? "won 🥳" : "lost 🤬"
-		document.getElementById("egTime").innerHTML = `${levelTime} seconds`
-		document.getElementById("endgameOverlay").classList.remove("hidden")
+		this._endgameOverlay = new EndgameOverlay(won, levelTime);
+		this._endgameOverlay.add();
 	}
 
 	hideEndgame() {
-		document.getElementById("endgameOverlay").classList.add("hidden")
+		this._endgameOverlay.remove();
+		this._endgameOverlay = undefined;
 	}
 }
 
@@ -42,6 +45,6 @@ class Qualli extends Game {
 window.ProgressManager = ProgressManager;
 
 window.onload = () => {
-	var game = new Qualli(startpage);
+	var game = new Qualli(Startpage);
 	window.g = game;
 }
