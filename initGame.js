@@ -14,7 +14,6 @@ class Qualli extends Game {
 		this.settings = new Settings(this);
 		this._pausedOverlay = new PausedOverlay();
 		this._endgameOverlay;
-		this._ratioOverlay = new RatioOverlay;
 
 		this.start();
 	}
@@ -51,6 +50,8 @@ class Qualli extends Game {
 		const ratioReverse = this.painter.viewHeight / this.painter.viewWidth;
 
 		if (ratioCurrent < ratioReverse) {
+			if (typeof this._ratioOverlay === "undefined")
+				this._ratioOverlay = new RatioOverlay();
 			this._ratioOverlay.add();
 		} else {
 			this._ratioOverlay.remove();
