@@ -1,7 +1,7 @@
 import AiModule from "./AiModule.js";
 
 // Regularly checks if it is possible to capture a bubble by attack twice with
-// all own bubbles (75%). 
+// all own bubbles (75%).
 // Best target is chosen among the feasible targets based on its size (positive)
 // and defending units (negative)
 export default class ModBubble2 extends AiModule {
