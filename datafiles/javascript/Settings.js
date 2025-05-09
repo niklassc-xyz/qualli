@@ -22,7 +22,7 @@ export default class Settings {
 		// Values that are stored in the Game need to be set after each
 		// initialization of the Game
 		this.g.setDebug(this.getDebug());
-		this.g.setScaling(this.getDebug());
+		this.g.setScaling(this.getScaling());
 		this.g.resourceManager.setMute(this.getMute());
 	}
 
