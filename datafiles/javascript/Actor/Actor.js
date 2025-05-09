@@ -33,8 +33,9 @@ export default class Actor extends GameEntity {
 		this.g.painter.fillCircle(x, y, r);
 		this.g.painter.strokeCircle(x, y, r);
 
-		this.g.painter.setFillStyle("rgba(50, 50, 50, 0.9)");
-		this.g.painter.setFont("16px fnt_Comforta_Light");
+		this.g.painter.setTextAlign("center");
+		this.g.painter.setFillStyle("rgba(50, 50, 50, 0.7)");
+		this.g.painter.setFont("16px fnt_Comforta_Bold");
 		this.g.painter.fillText(this.team, x, y);
 
 		// Show when Actor lost

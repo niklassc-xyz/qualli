@@ -31,7 +31,7 @@ export default class AiModule {
 	}
 
 	drawIcon(x, y, r=8) {
-		
+
 	}
 
 	getOwnStrongestBubble() {
