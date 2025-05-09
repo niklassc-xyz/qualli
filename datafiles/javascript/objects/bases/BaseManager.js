@@ -6,7 +6,7 @@ export default class BaseManager extends DimensionEntity {
 	_bases; _selected;
 
 	constructor(g) {
-		super(g, 0, 0, g.roomWidth, g.roomHeight);
+		super(g, -0.5*g.roomWidth, -0.5*g.roomHeight, 2*g.roomWidth, 2*g.roomHeight);
 
 		this.g.input.registerClickable(this);
 
