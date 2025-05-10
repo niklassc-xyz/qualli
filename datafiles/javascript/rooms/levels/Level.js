@@ -54,8 +54,13 @@ export default class Level extends Room {
 		}
 	}
 
-	// Checks if game is over and returns winner, false otherwise
+	// Checks if game is over and returns winner (if there is only 1)
+	// true if multiple winners
+	// false if not over
 	checkGameOver() {
+		if (this._actors[0].lost)
+			return true;
+
 		let winner;
 		for (let i = 0; i < this._actors.length; i++) {
 			if (!this._actors[i].lost) {
