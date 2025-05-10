@@ -2,6 +2,7 @@ import Room from "./../../parapluie/Room.js";
 import Actor from "../../Actor/Actor.js";
 import Button from "../../parapluie/objects/util/Button.js";
 import BaseManager from "../../objects/bases/BaseManager.js";
+import GameoverButton from "../../objects/GameoverButton.js";
 
 
 // Abstract Class for levels
@@ -41,16 +42,14 @@ export default class Level extends Room {
 	step() {
 		if (this.status == "running") {
 			const winner = this.checkGameOver();
+
 			if (winner !== false) {
-				if (winner.team === 1) {
-					this.status = "won";
-					this.g.showEndgame(true);
-					this.g.progressManager.updateLevelStats(this.constructor.name, true);
-				} else {
-					this.status = "lost";
-					this.g.showEndgame(false);
-					this.g.progressManager.updateLevelStats(this.constructor.name, false);
-				}
+				const won = winner.team === 1;
+				const wonButton = new GameoverButton(g, won);
+				this.addObject(wonButton);
+
+				this.status = won ? "won" : "lost";
+				this.g.progressManager.updateLevelStats(this.constructor.name, won);
 			}
 		}
 	}

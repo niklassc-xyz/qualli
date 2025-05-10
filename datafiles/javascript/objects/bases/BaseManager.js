@@ -6,7 +6,7 @@ export default class BaseManager extends DimensionEntity {
 	_bases; _selected;
 
 	constructor(g) {
-		super(g, -0.5*g.roomWidth, -0.5*g.roomHeight, 2*g.roomWidth, 2*g.roomHeight);
+		super(g, -200, -200, 0, 0);
 
 		this.g.input.registerClickable(this);
 
@@ -85,32 +85,30 @@ export default class BaseManager extends DimensionEntity {
 		return bases;
 	}
 
-	clickUp() {
-		let hoveredBase = this.getBaseByLocation(this.g.input.getX(), this.g.input.getY());
-		if (typeof hoveredBase !== "undefined") {
-			if (typeof this._selected !== "undefined") {
-				if (hoveredBase === this._selected) {
-					this._selected = hoveredBase;
-				} else {
-					this._selected.action(hoveredBase);
-					this._selected = undefined;
-				}
 
+	// Gets called by bases to notify that a clickUp happened on them
+	notifyClickUp(base) {
+		if (typeof this._selected !== "undefined") {
+			if (base === this._selected) {
+				this._selected = base;
+			} else {
+				this._selected.action(base);
+				this._selected = undefined;
 			}
-		} else {
-			this._selected = undefined;
+
 		}
 	}
 
-	clickDown() {
-		// base selection
+	// Gets called by bases to notify that a clickDown happened on them
+	notifyClickDown(base) {
 		if (typeof this._selected === "undefined") {
-			let hoveredBase = this.getBaseByLocation(this.g.input.getX(), this.g.input.getY());
-			if (typeof hoveredBase !== "undefined") {
-				// Start drag method
-				this._selected = hoveredBase;
-			}
+			// Start drag method
+			this._selected = base;
 		}
+	}
+
+	clickMiss() {
+		this._selected = undefined;
 	}
 
 	// Adds base to be managed by BaseManager (Adds it to game and makes it

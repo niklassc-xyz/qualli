@@ -14,6 +14,7 @@ export default class Base extends SpriteEntity {
 		this.selectionSource = true;
 		this.selectionTarget = true;
 
+		this.g.input.registerClickable(this);
 
 		this.arriving = [];
 		// TODO team management
@@ -22,9 +23,18 @@ export default class Base extends SpriteEntity {
 		}
 	}
 
+	clickUp() {
+		this.g.room.baseManager.notifyClickUp(this);
+	}
+
+	clickDown() {
+		this.g.room.baseManager.notifyClickDown(this);
+	}
+
 	destroy() {
 		super.destroy();
 
+		this.g.input.unregisterClickable(this);
 		this.g.room.unregisterBase(this);
 	}
 
