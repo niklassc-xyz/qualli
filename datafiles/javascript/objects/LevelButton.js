@@ -3,7 +3,7 @@ import Button from "../parapluie/objects/util/Button.js";
 export default class LevelButton extends Button {
 	constructor(g, text, x, y, width, height, level, locked=false) {
 		let onClick = () => {
-			if (this.locked) {
+			if (this.locked && false) {
 				alert("Unlock this level first");
 				return false;
 			}
