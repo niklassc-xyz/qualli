@@ -51,65 +51,12 @@ export default class Jelly extends SpriteEntity {
 		this.startY = y + (128 - Math.floor(Math.random() * 256)); // TODO rename
 		this.moveTowardsPoint(this.startX, this.startY, 2);
 
+		// TODO target size?
 		this.targetX = this.ziel.x - this.ziel.ox + Math.random()*this.ziel.width;
 		this.targetY = this.ziel.y - this.ziel.oy + Math.random()*this.ziel.height;
+		this.targetSpeed = 4 + 2*Math.random();
 
 		this.ziel.arriving[this.team]++;
-
-
-		// TODO dont nest
-		// TODO rename? → express intent, what it does (accelerator or something)
-		// increases speed and corrects direction until it is done and then deletes itself
-		// this reduces operations after getting to the targetSpeed and right direction
-		class StartHelper extends GameEntity {
-			constructor(g, parentJelly, targetSpeed) {
-				super(g);
-				this.parentJelly = parentJelly;
-				this.targetSpeed = targetSpeed;
-				this.g.room.addObject(this);
-			}
-
-			step() {
-				super.step();
-
-				// TODO sometimes deleted before full size is reached
-				this.parentJelly.width = Math.min(this.parentJelly.widthShould, this.parentJelly.width + 2.5);
-				// this.parentJelly.height = Math.min(this.parentJelly.heightShould, this.parentJelly.height + 0.01); // TODO scale correctly
-				this.parentJelly.height = this.parentJelly.width * this.parentJelly.heightShould / this.parentJelly.widthShould
-
-				let acceleration = 0.03 + 0.4*Math.random();
-
-				if(this.parentJelly.speed < this.targetSpeed)
-					this.parentJelly.setSpeed(this.parentJelly.speed + acceleration);
-
-				let zDir = math.pointDirection(this.parentJelly.x, this.parentJelly.y, this.parentJelly.targetX, this.parentJelly.targetY);
-
-				// TODO increase when large amounts are spawned
-				let turnSpeed = 2 + 4*Math.random();
-
-				let positiveTurnDistance = math.mMod(zDir - this.parentJelly.direction, 360); // clockwise
-				let negativeTurnDistance = math.mMod(this.parentJelly.direction - zDir, 360); // anticlockwise
-
-				if (positiveTurnDistance <= turnSpeed || negativeTurnDistance <= turnSpeed) {
-					this.parentJelly.setDirection(zDir);
-				} else {
-					if (positiveTurnDistance < negativeTurnDistance) {
-						this.parentJelly.setDirection(this.parentJelly.direction + turnSpeed);
-					} else {
-						this.parentJelly.setDirection(this.parentJelly.direction - turnSpeed);
-					}
-				}
-
-				if (Math.abs(zDir - this.parentJelly.direction) <= turnSpeed && Math.abs(this.parentJelly.speed - this.targetSpeed) <= acceleration && this.parentJelly.width === this.parentJelly.widthShould) {
-					// TODO is this deleted when parentJelly is deleted
-					this.parentJelly.setSpeed(this.targetSpeed);
-					this.parentJelly.setDirection(zDir);
-					this.destroy();
-				}
-			}
-		}
-
-		new StartHelper(this.g, this, 4 + 2 * Math.random());
 	}
 
 	step() {
@@ -131,24 +78,33 @@ export default class Jelly extends SpriteEntity {
 			this.ziel.receiveJellies(this.size, this.team, this.source);
 		}
 
-		// Check if jelly collided with target
-		// TODO check whole jelly width not just center
-		// console.log(this.x, this.ox, this.y, this.oy);
-		// console.log(this.ziel.x, this.ziel.ox, this.ziel.);
 
+		this.width = Math.min(this.widthShould, this.width + 2.5);
+		this.height = this.width * this.heightShould / this.widthShould;
+		let acceleration = 0.03 + 0.4*Math.random();
+		if(this.speed < this.targetSpeed)
+			this.setSpeed(this.speed + acceleration);
 
-		// // TODO fix
-		// if (pointInCircle(
-		// 	this.x + this.ox,
-		// 	this.y + this.oy,
-		// 	this.ziel.x + this.ziel.ox,
-		// 	this.ziel.y + this.ziel.oy,
-		// 	this.ziel.width / 2
-		// )) {
-		// 	this.destroy();
+		let zDir = math.pointDirection(this.x, this.y, this.targetX, this.targetY);
+		// TODO increase when large amounts are spawned
+		let turnSpeed = 2 + 4*Math.random();
+		let positiveTurnDistance = math.mMod(zDir - this.direction, 360); // clockwise
+		let negativeTurnDistance = math.mMod(this.direction - zDir, 360); // anticlockwise
+		if (positiveTurnDistance <= turnSpeed || negativeTurnDistance <= turnSpeed) {
+			this.setDirection(zDir);
+		} else {
+			if (positiveTurnDistance < negativeTurnDistance) {
+				this.setDirection(this.direction + turnSpeed);
+			} else {
+				this.setDirection(this.direction - turnSpeed);
+			}
+		}
 
-		// 	this.ziel.receiveJellies(this.size, this.team);
-		// }
+		if (Math.abs(zDir - this.direction) <= turnSpeed && Math.abs(this.speed - this.targetSpeed) <= acceleration && this.width === this.widthShould) {
+			// TODO is this deleted when parentJelly is deleted
+			this.setSpeed(this.targetSpeed);
+			this.setDirection(zDir);
+		}
 	}
 
 	draw() {
