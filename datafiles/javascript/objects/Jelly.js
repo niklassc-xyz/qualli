@@ -52,8 +52,9 @@ export default class Jelly extends SpriteEntity {
 		this.moveTowardsPoint(this.startX, this.startY, 2);
 
 		// TODO target size?
-		this.targetX = this.ziel.x - this.ziel.ox + Math.random()*this.ziel.width;
-		this.targetY = this.ziel.y - this.ziel.oy + Math.random()*this.ziel.height;
+		this.targetXOffset = -this.ziel.ox + Math.random()*this.ziel.width;
+		this.targetYOffset = -this.ziel.oy + Math.random()*this.ziel.height;
+		this._setTargetCoordinates();
 		this.targetSpeed = 4 + 2*Math.random();
 
 		this.ziel.arriving[this.team]++;
@@ -61,6 +62,7 @@ export default class Jelly extends SpriteEntity {
 
 	step() {
 		super.step();
+		this._setTargetCoordinates();
 
 		// Check if jelly collided with target
 		if (collision.rectangleInRectangle(
@@ -122,7 +124,21 @@ export default class Jelly extends SpriteEntity {
 			this.g.painter.fillCircle(this.x, this.y, maxr * 2.0);
 		}
 
+		// Draw target DEBUG
+		if (this.g.getDebug()) {
+			this.g.painter.setStrokeStyle("red");
+			this.g.painter.setLineWidth(2);
+			this.g.painter.strokeCross(this.targetX, this.targetY, 6);
+		}
+
 		super.draw();
+	}
+
+	// Updates actual target coordinates (e.g. if target moves), random offset
+	// stays the same
+	_setTargetCoordinates() {
+		this.targetX = this.ziel.x + this.targetXOffset;
+		this.targetY = this.ziel.y + this.targetYOffset;
 	}
 
 	destroy() {
