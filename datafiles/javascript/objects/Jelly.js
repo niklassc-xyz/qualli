@@ -11,11 +11,10 @@ export default class Jelly extends SpriteEntity {
 	 * @param {number} x - [TODO:description]
 	 * @param {number} y - [TODO:description]
 	 * @param {number} team - [TODO:description]
-	 * @param {Bubble} ziel - [TODO:description]
+	 * @param {Bubble} target - [TODO:description]
 	 * @param {number} [size] - [TODO:description]
 	 */
-	// TODO swap target and ziel
-	constructor(g, x, y, team, ziel, source, size=1) {
+	constructor(g, x, y, team, target, source, size=1) {
 		let sprite;
 		switch (team) {
 			case 1:
@@ -39,7 +38,7 @@ export default class Jelly extends SpriteEntity {
 		this.source = source;
 
 		this.team = team;
-		this.ziel = ziel; // TODO rename
+		this.target = target;
 		this.size = size; // TODO separate damage and size → default damage can be size
 
 		this.widthShould = 32 * this.size;
@@ -52,12 +51,12 @@ export default class Jelly extends SpriteEntity {
 		this.moveTowardsPoint(this.startX, this.startY, 2);
 
 		// TODO target size?
-		this.targetXOffset = -this.ziel.ox + Math.random()*this.ziel.width;
-		this.targetYOffset = -this.ziel.oy + Math.random()*this.ziel.height;
+		this.targetXOffset = -this.target.ox + Math.random()*this.target.width;
+		this.targetYOffset = -this.target.oy + Math.random()*this.target.height;
 		this._setTargetCoordinates();
 		this.targetSpeed = 4 + 2*Math.random();
 
-		this.ziel.arriving[this.team]++;
+		this.target.arriving[this.team]++;
 	}
 
 	step() {
@@ -70,14 +69,14 @@ export default class Jelly extends SpriteEntity {
 			this.y - (this.height/2),
 			this.x + (this.width/2),
 			this.y + (this.height/2),
-			this.ziel.x - (this.ziel.width/2),
-			this.ziel.y - (this.ziel.height/2),
-			this.ziel.x + (this.ziel.width/2),
-			this.ziel.y + (this.ziel.height/2)
+			this.target.x - (this.target.width/2),
+			this.target.y - (this.target.height/2),
+			this.target.x + (this.target.width/2),
+			this.target.y + (this.target.height/2)
 		)) {
 			this.destroy();
 
-			this.ziel.receiveJellies(this.size, this.team, this.source);
+			this.target.receiveJellies(this.size, this.team, this.source);
 		}
 
 
@@ -137,13 +136,13 @@ export default class Jelly extends SpriteEntity {
 	// Updates actual target coordinates (e.g. if target moves), random offset
 	// stays the same
 	_setTargetCoordinates() {
-		this.targetX = this.ziel.x + this.targetXOffset;
-		this.targetY = this.ziel.y + this.targetYOffset;
+		this.targetX = this.target.x + this.targetXOffset;
+		this.targetY = this.target.y + this.targetYOffset;
 	}
 
 	destroy() {
 		super.destroy();
 
-		this.ziel.arriving[this.team]--;
+		this.target.arriving[this.team]--;
 	}
 }
