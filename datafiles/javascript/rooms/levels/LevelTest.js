@@ -8,6 +8,8 @@ import ModBubble0 from "../../Actor/AiModule/ModBubble0.js";
 import ModBubble1 from "../../Actor/AiModule/ModBubble1.js";
 import ModBubble2 from "../../Actor/AiModule/ModBubble2.js";
 
+import ModFleeTemp from "../../Actor/AiModule/ModFleeTemp.js";
+
 
 export default class LevelTest extends Level {
 	constructor(g, returnRoom = undefined) {
@@ -24,5 +26,6 @@ export default class LevelTest extends Level {
 
 		const ai0 = this.addActor(new Actor(this.g, 2));
 		ai0.addModule(new ModBubble0(this.g));
+		ai0.addModule(new ModFleeTemp(this.g));
 	}
 }
