@@ -102,7 +102,6 @@ export default class Jelly extends SpriteEntity {
 		}
 
 		if (Math.abs(zDir - this.direction) <= turnSpeed && Math.abs(this.speed - this.targetSpeed) <= acceleration && this.width === this.widthShould) {
-			// TODO is this deleted when parentJelly is deleted
 			this.setSpeed(this.targetSpeed);
 			this.setDirection(zDir);
 		}
