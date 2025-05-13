@@ -1,5 +1,5 @@
 import Base from "./Base.js";
-import Jelly from "../Jelly.js";
+import Jelly from "../units/Jelly.js";
 
 export default class UnlockBase extends Base {
 	constructor(g, x, y, units) {

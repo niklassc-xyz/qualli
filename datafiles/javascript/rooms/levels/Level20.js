@@ -2,7 +2,7 @@ import Level from "./Level.js";
 import Actor from "../../Actor/Actor.js";
 import Bubble from "../../objects/bases/Bubble.js";
 import ModBubble0 from "../../Actor/AiModule/ModBubble0.js";
-import Jelly from "../../objects/Jelly.js";
+import Jelly from "../../objects/units/Jelly.js";
 
 export default class Level20 extends Level {
 	constructor(g, returnRoom = undefined) {

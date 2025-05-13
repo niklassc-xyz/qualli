@@ -1,6 +1,6 @@
 import GameEntity from "../parapluie/objects/GameEntity.js";
 import Colors from "../appEtc/color/Colors.js";
-import Jelly from "../objects/Jelly.js";
+import Jelly from "../objects/units/Jelly.js";
 
 export default class Actor extends GameEntity {
 	constructor(g, team) {

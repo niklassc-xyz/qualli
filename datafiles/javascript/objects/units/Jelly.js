@@ -1,10 +1,9 @@
-import SpriteEntity from "../parapluie/objects/SpriteEntity.js";
-import GameEntity from "../parapluie/objects/GameEntity.js";
-import Colors from "../appEtc/color/Colors.js";
-import * as math from "../parapluie/functions/math.js";
-import * as collision from "../parapluie/functions/collision.js";
+import Unit from "./Unit.js";
+import Colors from "../../appEtc/color/Colors.js";
+import * as math from "../../parapluie/functions/math.js";
+import * as collision from "../../parapluie/functions/collision.js";
 
-export default class Jelly extends SpriteEntity {
+export default class Jelly extends Unit {
 	/**
 	 * [TODO:description]
 	 *
@@ -33,14 +32,9 @@ export default class Jelly extends SpriteEntity {
 				throw new Error(`Tried creating Jelly with unsupported team (${team})`);
 		}
 
-		super(g, x, y, 1, 1, sprite);
+		super(g, x, y, 1, 1, sprite, team, target, source, size);
 
-		this.source = source;
-
-		this.team = team;
-		this.target = target;
-		this.size = size; // TODO separate damage and size → default damage can be size
-
+		this.size = this.unitValue;
 		this.widthShould = 32 * this.size;
 		this.heightShould = 21 * this.size;
 
@@ -137,11 +131,5 @@ export default class Jelly extends SpriteEntity {
 	_setTargetCoordinates() {
 		this.targetX = this.target.x + this.targetXOffset;
 		this.targetY = this.target.y + this.targetYOffset;
-	}
-
-	destroy() {
-		super.destroy();
-
-		this.target.arriving[this.team]--;
 	}
 }

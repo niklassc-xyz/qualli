@@ -1,7 +1,7 @@
 import Base from "./Base.js";
 import Colors from "../../appEtc/color/Colors.js";
 import LinkedList from "../../parapluie/LinkedList/LinkedList.js";
-import Jelly from "../Jelly.js";
+import Jelly from "../units/Jelly.js";
 import Color from "../../appEtc/color/Color.js";
 
 

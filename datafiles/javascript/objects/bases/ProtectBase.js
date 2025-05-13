@@ -1,4 +1,4 @@
-import Jelly from "../Jelly.js";
+import Jelly from "../units/Jelly.js";
 import Base from "./Base.js";
 import Colors from "../../appEtc/color/Colors.js";
 
