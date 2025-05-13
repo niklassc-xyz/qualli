@@ -1,5 +1,6 @@
 import SpriteEntity from "../../parapluie/objects/SpriteEntity.js";
 import Colors from "../../appEtc/color/Colors.js";
+import * as collision from "../../parapluie/functions/collision.js";
 
 export default class Base extends SpriteEntity {
 	constructor(g, x, y, width, height, sprite, team = 0) {
@@ -70,5 +71,45 @@ export default class Base extends SpriteEntity {
 		}
 
 		return sum;
+	}
+
+	// Called every step by BaseManager when this base is selected
+	stepSelected() {
+
+	}
+
+	// Called every step by BaseManager when this base is selected
+	drawSelected() {
+		// Draw arrow from selected to cursor
+		let r = this.width / 2;
+		let inputX = this.g.input.getX();
+		let inputY = this.g.input.getY();
+
+		if (!collision.pointInCircle(inputX, inputY, this.x, this.y, r)) {
+			let dx = inputX - this.x;
+			let dy = inputY - this.y;
+			let dist = Math.sqrt(dx**2 + dy**2);
+			let ndx = dx / dist;
+			let ndy = dy / dist;
+			let startx = this.x + ndx*r;
+			let starty = this.y + ndy*r;
+			this.g.painter.ctx.strokeStyle = "white";
+			this.g.painter.ctx.lineWidth = 3;
+			this.g.painter.strokeLine(startx, starty, inputX, inputY);
+		}
+
+		// Highlight selected bubble
+		const circleAnimationDuration = 20;
+		const circleAnimationFrame = this.g.stepCount % circleAnimationDuration;
+
+		this.g.painter.ctx.lineWidth = 2;
+		this.g.painter.ctx.strokeStyle = "white";
+		for(let i = 0; i < 5 + Math.abs(circleAnimationFrame - circleAnimationDuration/2); i+=3) {
+			this.g.painter.strokeCircle(
+				this.x,
+				this.y,
+				this.width / 2 + i,
+			);
+		}
 	}
 }
