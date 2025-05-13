@@ -108,7 +108,7 @@ export default class Boss extends Base {
 		}
 	}
 
-	receiveJellies(n, team) {
+	receiveUnits(n, team) {
 		if (this.team === team) {
 			this.units += n;
 		} else {

@@ -18,7 +18,7 @@ export default class UnlockBase extends Base {
 	 * @param {number} n - [TODO:description]
 	 * @param {number} team - [TODO:description]
 	 */
-	receiveJellies(units, team, source = undefined) {
+	receiveUnits(units, team, source = undefined) {
 		// this.units = Math.max(0, this.units - units);
 		this.units -= units;
 

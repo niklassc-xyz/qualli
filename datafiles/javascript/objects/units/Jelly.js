@@ -70,7 +70,7 @@ export default class Jelly extends Unit {
 		)) {
 			this.destroy();
 
-			this.target.receiveJellies(this.size, this.team, this.source);
+			this.target.receiveUnits(this.unitValue, this.team, this.source);
 		}
 
 

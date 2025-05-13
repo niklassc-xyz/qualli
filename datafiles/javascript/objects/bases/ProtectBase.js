@@ -15,7 +15,7 @@ export default class ProtectBase extends Base {
 		this.subjects = subjects;
 	}
 
-	receiveJellies(n, team, source = undefined) {
+	receiveUnits(n, team, source = undefined) {
 		if (!this.locked)
 			return;
 

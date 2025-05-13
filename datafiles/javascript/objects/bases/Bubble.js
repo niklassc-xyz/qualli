@@ -135,7 +135,7 @@ export default class Bubble extends Base {
 	// If bubble is owned by `team`, the units will be added, otherwise
 	// substracted. If n >= this.units, then bubble is captured and the
 	// amount of `n` that is left is added to the bubble.
-	receiveJellies(n, team) {
+	receiveUnits(n, team) {
 		if (this.team === team) {
 			this.units += n;
 		} else {
