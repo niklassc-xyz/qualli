@@ -53,7 +53,7 @@ export default class Base extends SpriteEntity {
 	 * @param {number} n - [TODO:description]
 	 * @param {number} team - [TODO:description]
 	 */
-	receiveJellies(n, team, source = undefined) {
+	receiveUnits(n, team, source = undefined) {
 		
 	}
 

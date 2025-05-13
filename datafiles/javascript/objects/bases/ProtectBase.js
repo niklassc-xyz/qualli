@@ -1,4 +1,4 @@
-import Jelly from "../Jelly.js";
+import Jelly from "../units/Jelly.js";
 import Base from "./Base.js";
 import Colors from "../../appEtc/color/Colors.js";
 
@@ -15,7 +15,7 @@ export default class ProtectBase extends Base {
 		this.subjects = subjects;
 	}
 
-	receiveJellies(n, team, source = undefined) {
+	receiveUnits(n, team, source = undefined) {
 		if (!this.locked)
 			return;
 
