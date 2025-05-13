@@ -6,7 +6,7 @@ export default class DiffuseMissile extends Unit {
 	// startDiffusion: Interval around start (x|y). The missile will chose a 
 	// random point in this area to point to initially. If set to undefined,
 	// missile will point to target immediately
-	constructor(g, x, y, sprite, targetWidth, targetHeight, team, target, source, unitValue, startDiffusion=undefined) {
+	constructor(g, x, y, sprite, targetWidth, targetHeight, team, target, source, unitValue=1, startDiffusion=undefined) {
 		const initialWidth = 1
 		const initialHeight = 1
 		super(g, x, y, initialWidth, initialHeight, sprite, team, target, source, unitValue);
