@@ -8,10 +8,6 @@ export default class BaseManager extends DimensionEntity {
 	constructor(g) {
 		super(g, -200, -200, 0, 0);
 
-		// For circle animation
-		this.circleCounterMax = 20;
-		this.circleCounter = 0;
-
 		/**
 		 * List of active bases in the level
 		 * @type {Base}
@@ -25,9 +21,22 @@ export default class BaseManager extends DimensionEntity {
 		this._registerClickable();
 	}
 
+	step() {
+		super.step();
+
+		// Clear selected base, if it has been captured
+		if (typeof this._selected !== "undefined" && this._selected.team !== 1)
+			this._selected = undefined;
+
+		if (this._selected !== undefined)
+			this._selected.stepSelected();
+	}
+
 	draw() {
 		super.draw();
-		this.selectedDrawing();
+
+		if(this._selected !== undefined)
+			this._selected.drawSelected();
 	}
 
 	destroy() {
@@ -138,47 +147,5 @@ export default class BaseManager extends DimensionEntity {
 		if (this._selected !== undefined && this._selected.team !== 1) {
 			this._selected = undefined;
 		}
-	}
-
-	// Draw circle indicator arround selectedBubble and arrow
-	selectedDrawing() {
-		if(this._selected !== undefined) {
-			// Cancel if selected bubble has been captured in the meantime
-			if(this._selected.team !== 1) {
-				this._selected = undefined; return;
-			}
-
-			// Draw arrow from selected to cursor
-			let r = this._selected.width / 2;
-			let inputX = this.g.input.getX();
-			let inputY = this.g.input.getY();
-
-			if (!collision.pointInCircle(inputX, inputY, this._selected.x, this._selected.y, r)) {
-				let dx = inputX - this._selected.x;
-				let dy = inputY - this._selected.y;
-				let dist = Math.sqrt(dx**2 + dy**2);
-				let ndx = dx / dist;
-				let ndy = dy / dist;
-				let startx = this._selected.x + ndx*r;
-				let starty = this._selected.y + ndy*r;
-				this.g.painter.ctx.strokeStyle = "white";
-				this.g.painter.ctx.lineWidth = 3;
-				this.g.painter.strokeLine(startx, starty, inputX, inputY);
-			}
-
-			// Highlight selected bubble
-			this.g.painter.ctx.lineWidth = 2;
-			this.g.painter.ctx.strokeStyle = "white";
-			for(let i = 0; i < 5 + Math.abs(this.circleCounter - this.circleCounterMax/2); i+=3) {
-				this.g.painter.strokeCircle(
-							this._selected.x,
-							this._selected.y,
-							this._selected.width / 2 + i,
-							);
-			}
-
-			this.circleCounter = (this.circleCounter + 1) % this.circleCounterMax;
-		}
-
 	}
 }
