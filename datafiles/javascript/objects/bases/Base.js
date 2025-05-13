@@ -14,13 +14,17 @@ export default class Base extends SpriteEntity {
 		this.selectionSource = true;
 		this.selectionTarget = true;
 
-		this.g.input.registerClickable(this);
 
 		this.arriving = [];
 		// TODO team management
 		for (let i = 0; i < Colors.team.length; i++) {
 			this.arriving[i] = 0;
 		}
+	}
+
+	onAdd() {
+		super.onAdd();
+		this._registerClickable();
 	}
 
 	clickUp() {
@@ -34,7 +38,6 @@ export default class Base extends SpriteEntity {
 	destroy() {
 		super.destroy();
 
-		this.g.input.unregisterClickable(this);
 		this.g.room.unregisterBase(this);
 	}
 
