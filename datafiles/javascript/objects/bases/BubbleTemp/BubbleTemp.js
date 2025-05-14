@@ -59,6 +59,7 @@ export default class BubbleTemp extends Bubble {
 	draw() {
 		super.draw();
 
+		// TODO remove ctx
 		// Draw circle-indicator of left ttl
 		this.g.painter.ctx.lineWidth = 3;
 		this.g.painter.ctx.strokeStyle = 'black';

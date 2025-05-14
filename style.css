@@ -15,11 +15,16 @@ body {
 	/* background: url(datafiles/sprites/bg5FullHd.png); */
 	background: url(datafiles/backgrounds/background2-g1.png);
 	background-size: cover;
+	background-position: center;
 	margin: 0px;
 	padding: 0px;
 	overflow: hidden;
 
 	font-family: fnt_Comforta_Bold;
+
+
+	/* TODO figure out how to load image before changing */
+	transition: background-image 0.2s ease-in-out;
 }
 
 /* TODO rename */

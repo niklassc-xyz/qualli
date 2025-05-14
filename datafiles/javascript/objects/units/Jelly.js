@@ -38,12 +38,6 @@ export default class Jelly extends DiffuseMissile {
 		this.size = this.unitValue;
 	}
 
-	step() {
-		super.step();
-
-		// console.log(this.width, this.height);
-	}
-
 	draw() {
 		// TODO fix this
 		// TODO rotation

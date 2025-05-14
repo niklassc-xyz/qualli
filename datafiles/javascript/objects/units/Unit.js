@@ -15,7 +15,7 @@ export default class Unit extends SpriteEntity {
 		super.step();
 
 		// Check if missile collided with target
-		if (collision.rectangleInRectangle(
+		if (typeof this.target !== "undefined" && collision.rectangleInRectangle(
 			this.x - (this.width/2),
 			this.y - (this.height/2),
 			this.x + (this.width/2),
