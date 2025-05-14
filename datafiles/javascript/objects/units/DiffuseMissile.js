@@ -48,25 +48,7 @@ export default class DiffuseMissile extends Unit {
 		let acceleration = 0.03 + 0.4*Math.random();
 		this.setSpeed(Math.min(this.speed + acceleration, this.targetSpeed));
 
-		// Turn towards target
-		let zDir = math.pointDirection(this.x, this.y, this.targetX, this.targetY);
-		// TODO increase when large amounts are spawned
-		let turnSpeed = 2 + 4*Math.random();
-		let positiveTurnDistance = math.mMod(zDir - this.direction, 360); // clockwise
-		let negativeTurnDistance = math.mMod(this.direction - zDir, 360); // anticlockwise
-		if (positiveTurnDistance <= turnSpeed || negativeTurnDistance <= turnSpeed) {
-			this.setDirection(zDir);
-		} else {
-			if (positiveTurnDistance < negativeTurnDistance) {
-				this.setDirection(this.direction + turnSpeed);
-			} else {
-				this.setDirection(this.direction - turnSpeed);
-			}
-		}
-		if (Math.abs(zDir - this.direction) <= turnSpeed && Math.abs(this.speed - this.targetSpeed) <= acceleration && this.width === this._targetWidth) {
-			this.setSpeed(this.targetSpeed);
-			this.setDirection(zDir);
-		}
+		this.turnTowardsPoint(this.targetX, this.targetY, 2 + 4*Math.random());
 	}
 
 	// Updates actual target coordinates (e.g. if target moves), random offset

@@ -46,6 +46,7 @@ export default class Unit extends SpriteEntity {
 	destroy() {
 		super.destroy();
 
-		this.target.arriving[this.team]--;
+		if (typeof this.target !== "undefined")
+			this.target.arriving[this.team]--;
 	}
 }

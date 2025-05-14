@@ -4,8 +4,10 @@ import Colors from "../../../appEtc/color/Colors.js";
 import FloatSign from "../../FloatSign.js";
 
 export default class BubbleTemp extends Bubble {
-	constructor(g, x, y, team, size, units, ttl = undefined) {
+	constructor(g, x, y, team, size, units, ttl = undefined, doesRespawn=false) {
 		super(g, x, y, team, size, units);
+
+		this.doesRespawn = doesRespawn;
 
 		// TODO dont randomize by default
 		if (ttl == undefined) {
@@ -46,7 +48,9 @@ export default class BubbleTemp extends Bubble {
 
 		if (this.ttl <= 0) {
 			let futureBubble = new BubbleTemp(this.g, this.x, this.y, 0, this.size, 0, undefined);
-			this.g.room.addObject(new BubbleSeed(this.g, 1000, futureBubble));
+
+			if (this.doesRespawn)
+				this.g.room.addObject(new BubbleSeed(this.g, 1000, futureBubble));
 
 			if (this.team !== 0) {
 				this.createLostSign();

@@ -17,7 +17,8 @@ export default class HarpoonBase extends Base {
 
 		this.health = 100;
 		this.charge = 0;
-		this.chargeGain = 0.2;
+		// this.chargeGain = 0.2;
+		this.chargeGain = 0.3;
 
 		this.harpoons = [];
 	}
@@ -45,7 +46,9 @@ export default class HarpoonBase extends Base {
 	step() {
 		super.step();
 		this.health = Math.max(0, this.health-0.1);
-		this.charge = Math.min(this.charge + this.chargeGain, 300);
+
+		if (this.harpoons.length < 3)
+			this.charge = Math.min(this.charge + this.chargeGain, 100);
 
 		if (this.charge >= 100) {
 			this.charge -= 100;
@@ -65,7 +68,7 @@ export default class HarpoonBase extends Base {
 		let lineWidth = 3;
 		this.g.painter.setLineWidth(lineWidth);
 		let radius = 10 + 1.1 * this.width/2;
-		this.g.painter.setStrokeStyle("white");
+		this.g.painter.setStrokeStyle("#fc5");
 
 		for (let i = 0; i < this.harpoons.length; i++) {
 			const margin = 3;

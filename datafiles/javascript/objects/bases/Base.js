@@ -16,6 +16,7 @@ export default class Base extends SpriteEntity {
 		this.selectionTarget = true;
 
 
+		// TODO → make target private → setter for target, where arriving is updated
 		this.arriving = [];
 		// TODO team management
 		for (let i = 0; i < Colors.team.length; i++) {

@@ -97,11 +97,10 @@ export default class Boss extends Base {
 		
 		// TODO add getter/randomGetter to Level.js
 
+		const bubbles = this.g.room.baseManager.getBubbles();
+		const ri = Math.floor(bubbles.length * Math.random());
+		const target = bubbles[ri];
 		for (let i = 0; i < n; i++) {
-		const bases = this.g.room.baseManager.getBases();
-		const ri = Math.floor(bases.length * Math.random());
-		const target = bases[ri];
-
 			const missileX = this.x;
 			const missileY = this.y;
 			const jellyTargetDir = math.pointDirection(missileX, missileY, target.x, target.y)
