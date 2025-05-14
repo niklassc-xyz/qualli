@@ -1,11 +1,12 @@
 import Base from "./Base.js";
 import * as math from "../../parapluie/functions/math.js";
 import DiffuseMissile from "../units/DiffuseMissile.js";
+import Colors from "../../appEtc/color/Colors.js";
 
 export default class Boss extends Base {
 	constructor(g, x, y, team=0) {
-		const width = 125;
-		const height = 65;
+		const width = 125 * 1.2;
+		const height = 65 * 1.2;
 
 		const sprite = g.resourceManager.getSpriteByPath("datafiles/sprites/shark.svg");
 		super(g, x, y, width, height, sprite, team);
@@ -70,9 +71,9 @@ export default class Boss extends Base {
 		// Draw healthbar
 		const barWidth = this.width;
 		const barHeight = 4;
-		this.g.painter.setFillStyle("red");
+		this.g.painter.setFillStyle(Colors.healthbarRed.cRgb());
 		this.g.painter.fillRect(this.x - barWidth/2, this.y - 42, barWidth, barHeight);
-		this.g.painter.setFillStyle("#44ff77");
+		this.g.painter.setFillStyle(Colors.healthbarGreen.cRgb());
 		this.g.painter.fillRect(this.x - barWidth/2, this.y - 42, barWidth*this.health/100, barHeight);
 
 		// Energy

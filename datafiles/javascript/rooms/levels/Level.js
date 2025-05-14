@@ -8,10 +8,11 @@ import GameoverButton from "../../objects/GameoverButton.js";
 // Abstract Class for levels
 // All levels should extend from this
 export default class Level extends Room {
-	static background = "datafiles/sprites/bg8FullHd.png";
 
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
+
+		this.background = "datafiles/sprites/bg8FullHd.png";
 
 		if (this.constructor == Level) {
 			throw new Error("Abstract classes can't be instantiated.");
