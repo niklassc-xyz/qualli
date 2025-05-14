@@ -3,6 +3,7 @@ import Actor from "../../Actor/Actor.js";
 import Bubble from "../../objects/bases/Bubble.js";
 import BubbleTemp from "../../objects/bases/BubbleTemp/BubbleTemp.js";
 import Boss from "../../objects/bases/Boss.js";
+import HarpoonBase from "../../objects/bases/HarpoonBase.js";
 
 import ModBubble0 from "../../Actor/AiModule/ModBubble0.js";
 import ModBubble1 from "../../Actor/AiModule/ModBubble1.js";
@@ -11,9 +12,14 @@ import ModBubble2 from "../../Actor/AiModule/ModBubble2.js";
 import ModFleeTemp from "../../Actor/AiModule/ModFleeTemp.js";
 
 
+// TODO boss svg should be rendered
+
+
 export default class LevelTest extends Level {
 	constructor(g, returnRoom = undefined) {
 		super(g, returnRoom);
+
+		this.background = "datafiles/sprites/bg_1.png";
 
 		this.addBase(new BubbleTemp(this.g, 640, 360, 1, 3, 100));
 		this.addBase(new BubbleTemp(this.g, 1000, 100, 1, 2, 10));
@@ -23,6 +29,8 @@ export default class LevelTest extends Level {
 		this.addBase(new Bubble(this.g, 100, 100, 0, 2, 25));
 
 		this.addBase(new Boss(this.g, 100, 100, 2));
+
+		this.addBase(new HarpoonBase(this.g, 300, 650, 1));
 
 		const ai0 = this.addActor(new Actor(this.g, 2));
 		ai0.addModule(new ModBubble0(this.g));
