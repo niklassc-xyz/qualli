@@ -43,10 +43,30 @@ export default class BaseManager extends DimensionEntity {
 		super.destroy();
 	}
 
-	getBases() {
-		return this._bases;
+	// Gets bases that are instance of a class in `classes`. If classes undefined
+	// returns all bases
+	getBases(classes=undefined) {
+		if (typeof classes === "undefined")
+			return this._bases;
+
+
+		let bases = [];
+		for (let i = 0; i < this._bases.length; i++) {
+			for (const cls of classes) {
+				if (this._bases[i] instanceof cls) {
+					bases.push(this._bases[i]);
+					break;
+				}
+			}
+		}
+		return bases;
 	}
 
+	getBasesByClass() {
+
+	}
+
+	// TODO replace by more general getBases
 	getBubbles() {
 		let bubbles = [];
 		for (let i = 0; i < this._bases.length; i++) {
