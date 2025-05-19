@@ -92,6 +92,9 @@ export default class Bubble extends Base {
 	}
 
 	action(base) {
+		if (!(base instanceof Bubble))
+			return;
+
 		let amount = Math.floor(this.units / 2)
 		this.sendUnits(base, amount)
 	}

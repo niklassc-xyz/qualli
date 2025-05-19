@@ -32,6 +32,9 @@ export default class HarpoonBase extends Base {
 	}
 
 	action(base) {
+		if (!(base instanceof Boss))
+			return;
+
 		if (this.harpoons.length < 1)
 			return
 
