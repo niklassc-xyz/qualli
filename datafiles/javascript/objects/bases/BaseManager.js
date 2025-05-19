@@ -49,6 +49,8 @@ export default class BaseManager extends DimensionEntity {
 		if (typeof classes === "undefined")
 			return this._bases;
 
+		if (typeof classes === "function")
+			classes = [classes];
 
 		let bases = [];
 		for (let i = 0; i < this._bases.length; i++) {
