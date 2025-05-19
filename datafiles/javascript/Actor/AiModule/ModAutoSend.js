@@ -1,7 +1,8 @@
 import AiModule from "./AiModule.js";
 import * as math from "../../parapluie/functions/math.js";
+import harpoonBaseBroken from "../../objects/bases/HarpoonBaseBroken.js";
 
-// 
+// TODO move to room?
 // 
 // 
 export default class ModAutoSend extends AiModule {
@@ -61,7 +62,15 @@ export default class ModAutoSend extends AiModule {
 			this.drawBackgroundSources();
 	}
 
+	getTargets() {
+		return this.g.room.baseManager.getBases(harpoonBaseBroken);
+	}
+
 	sendRandom() {
+		this._targets = this.getTargets();
+		if (this._targets.length === 0)
+			return;
+
 		const source = math.chooseRandom(this._sources);
 		const target = math.chooseRandom(this._targets);
 		const n = Math.min(1, source.units);
