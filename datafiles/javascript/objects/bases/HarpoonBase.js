@@ -44,7 +44,8 @@ export default class HarpoonBase extends Base {
 	}
 
 	receiveUnits(n, team, source=undefined) {
-		super.receiveUnits(n, team, source);
+		if (this.destroyed)
+			return;
 
 		this.health -= n;
 
@@ -55,7 +56,6 @@ export default class HarpoonBase extends Base {
 	}
 
 	destroy() {
-		console.log("destroyed", this.destroyed);
 		super.destroy();
 
 		while (this.harpoons.length > 0)

@@ -39,7 +39,6 @@ export default class Base extends SpriteEntity {
 
 	destroy() {
 		super.destroy();
-
 		this.g.room.unregisterBase(this);
 	}
 
@@ -50,7 +49,6 @@ export default class Base extends SpriteEntity {
 
 	/**
 	 * When units of value n arrive that belong to team team
-	 * @override MUST CALL SUPER before
 	 * @param {number} n - [TODO:description]
 	 * @param {number} team - [TODO:description]
 	 */

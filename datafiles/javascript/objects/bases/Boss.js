@@ -65,7 +65,7 @@ export default class Boss extends Base {
 		if (math.distance(this.x, this.y, this.targetX, this.targetY) < 300)
 			this.chooseRandomTarget();
 
-		// Attack haproon bases
+		// Attack harpoon bases
 		const harpoonBases = this.g.room.baseManager.getBases([HarpoonBase]);
 		if (harpoonBases.length > 0 && Math.random() < 0.05) {
 			const target = math.chooseRandom(harpoonBases);
