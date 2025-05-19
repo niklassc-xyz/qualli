@@ -19,8 +19,6 @@ export default class UnlockBase extends Base {
 	 * @param {number} team - [TODO:description]
 	 */
 	receiveUnits(n, team, source = undefined) {
-		super.receiveUnits(n, team, source);
-
 		// this.units = Math.max(0, this.units - units);
 		this.units -= n;
 
