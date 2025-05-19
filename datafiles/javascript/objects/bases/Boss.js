@@ -1,4 +1,5 @@
 import Base from "./Base.js";
+import HarpoonBase from "./HarpoonBase.js";
 import * as math from "../../parapluie/functions/math.js";
 import DiffuseMissile from "../units/DiffuseMissile.js";
 import Colors from "../../appEtc/color/Colors.js";
@@ -63,6 +64,13 @@ export default class Boss extends Base {
 
 		if (math.distance(this.x, this.y, this.targetX, this.targetY) < 300)
 			this.chooseRandomTarget();
+
+		// Attack haproon bases
+		const harpoonBases = this.g.room.baseManager.getBases([HarpoonBase]);
+		if (harpoonBases.length > 0 && Math.random() < 0.05) {
+			const target = math.chooseRandom(harpoonBases);
+			this.sendUnits(target, 1);
+		}
 	}
 
 	draw() {
@@ -100,10 +108,21 @@ export default class Boss extends Base {
 		const bubbles = this.g.room.baseManager.getBubbles();
 		const ri = Math.floor(bubbles.length * Math.random());
 		const target = bubbles[ri];
+		this.sendUnits(target, n);
+	}
+
+	sendUnits(base, n) {
+		if (n > this.units) {
+			console.warn("Tried attacking with more units than boss has.")
+			n = this.units
+		}
+
+		this.units -= n
+
 		for (let i = 0; i < n; i++) {
 			const missileX = this.x;
 			const missileY = this.y;
-			const jellyTargetDir = math.pointDirection(missileX, missileY, target.x, target.y)
+			const jellyTargetDir = math.pointDirection(missileX, missileY, base.x, base.y)
 			let missileSprite;
 			if (jellyTargetDir > 90 && jellyTargetDir < 270)
 				missileSprite = this.spriteFlipped;
@@ -120,7 +139,7 @@ export default class Boss extends Base {
 			                                                         missileWidth,
 			                                                         missileHeight,
 			                                                         this.team,
-			                                                         target,
+			                                                         base,
 			                                                         this));
 			missile.targetSpeed = this.speed * 1.1;
 			missile.setDirectionSpeed(this.direction, this.speed * 1.1);
@@ -128,6 +147,8 @@ export default class Boss extends Base {
 	}
 
 	receiveUnits(n, team) {
+		super.receiveUnits(n, team);
+
 		if (this.team === team) {
 			this.units += n;
 		} else {

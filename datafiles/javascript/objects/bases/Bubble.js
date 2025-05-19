@@ -136,6 +136,8 @@ export default class Bubble extends Base {
 	// substracted. If n >= this.units, then bubble is captured and the
 	// amount of `n` that is left is added to the bubble.
 	receiveUnits(n, team) {
+		super.receiveUnits(n, team);
+
 		if (this.team === team) {
 			this.units += n;
 		} else {

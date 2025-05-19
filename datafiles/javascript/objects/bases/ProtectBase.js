@@ -16,6 +16,8 @@ export default class ProtectBase extends Base {
 	}
 
 	receiveUnits(n, team, source = undefined) {
+		this.receiveUnits(n, team, source);
+
 		if (!this.locked)
 			return;
 

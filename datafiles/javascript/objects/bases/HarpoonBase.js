@@ -1,4 +1,5 @@
 import Base from "./Base.js";
+import HarpoonBaseBroken from "./HarpoonBaseBroken.js";
 import * as math from "../../parapluie/functions/math.js";
 import Harpoon from "../units/Harpoon.js";
 import Boss from "./Boss.js";
@@ -23,7 +24,6 @@ export default class HarpoonBase extends Base {
 		this.harpoons = [];
 	}
 
-
 	stepSelected() {
 		super.stepSelected();
 
@@ -43,9 +43,27 @@ export default class HarpoonBase extends Base {
 		harpoon.setSpeed(7);
 	}
 
+	receiveUnits(n, team, source=undefined) {
+		super.receiveUnits(n, team, source);
+
+		this.health -= n;
+
+		if (this.health <= 0) {
+			this.destroy();
+			this.g.room.addBase(new HarpoonBaseBroken(this.g, this.x, this.y));
+		}
+	}
+
+	destroy() {
+		console.log("destroyed", this.destroyed);
+		super.destroy();
+
+		while (this.harpoons.length > 0)
+			this.harpoons.pop().destroy();
+	}
+
 	step() {
 		super.step();
-		this.health = Math.max(0, this.health-0.1);
 
 		if (this.harpoons.length < 3)
 			this.charge = Math.min(this.charge + this.chargeGain, 100);
