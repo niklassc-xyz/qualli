@@ -24,6 +24,13 @@ export default class Actor extends GameEntity {
 			this._modules[i].stepModule();
 	}
 
+	draw() {
+		super.draw();
+
+		for (let i = 0; i < this._modules.length; i++)
+			this._modules[i].drawModule();
+	}
+
 	// TODO x,y
 	drawIcon(x, y, r=16) {
 		this.g.painter.setFillStyle(Colors.team[this.team].cRgba());

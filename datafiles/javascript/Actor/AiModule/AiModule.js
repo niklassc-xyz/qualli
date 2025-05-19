@@ -16,6 +16,10 @@ export default class AiModule {
 		}
 	}
 
+	drawModule() {
+
+	}
+
 	setTimer(name, steps) {
 		this._timers.set(name, steps);
 	}
