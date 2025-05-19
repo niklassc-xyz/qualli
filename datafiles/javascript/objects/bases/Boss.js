@@ -147,12 +147,16 @@ export default class Boss extends Base {
 	}
 
 	receiveUnits(n, team) {
-		super.receiveUnits(n, team);
+		if (this.destroyed)
+			return;
 
 		if (this.team === team) {
 			this.units += n;
 		} else {
-			this.health = Math.max(0, this.health-n);
+			this.health -= n;
 		}
+
+		if (this.health <= 0)
+			this.destroy();
 	}
 }
