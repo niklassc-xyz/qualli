@@ -18,9 +18,9 @@ export default class UnlockBase extends Base {
 	 * @param {number} n - [TODO:description]
 	 * @param {number} team - [TODO:description]
 	 */
-	receiveUnits(units, team, source = undefined) {
+	receiveUnits(n, team, source = undefined) {
 		// this.units = Math.max(0, this.units - units);
-		this.units -= units;
+		this.units -= n;
 
 		if (this.units < 0) {
 			// let target = source;
@@ -46,7 +46,7 @@ export default class UnlockBase extends Base {
 				// if (Math.random() < 0.001 && units != 1000)
 				// 	size = 1000;
 
-				if (units === 1000 && target instanceof UnlockBase)
+				if (n === 1000 && target instanceof UnlockBase)
 					break;
 
 				this.g.room.addObject(new Jelly(this.g, this.x, this.y, team, target, this, size));

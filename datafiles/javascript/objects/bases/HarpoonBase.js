@@ -1,4 +1,5 @@
 import Base from "./Base.js";
+import HarpoonBaseBroken from "./HarpoonBaseBroken.js";
 import * as math from "../../parapluie/functions/math.js";
 import Harpoon from "../units/Harpoon.js";
 import Boss from "./Boss.js";
@@ -17,11 +18,11 @@ export default class HarpoonBase extends Base {
 
 		this.health = 100;
 		this.charge = 0;
-		this.chargeGain = 0.2;
+		// this.chargeGain = 0.2;
+		this.chargeGain = 0.3;
 
 		this.harpoons = [];
 	}
-
 
 	stepSelected() {
 		super.stepSelected();
@@ -31,6 +32,9 @@ export default class HarpoonBase extends Base {
 	}
 
 	action(base) {
+		if (!(base instanceof Boss))
+			return;
+
 		if (this.harpoons.length < 1)
 			return
 
@@ -42,10 +46,30 @@ export default class HarpoonBase extends Base {
 		harpoon.setSpeed(7);
 	}
 
+	receiveUnits(n, team, source=undefined) {
+		if (this.destroyed)
+			return;
+
+		this.health -= n;
+
+		if (this.health <= 0) {
+			this.destroy();
+			this.g.room.addBase(new HarpoonBaseBroken(this.g, this.x, this.y));
+		}
+	}
+
+	destroy() {
+		super.destroy();
+
+		while (this.harpoons.length > 0)
+			this.harpoons.pop().destroy();
+	}
+
 	step() {
 		super.step();
-		this.health = Math.max(0, this.health-0.1);
-		this.charge = Math.min(this.charge + this.chargeGain, 300);
+
+		if (this.harpoons.length < 3)
+			this.charge = Math.min(this.charge + this.chargeGain, 100);
 
 		if (this.charge >= 100) {
 			this.charge -= 100;
@@ -65,7 +89,7 @@ export default class HarpoonBase extends Base {
 		let lineWidth = 3;
 		this.g.painter.setLineWidth(lineWidth);
 		let radius = 10 + 1.1 * this.width/2;
-		this.g.painter.setStrokeStyle("white");
+		this.g.painter.setStrokeStyle("#fc5");
 
 		for (let i = 0; i < this.harpoons.length; i++) {
 			const margin = 3;

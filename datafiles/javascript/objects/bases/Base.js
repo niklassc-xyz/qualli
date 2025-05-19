@@ -16,6 +16,7 @@ export default class Base extends SpriteEntity {
 		this.selectionTarget = true;
 
 
+		// TODO → make target private → setter for target, where arriving is updated
 		this.arriving = [];
 		// TODO team management
 		for (let i = 0; i < Colors.team.length; i++) {
@@ -38,7 +39,6 @@ export default class Base extends SpriteEntity {
 
 	destroy() {
 		super.destroy();
-
 		this.g.room.unregisterBase(this);
 	}
 
@@ -49,12 +49,12 @@ export default class Base extends SpriteEntity {
 
 	/**
 	 * When units of value n arrive that belong to team team
-	 *
 	 * @param {number} n - [TODO:description]
 	 * @param {number} team - [TODO:description]
 	 */
 	receiveUnits(n, team, source = undefined) {
-		
+		if (this.destroyed)
+			return;
 	}
 
 	/**

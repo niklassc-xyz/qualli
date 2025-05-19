@@ -92,6 +92,9 @@ export default class Bubble extends Base {
 	}
 
 	action(base) {
+		if (!(base instanceof Bubble))
+			return;
+
 		let amount = Math.floor(this.units / 2)
 		this.sendUnits(base, amount)
 	}
@@ -136,6 +139,8 @@ export default class Bubble extends Base {
 	// substracted. If n >= this.units, then bubble is captured and the
 	// amount of `n` that is left is added to the bubble.
 	receiveUnits(n, team) {
+		super.receiveUnits(n, team);
+
 		if (this.team === team) {
 			this.units += n;
 		} else {

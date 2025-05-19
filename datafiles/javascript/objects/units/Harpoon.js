@@ -23,6 +23,11 @@ export default class Harpoon extends Unit {
 
 		if (typeof this.target === "undefined") {
 			this.setDirection(this.source.direction);
+		} else {
+			this.turnTowardsPoint(this.target.x, this.target.y, 0.2);
 		}
+
+		if (this.isOutsideRoom())
+			this.destroy();
 	}
 }
