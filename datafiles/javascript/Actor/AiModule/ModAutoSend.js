@@ -28,13 +28,12 @@ export default class ModAutoSend extends AiModule {
 		console.log(this.minX, this.minY, this.maxX, this.maxY);
 	}
 
+	// Checks if all targets are captured and updates this.completelyCaptured
 	updateCompletelyCaptured() {
 		for (let i = 0; i < this._sources.length; i++) {
 			const base = this._sources[i];
 
 			if (base.destroyed) {
-				// TODO add newly created harpoon bases
-				console.log("remove destroyed harpoonBase");
 				this._sources.splice(i, 1);
 				i--;
 				continue;
@@ -83,7 +82,6 @@ export default class ModAutoSend extends AiModule {
 		const padding = 16;
 		// TODO when captured
 		this.g.painter.setFillStyle("#a0c5");
-		// this.g.painter.setStrokeStyle("#a0c");
 
 		const x = this.minX - padding;
 		const y = this.minY - padding;
