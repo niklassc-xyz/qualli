@@ -4,6 +4,7 @@ import Game from "./datafiles/javascript/parapluie/Game.js";
 import PausedOverlay from "./datafiles/javascript/overlays/PausedOverlay.js";
 import EndgameOverlay from "./datafiles/javascript/overlays/EndgameOverlay.js";
 import RatioOverlay from "./datafiles/javascript/overlays/RatioOverlay.js";
+import PwaOverlay from "./datafiles/javascript/overlays/PwaOverlay.js";
 import Startpage from "./datafiles/javascript/rooms/Startpage.js";
 
 class Qualli extends Game {
@@ -63,6 +64,11 @@ class Qualli extends Game {
 
 // TODO remove → move overlays out of index.html
 window.ProgressManager = ProgressManager;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+	const pwaOverlay = new PwaOverlay(e);
+	pwaOverlay.add();
+});
 
 window.onload = () => {
 	var game = new Qualli(Startpage);
