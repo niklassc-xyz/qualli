@@ -10,5 +10,18 @@
     }
   ],
   "display": "fullscreen",
-  "orientation": "landscape"
+  "orientation": "landscape",
+  "screenshots": [
+	  {
+		  "src": "screenshots/1.png",
+		  "sizes": "1676x943",
+		  "type": "image/png",
+		  "form_factor": "wide"
+	  },
+	  {
+		  "src": "screenshots/1.png",
+		  "sizes": "1676x943",
+		  "type": "image/png"
+	  }
+  ]
 }
