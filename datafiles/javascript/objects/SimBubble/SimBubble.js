@@ -85,6 +85,7 @@ export default class SimBubble extends SpriteEntity {
 			this.setVspeed(this.vspeed - 40*this.ascendAcel);
 		}
 
+		// TODO use outside room method from entity when fixed
 		if (this.y < -this.height + this.oy)
 			this.destroy();
 
@@ -149,7 +150,6 @@ export default class SimBubble extends SpriteEntity {
 					other.setVspeed(other.vspeed - aVert);
 				}
 			}
-
 		}
 	}
 }
