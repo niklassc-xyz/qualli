@@ -4,7 +4,7 @@ import Colors from "../../../appEtc/color/Colors.js";
 import FloatSign from "../../FloatSign.js";
 
 export default class BubbleTemp extends Bubble {
-	constructor(g, x, y, team, size, units, ttl = undefined, doesRespawn=false) {
+	constructor(g, x, y, team, size, units, ttl = undefined, doesRespawn=true) {
 		super(g, x, y, team, size, units);
 
 		this.doesRespawn = doesRespawn;
