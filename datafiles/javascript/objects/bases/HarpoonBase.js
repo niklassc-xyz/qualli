@@ -7,10 +7,11 @@ import Colors from "../../appEtc/color/Colors.js";
 
 export default class HarpoonBase extends Base {
 	constructor(g, x, y, team=0) {
-		const width = 128;
-		const height = 128;
+		const width = 145;
+		const height = 62;
 
-		const sprite = g.resourceManager.getSpriteByPath("datafiles/sprites/bubble1.png");
+		// TODO convert svg
+		const sprite = g.resourceManager.getSpriteByPath("datafiles/sprites/submarine.svg");
 		super(g, x, y, width, height, sprite, team);
 
 		// TODO dont use svg directly
