@@ -19,6 +19,7 @@ class Qualli extends Game {
 		this.start();
 	}
 
+	// TODO Move to level ROOM → Game.pause should simply pause the game loop
 	pause() {
 		this._pausedOverlay.add();
 		super.pause();
@@ -66,6 +67,7 @@ class Qualli extends Game {
 window.ProgressManager = ProgressManager;
 
 window.addEventListener('beforeinstallprompt', (e) => {
+	// TODO do in game
 	const pwaOverlay = new PwaOverlay(e);
 	pwaOverlay.add();
 });
